@@ -938,7 +938,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (eventKey === "other") {
         // Redirect immediately to WhatsApp with specific message
-        const waUrl = "https://wa.me/919037352739?text=" + encodeURIComponent("Hi DoubleLayer Photography, I would like to know the other customizable events and packages available for me. Please share the details.");
+        const waUrl = "https://wa.me/919446802570?text=" + encodeURIComponent("Hi DoubleLayer Photography, I would like to know the other customizable events and packages available for me. Please share the details.");
         window.open(waUrl, "_blank");
         return;
       }
@@ -1274,7 +1274,7 @@ document.addEventListener("DOMContentLoaded", () => {
         waText += `📅 [ADMIN ONLY - ADD TO CALENDAR]\n${gCalUrl}`;
       }
 
-      const waUrl = "https://wa.me/919037352739?text=" + encodeURIComponent(waText);
+      const waUrl = "https://wa.me/919446802570?text=" + encodeURIComponent(waText);
 
       // Render success message inside the form panel
       bookingCardPanel.innerHTML = `
@@ -1785,7 +1785,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const socialPlatforms = [
       {
         class: "wa-icon",
-        url: "https://wa.me/919037352739",
+        url: "https://wa.me/919446802570",
         title: "WhatsApp Chat",
         svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>`
       },
