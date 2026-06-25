@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Menu navigation links click handler
-  document.querySelectorAll("header a[href^='#'], .logo, .hero-actions button").forEach(elem => {
+  document.querySelectorAll("header a[href^='#'], .logo, .hero-actions button, #placeholder-packages-link").forEach(elem => {
     elem.addEventListener("click", e => {
       let targetHash = elem.getAttribute("href");
       // If triggered from button attributes or custom onclick
@@ -415,6 +415,103 @@ document.addEventListener("DOMContentLoaded", () => {
         "images/Anaka%20Jithin/IMG_2622.JPG"
       ]
     },
+    "tony": {
+      title: "Tony",
+      category: "Portrait / Studio",
+      cover: "images/Tony/DLP_1000.jpg",
+      images: [
+        "images/Tony/DLP_1000.jpg",
+        "images/Tony/DLP_1034.jpg",
+        "images/Tony/DLP_1221.jpg",
+        "images/Tony/DLP_1252.jpg",
+        "images/Tony/DLP_1295.jpg",
+        "images/Tony/DLP_1304.jpg",
+        "images/Tony/DLP_1305.jpg",
+        "images/Tony/DLP_2906.jpg",
+        "images/Tony/FGC03875.jpg",
+        "images/Tony/FGC04004.jpg",
+        "images/Tony/FGC04077.jpg",
+        "images/Tony/FGC04099.jpg",
+        "images/Tony/FGC04152.jpg",
+        "images/Tony/FGC05236.jpg",
+        "images/Tony/FGC05244.jpg",
+        "images/Tony/FGC05273.jpg",
+        "images/Tony/FGC05317.jpg",
+        "images/Tony/FGC05393.jpg",
+        "images/Tony/FGC05513.jpg",
+        "images/Tony/FGC05530.jpg",
+        "images/Tony/FGC05955.jpg",
+        "images/Tony/FGC06276.jpg",
+        "images/Tony/FGC06322.jpg",
+        "images/Tony/FGC06352.jpg",
+        "images/Tony/FGC07959.jpg",
+        "images/Tony/FGC08019.jpg",
+        "images/Tony/FGC09427.jpg",
+        "images/Tony/FGC09510.jpg",
+        "images/Tony/FGC09631.jpg"
+      ]
+    },
+    "feba": {
+      title: "Feba",
+      category: "Portrait / Studio",
+      cover: "images/Feba/IMG_2686.JPG",
+      images: [
+        "images/Feba/IMG_2686.JPG",
+        "images/Feba/IMG_2691.JPG"
+      ]
+    },
+    "dr-eldhose-anju": {
+      title: "Dr. Eldhose & Dr. Anju",
+      category: "Wedding / Ceremony",
+      cover: "images/Dr.%20Eldhode%20And%20Dr.%20Anju/2CBECDAE-DDDF-4BA1-96D1-6881802C8813.JPG.jpeg",
+      images: [
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/2CBECDAE-DDDF-4BA1-96D1-6881802C8813.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/5EBB462B-FEE9-4E96-A80B-8C3F94C8B515.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/5F2D7AC5-2B24-4363-97B0-ABDE29C9A1A7.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/8A8F967E-24D2-4CEA-8CDF-B4D8D94E425B.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/9BD837D2-2356-48ED-A238-F5D960AE2AFB.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/48A91AF0-DD7D-46B9-9152-A5780486B75B.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/56D99322-6705-4881-BF3A-0520EB39BFC2.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/61D32A3F-01E8-407E-8502-9C6AA4779F0D.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/63CA7C52-0CFE-4FE1-8EE5-12FAACF53764.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/73CA277B-4B93-4E26-9450-AE9B202145A6.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/77A407FD-D671-460A-A073-9630AA19359C.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/78D9E097-6F8B-4DA2-B7E8-EBA47ED0D92B.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/215C4CCA-92A7-4A98-94BA-685CA6257793.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/217BDBD1-1009-433A-9BEA-5199570B8AEB.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/304F56A2-D051-407F-90D6-0F60B4ECCEC1.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/754BF865-43B1-4DC6-B9CE-87A15F30F55D.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/70992A77-D24B-4C8B-A997-1097649A0984.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/1825307F-9A80-4083-8FB3-190ADCEA3377.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/A75A0187-20D2-40EE-B665-48371F3C59F0.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/B2C97217-4B70-496E-8D2C-D708B9EA5613.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/B35F5F7B-00E0-4992-965D-4D68C77D36B2.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/C963B9A9-272B-4C7E-A46F-2C567BB17FF0.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/CB92D7AE-35ED-4275-BD8B-2EA4B7833BC6.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/DE441FAC-67FC-4766-A914-6DD93E2C4652.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/F38BC210-F98E-4859-87F3-9B23251FBA39.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/F972114C-BB62-413A-9E17-D616CAEBE6D1.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2450.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2452.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2453.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2455.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2456.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2457.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2458.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2459.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2460.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2475.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2476.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2477.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2478.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2479.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2480.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2481.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2482.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2483.JPG.jpeg",
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2484.JPG.jpeg"
+      ]
+    },
     "baptism": {
       title: "Baptism Ceremony",
       category: "Baptism / Ceremony",
@@ -525,51 +622,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "images/BAPTISM/IMG_1072.JPG"
       ]
     },
-    "maternity": {
-      title: "Maternity",
-      category: "Maternity / Fine Art",
-      cover: "images/Maternity/IMG_0177.JPG",
-      images: [
-        "images/Maternity/IMG_0177.JPG",
-        "images/Maternity/IMG_0178.JPG",
-        "images/Maternity/IMG_0179.JPG",
-        "images/Maternity/IMG_0180.JPG",
-        "images/Maternity/IMG_0181.JPG",
-        "images/Maternity/IMG_0182.JPG",
-        "images/Maternity/IMG_0183.JPG",
-        "images/Maternity/IMG_0184.JPG",
-        "images/Maternity/IMG_0185.JPG",
-        "images/Maternity/IMG_0186.JPG",
-        "images/Maternity/IMG_0187.JPG",
-        "images/Maternity/IMG_0188.JPG",
-        "images/Maternity/IMG_0189.JPG",
-        "images/Maternity/IMG_0190.JPG",
-        "images/Maternity/IMG_0191.JPG",
-        "images/Maternity/IMG_0192.JPG",
-        "images/Maternity/IMG_0193.JPG",
-        "images/Maternity/IMG_0194.JPG",
-        "images/Maternity/IMG_0438.JPG",
-        "images/Maternity/IMG_0439.JPG",
-        "images/Maternity/IMG_0440.JPG",
-        "images/Maternity/IMG_0441.JPG",
-        "images/Maternity/IMG_0442.JPG",
-        "images/Maternity/IMG_0443.JPG",
-        "images/Maternity/IMG_0444.JPG",
-        "images/Maternity/IMG_0445.JPG",
-        "images/Maternity/IMG_0446.JPG",
-        "images/Maternity/IMG_0447.JPG",
-        "images/Maternity/IMG_0448.JPG",
-        "images/Maternity/IMG_0449.JPG",
-        "images/Maternity/IMG_0450.JPG",
-        "images/Maternity/IMG_0451.JPG",
-        "images/Maternity/IMG_0452.JPG",
-        "images/Maternity/IMG_0453.JPG",
-        "images/Maternity/IMG_0454.JPG",
-        "images/Maternity/IMG_0455.JPG",
-        "images/Maternity/IMG_0456.JPG",
-        "images/Maternity/IMG_0457.JPG"
-      ]
-    },
     "baby-shoot": {
       title: "Baby Shoot",
       category: "Baby / Portrait",
@@ -635,49 +687,49 @@ document.addEventListener("DOMContentLoaded", () => {
         "images/Baby%20Shoot/DLP_9735.jpg"
       ]
     },
-    "tony": {
-      title: "Tony",
-      category: "Portrait / Studio",
-      cover: "images/Tony/DLP_1034.jpg",
+    "maternity": {
+      title: "Maternity",
+      category: "Maternity / Fine Art",
+      cover: "images/Maternity/IMG_0176.JPG",
       images: [
-        "images/Tony/DLP_1034.jpg",
-        "images/Tony/DLP_1221.jpg",
-        "images/Tony/DLP_1252.jpg",
-        "images/Tony/DLP_1291.jpg",
-        "images/Tony/DLP_1295.jpg",
-        "images/Tony/DLP_1304.jpg",
-        "images/Tony/DLP_1305.jpg",
-        "images/Tony/DLP_2906.jpg",
-        "images/Tony/FGC03875.jpg",
-        "images/Tony/FGC04004.jpg",
-        "images/Tony/FGC04077.jpg",
-        "images/Tony/FGC04099.jpg",
-        "images/Tony/FGC04152.jpg",
-        "images/Tony/FGC05236.jpg",
-        "images/Tony/FGC05244.jpg",
-        "images/Tony/FGC05273.jpg",
-        "images/Tony/FGC05317.jpg",
-        "images/Tony/FGC05393.jpg",
-        "images/Tony/FGC05513.jpg",
-        "images/Tony/FGC05530.jpg",
-        "images/Tony/FGC05955.jpg",
-        "images/Tony/FGC06276.jpg",
-        "images/Tony/FGC06322.jpg",
-        "images/Tony/FGC06352.jpg",
-        "images/Tony/FGC07959.jpg",
-        "images/Tony/FGC08019.jpg",
-        "images/Tony/FGC09427.jpg",
-        "images/Tony/FGC09510.jpg",
-        "images/Tony/FGC09631.jpg"
-      ]
-    },
-    "feba": {
-      title: "Feba",
-      category: "Portrait / Studio",
-      cover: "images/Feba/IMG_2686.JPG",
-      images: [
-        "images/Feba/IMG_2686.JPG",
-        "images/Feba/IMG_2691.JPG"
+        "images/Maternity/IMG_0176.JPG",
+        "images/Maternity/IMG_0177.JPG",
+        "images/Maternity/IMG_0179.JPG",
+        "images/Maternity/IMG_0180.JPG",
+        "images/Maternity/IMG_0181.JPG",
+        "images/Maternity/IMG_0182.JPG",
+        "images/Maternity/IMG_0183.JPG",
+        "images/Maternity/IMG_0184.JPG",
+        "images/Maternity/IMG_0185.JPG",
+        "images/Maternity/IMG_0186.JPG",
+        "images/Maternity/IMG_0187.JPG",
+        "images/Maternity/IMG_0188.JPG",
+        "images/Maternity/IMG_0189.JPG",
+        "images/Maternity/IMG_0190.JPG",
+        "images/Maternity/IMG_0191.JPG",
+        "images/Maternity/IMG_0192.JPG",
+        "images/Maternity/IMG_0193.JPG",
+        "images/Maternity/IMG_0194.JPG",
+        "images/Maternity/IMG_0438.JPG",
+        "images/Maternity/IMG_0439.JPG",
+        "images/Maternity/IMG_0440.JPG",
+        "images/Maternity/IMG_0441.JPG",
+        "images/Maternity/IMG_0442.JPG",
+        "images/Maternity/IMG_0443.JPG",
+        "images/Maternity/IMG_0444.JPG",
+        "images/Maternity/IMG_0445.JPG",
+        "images/Maternity/IMG_0446.JPG",
+        "images/Maternity/IMG_0447.JPG",
+        "images/Maternity/IMG_0448.JPG",
+        "images/Maternity/IMG_0449.JPG",
+        "images/Maternity/IMG_0450.JPG",
+        "images/Maternity/IMG_0451.JPG",
+        "images/Maternity/IMG_0452.JPG",
+        "images/Maternity/IMG_0453.JPG",
+        "images/Maternity/IMG_0454.JPG",
+        "images/Maternity/IMG_0455.JPG",
+        "images/Maternity/IMG_0456.JPG",
+        "images/Maternity/IMG_0457.JPG"
       ]
     }
   };
@@ -784,16 +836,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const saveCustomizerBtn = document.getElementById("customizer-save-btn");
 
   const customizerState = {
-    candidPhotographers: 2,
-    traditionalPhotographers: 1,
-    cinematographers: 1,
-    traditionalVideographers: 0,
-    albumsCount: 1,
+    prewedEnabled: false,
+    engagementEnabled: false,
+    eveEnabled: true,
+    dayEnabled: true,
+    
+    prewedPhotographers: 1,
+    prewedVideographers: 0,
+    
+    engagementPhotographers: 1,
+    engagementVideographers: 1,
+    
+    evePhotographers: 1,
+    eveVideographers: 1,
+    
+    dayPhotographers: 1,
+    dayVideographers: 1,
+    
+    albumsCount: 0,
     framesCount: 1,
     drone: false,
     ai: false,
     livestream: false,
-    prewed: false,
     teaserReel: true,
     fullFilm: false,
     socialReels: true,
@@ -803,74 +867,153 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const defaultTemplates = {
     silver: {
-      candidPhotographers: 0,
-      traditionalPhotographers: 1,
-      cinematographers: 1,
-      traditionalVideographers: 0,
+      prewedEnabled: false,
+      engagementEnabled: false,
+      eveEnabled: true,
+      dayEnabled: true,
+      prewedPhotographers: 0,
+      prewedVideographers: 0,
+      engagementPhotographers: 1,
+      engagementVideographers: 1,
+      evePhotographers: 1,
+      eveVideographers: 1,
+      dayPhotographers: 1,
+      dayVideographers: 1,
       albumsCount: 0,
       framesCount: 1,
       drone: false,
       ai: false,
       livestream: false,
-      prewed: false,
       teaserReel: true,
       fullFilm: false,
-      socialReels: true,
+      socialReels: false,
       parentAlbum: false,
-      editedPhotos: "30"
+      editedPhotos: "0"
     },
     gold: {
-      candidPhotographers: 0,
-      traditionalPhotographers: 1,
-      cinematographers: 1,
-      traditionalVideographers: 0,
+      prewedEnabled: true,
+      engagementEnabled: true,
+      eveEnabled: true,
+      dayEnabled: true,
+      prewedPhotographers: 1,
+      prewedVideographers: 0,
+      engagementPhotographers: 1,
+      engagementVideographers: 1,
+      evePhotographers: 1,
+      eveVideographers: 1,
+      dayPhotographers: 1,
+      dayVideographers: 1,
       albumsCount: 1,
       framesCount: 1,
       drone: false,
       ai: false,
       livestream: false,
-      prewed: false,
       teaserReel: true,
       fullFilm: true,
       socialReels: true,
-      parentAlbum: true,
-      editedPhotos: "100"
+      parentAlbum: false,
+      editedPhotos: "30"
     },
     diamond: {
-      candidPhotographers: 1,
-      traditionalPhotographers: 1,
-      cinematographers: 1,
-      traditionalVideographers: 1,
-      albumsCount: 1,
+      prewedEnabled: true,
+      engagementEnabled: true,
+      eveEnabled: true,
+      dayEnabled: true,
+      prewedPhotographers: 1,
+      prewedVideographers: 1,
+      engagementPhotographers: 2,
+      engagementVideographers: 2,
+      evePhotographers: 2,
+      eveVideographers: 2,
+      dayPhotographers: 2,
+      dayVideographers: 2,
+      albumsCount: 2,
       framesCount: 1,
       drone: true,
       ai: true,
       livestream: false,
-      prewed: true,
       teaserReel: true,
       fullFilm: true,
       socialReels: true,
       parentAlbum: true,
-      editedPhotos: "unlimited"
+      editedPhotos: "60"
     }
   };
 
   function updateCustomizerUI() {
-    // Sync counters
-    const roles = ['candidPhotographers', 'traditionalPhotographers', 'cinematographers', 'traditionalVideographers'];
-    roles.forEach(role => {
-      const valEl = document.getElementById(`c-${role}`);
-      if (valEl) valEl.textContent = customizerState[role];
+    const serviceDropdown = document.getElementById("booking-service");
+    const serviceVal = serviceDropdown ? serviceDropdown.value : "custom";
+
+    // Hide/show prewed session card on Silver
+    const prewedCard = document.getElementById("session-card-prewed");
+    if (prewedCard) {
+      if (serviceVal === "silver") {
+        prewedCard.style.display = "none";
+        customizerState.prewedEnabled = false;
+      } else {
+        prewedCard.style.display = "block";
+      }
+    }
+
+    // Sync session checkboxes, summaries and values
+    const sessions = ["prewed", "engagement", "eve", "day"];
+    sessions.forEach(s => {
+      const cb = document.getElementById(`add-session-${s}`);
+      const card = document.getElementById(`session-card-${s}`);
+      const isEnabled = customizerState[`${s}Enabled`];
+      if (cb) cb.checked = isEnabled;
+      if (card) {
+        if (isEnabled) card.classList.add("active");
+        else card.classList.remove("active");
+      }
+
+      const phVal = document.getElementById(`c-${s}Photographers`);
+      const viVal = document.getElementById(`c-${s}Videographers`);
+      if (phVal) phVal.textContent = customizerState[`${s}Photographers`];
+      if (viVal) viVal.textContent = customizerState[`${s}Videographers`];
+
+      const summaryEl = document.getElementById(`summary-${s}`);
+      if (summaryEl) {
+        const ph = customizerState[`${s}Photographers`];
+        const vi = customizerState[`${s}Videographers`];
+        const parts = [];
+        if (ph > 0) parts.push(`${ph} Photographer${ph > 1 ? 's' : ''}`);
+        if (vi > 0) parts.push(`${vi} Videographer${vi > 1 ? 's' : ''}`);
+        summaryEl.textContent = parts.length > 0 ? parts.join(" + ") : "No crew assigned";
+      }
     });
 
-    const deliverables = ['albumsCount', 'framesCount'];
+    const deliverables = ['framesCount'];
     deliverables.forEach(item => {
       const valEl = document.getElementById(`c-${item}`);
       if (valEl) valEl.textContent = customizerState[item];
     });
 
+    // Sync printed album checkbox
+    const albumCheckbox = document.getElementById("add-printedAlbum");
+    const albumCard = document.getElementById("card-add-printedAlbum");
+    const albumDesc = document.getElementById("customizer-album-desc");
+    if (albumCheckbox) {
+      const isChecked = customizerState.albumsCount > 0;
+      albumCheckbox.checked = isChecked;
+      if (albumCard) {
+        if (isChecked) albumCard.classList.add("active");
+        else albumCard.classList.remove("active");
+      }
+      
+      if (serviceVal === "silver") {
+        albumDesc.textContent = "80 Pages Printed Album";
+      } else if (serviceVal === "gold") {
+        albumDesc.textContent = "120 Pages Luster Printed Album with Premium Box & Bag";
+      } else if (serviceVal === "diamond") {
+        albumDesc.textContent = "140 Pages Luster Printed Album with Premium Box & Bag";
+      } else {
+        albumDesc.textContent = "Premium Flush-Mount Album";
+      }
+    }
+
     // Sync checkboxes
-    const addons = ['drone', 'ai', 'livestream', 'prewed', 'teaserReel', 'fullFilm', 'socialReels', 'parentAlbum'];
+    const addons = ['drone', 'ai', 'livestream', 'teaserReel', 'fullFilm', 'socialReels', 'parentAlbum'];
     addons.forEach(addon => {
       const inputEl = document.getElementById(`add-${addon}`);
       const cardEl = document.getElementById(`card-add-${addon}`);
@@ -893,51 +1036,57 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Render summary counts
-    const crewTotal = customizerState.candidPhotographers + customizerState.traditionalPhotographers + customizerState.cinematographers + customizerState.traditionalVideographers;
-    const crewTotalEl = document.getElementById("c-sum-crew");
-    if (crewTotalEl) crewTotalEl.textContent = `${crewTotal} Crew Member${crewTotal !== 1 ? 's' : ''}`;
-
+    let totalCrew = 0;
     const crewBreakdownEl = document.getElementById("c-sum-crew-breakdown");
     if (crewBreakdownEl) {
       crewBreakdownEl.innerHTML = "";
-      const labels = {
-        candidPhotographers: "Candid Photographer(s)",
-        traditionalPhotographers: "Traditional Photographer(s)",
-        cinematographers: "Cinematographer(s)",
-        traditionalVideographers: "Traditional Videographer(s)"
-      };
-      for (const role in labels) {
-        if (customizerState[role] > 0) {
-          const li = document.createElement("li");
-          li.textContent = `${customizerState[role]} x ${labels[role]}`;
-          crewBreakdownEl.appendChild(li);
+      sessions.forEach(s => {
+        if (customizerState[`${s}Enabled`] && (s !== "prewed" || serviceVal !== "silver")) {
+          const ph = customizerState[`${s}Photographers`];
+          const vi = customizerState[`${s}Videographers`];
+          if (ph > 0 || vi > 0) {
+            const li = document.createElement("li");
+            const crewText = [];
+            if (ph > 0) crewText.push(`${ph} Photo`);
+            if (vi > 0) crewText.push(`${vi} Cinema`);
+            const labelCapitalized = s === "prewed" ? "Pre/Post-Wed" : s.charAt(0).toUpperCase() + s.slice(1);
+            li.textContent = `${labelCapitalized}: ${crewText.join(" + ")}`;
+            crewBreakdownEl.appendChild(li);
+            totalCrew += (ph + vi);
+          }
         }
-      }
+      });
     }
+    const crewTotalEl = document.getElementById("c-sum-crew");
+    if (crewTotalEl) crewTotalEl.textContent = `${totalCrew} Crew Member${totalCrew !== 1 ? 's' : ''}`;
 
     const delivListEl = document.getElementById("c-sum-deliv-list");
     if (delivListEl) {
       delivListEl.innerHTML = "";
       const liPhotos = document.createElement("li");
-      liPhotos.textContent = `${customizerState.editedPhotos === "unlimited" ? "Unlimited" : customizerState.editedPhotos} Retouched Digital Negatives`;
+      liPhotos.textContent = `${customizerState.editedPhotos === "0" ? "No" : customizerState.editedPhotos} Retouched Digital Negatives`;
       delivListEl.appendChild(liPhotos);
 
       if (customizerState.albumsCount > 0) {
         const li = document.createElement("li");
-        li.textContent = `${customizerState.albumsCount} x Flush-Mount Heirloom Album(s)`;
-        delivListEl.appendChild(li);
-      }
-      if (customizerState.framesCount > 0) {
-        const li = document.createElement("li");
-        li.textContent = `${customizerState.framesCount} x Archival Wood Photo Frame(s)`;
+        if (serviceVal === "silver") {
+          li.textContent = "80 Pages Printed Album";
+        } else if (serviceVal === "gold") {
+          li.textContent = "120 Pages Luster Printed Album with Premium Box & Bag";
+        } else if (serviceVal === "diamond") {
+          li.textContent = "140 Pages Luster Printed Album with Premium Box & Bag";
+        } else {
+          li.textContent = `${customizerState.albumsCount} x Printed Album(s)`;
+        }
         delivListEl.appendChild(li);
       }
 
+
       const items = {
-        teaserReel: "3-Min Cinematic Teaser Reel",
-        fullFilm: "Full documentary cut (2 hours)",
+        teaserReel: "2-3 Min Cinematic Teaser Reel",
+        fullFilm: "Full HD Film (2 hours)",
         socialReels: "Instagram & WhatsApp Reels",
-        parentAlbum: "Mini Parent Replica Album(s)"
+        parentAlbum: "Mini Printed Album(s)"
       };
       for (const item in items) {
         if (customizerState[item]) {
@@ -954,8 +1103,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const addLabels = {
         drone: "Aerial Drone Cinematography",
         ai: "AI Instant QR Sharing System",
-        livestream: "Private Live Stream Broadcast Feed",
-        prewed: "Pre-Wedding Creative Concept Session"
+        livestream: "Private Live Stream Broadcast Feed"
       };
       let hasAddons = false;
       for (const addon in addLabels) {
@@ -972,14 +1120,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  window.adjustCustomizerCrew = function(role, amount) {
-    customizerState[role] = Math.max(0, Math.min(10, customizerState[role] + amount));
+  window.toggleEditCrew = function(session) {
+    const panel = document.getElementById(`edit-panel-${session}`);
+    if (panel) {
+      const isHidden = panel.style.display === "none";
+      panel.style.display = isHidden ? "block" : "none";
+      const btn = document.getElementById(`btn-edit-${session}`);
+      if (btn) btn.textContent = isHidden ? "Close Edit" : "Edit Crew";
+    }
+  };
+
+  window.toggleCustomizerSession = function(session) {
+    const cb = document.getElementById(`add-session-${session}`);
+    if (cb) {
+      customizerState[`${session}Enabled`] = cb.checked;
+    }
     updateCustomizerUI();
+    syncSummaryDisplayCard();
+  };
+
+  window.adjustSessionCrew = function(session, role, amount) {
+    const key = `${session}${role}`;
+    customizerState[key] = Math.max(0, Math.min(10, customizerState[key] + amount));
+    updateCustomizerUI();
+    syncSummaryDisplayCard();
   };
 
   window.adjustCustomizerDeliverable = function(item, amount) {
     customizerState[item] = Math.max(0, Math.min(5, customizerState[item] + amount));
     updateCustomizerUI();
+    syncSummaryDisplayCard();
   };
 
   window.toggleCustomizerAddon = function(addon) {
@@ -988,6 +1158,29 @@ document.addEventListener("DOMContentLoaded", () => {
       customizerState[addon] = inputEl.checked;
     }
     updateCustomizerUI();
+    syncSummaryDisplayCard();
+  };
+
+  window.toggleCustomizerAlbumCheckbox = function() {
+    const cb = document.getElementById("add-printedAlbum");
+    if (!cb) return;
+    
+    const isChecked = cb.checked;
+    const serviceDropdown = document.getElementById("booking-service");
+    const serviceVal = serviceDropdown ? serviceDropdown.value : "custom";
+    
+    if (isChecked) {
+      if (serviceVal === "diamond") {
+        customizerState.albumsCount = 2;
+      } else {
+        customizerState.albumsCount = 1;
+      }
+    } else {
+      customizerState.albumsCount = 0;
+    }
+    
+    updateCustomizerUI();
+    syncSummaryDisplayCard();
   };
 
   window.updateCustomizerPhotosLimit = function() {
@@ -996,14 +1189,15 @@ document.addEventListener("DOMContentLoaded", () => {
       customizerState.editedPhotos = photosDropdown.value;
     }
     updateCustomizerUI();
+    syncSummaryDisplayCard();
   };
 
   // Sync state back to main booking form display panel
   function applyCustomizerToBooking() {
     const bookingService = document.getElementById("booking-service");
+    let matchedTier = "custom";
     if (bookingService) {
       // Determine if the customizer state matches a standard template
-      let matchedTier = "custom";
       for (const tier in defaultTemplates) {
         const template = defaultTemplates[tier];
         let isMatch = true;
@@ -1025,11 +1219,15 @@ document.addEventListener("DOMContentLoaded", () => {
       customizerModal.classList.remove("open");
     }
 
-    // Scroll smoothly to booking container
+    // Instead of scrolling smoothly to booking container immediately, show gift modal first!
     const targetIdx = sections.findIndex(sec => sec.getAttribute("id") === "booking");
     if (targetIdx !== -1) {
-      turnPageTo(targetIdx);
-      window.location.hash = "#booking";
+      showGiftModal(matchedTier, () => {
+        turnPageTo(targetIdx);
+        window.location.hash = "#booking";
+      });
+    } else {
+      turnPageTo(0);
     }
   }
 
@@ -1061,24 +1259,30 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     tierName.textContent = tierLabels[serviceVal] || "Custom Package";
 
-    // Render Crew
+    // Render Crew per active session
     crewList.innerHTML = "";
-    const crewLabels = {
-      candidPhotographers: "Candid Photographer(s)",
-      traditionalPhotographers: "Traditional Photographer(s)",
-      cinematographers: "Cinematographer(s)",
-      traditionalVideographers: "Traditional Videographer(s)"
-    };
+    const sessions = [
+      { id: "prewed", label: "Pre/Post Shoot" },
+      { id: "engagement", label: "Engagement Day" },
+      { id: "eve", label: "Wedding Eve" },
+      { id: "day", label: "Wedding Day" }
+    ];
     let crewCount = 0;
-    for (const key in crewLabels) {
-      const count = customizerState[key];
-      if (count > 0) {
-        const li = document.createElement("li");
-        li.textContent = `${count} x ${crewLabels[key]}`;
-        crewList.appendChild(li);
-        crewCount++;
+    sessions.forEach(s => {
+      if (customizerState[`${s.id}Enabled`] && (s.id !== "prewed" || serviceVal !== "silver")) {
+        const ph = customizerState[`${s.id}Photographers`];
+        const vi = customizerState[`${s.id}Videographers`];
+        if (ph > 0 || vi > 0) {
+          const li = document.createElement("li");
+          const crewText = [];
+          if (ph > 0) crewText.push(`${ph} Photographer${ph > 1 ? 's' : ''}`);
+          if (vi > 0) crewText.push(`${vi} Videographer${vi > 1 ? 's' : ''}`);
+          li.textContent = `${s.label}: ${crewText.join(" + ")}`;
+          crewList.appendChild(li);
+          crewCount += (ph + vi);
+        }
       }
-    }
+    });
     if (crewCount === 0) {
       crewList.innerHTML = "<li>Default crew assignments</li>";
     }
@@ -1086,25 +1290,29 @@ document.addEventListener("DOMContentLoaded", () => {
     // Render Deliverables
     delivList.innerHTML = "";
     const liPhotos = document.createElement("li");
-    liPhotos.textContent = `${customizerState.editedPhotos === "unlimited" ? "Unlimited" : customizerState.editedPhotos} Retouched Photos`;
+    liPhotos.textContent = `${customizerState.editedPhotos === "0" ? "No" : customizerState.editedPhotos} Retouched Photos`;
     delivList.appendChild(liPhotos);
 
     if (customizerState.albumsCount > 0) {
       const li = document.createElement("li");
-      li.textContent = `${customizerState.albumsCount} Printed Heirloom Album(s)`;
-      delivList.appendChild(li);
-    }
-    if (customizerState.framesCount > 0) {
-      const li = document.createElement("li");
-      li.textContent = `${customizerState.framesCount} Printed Photo Frame(s)`;
+      if (serviceVal === "silver") {
+        li.textContent = "80 Pages Printed Album";
+      } else if (serviceVal === "gold") {
+        li.textContent = "120 Pages Luster Printed Album with Premium Box & Bag";
+      } else if (serviceVal === "diamond") {
+        li.textContent = "140 Pages Luster Printed Album with Premium Box & Bag";
+      } else {
+        li.textContent = `${customizerState.albumsCount} x Printed Album(s)`;
+      }
       delivList.appendChild(li);
     }
 
+
     const delivItems = {
-      teaserReel: "3-Min Cinematic Teaser Reel",
-      fullFilm: "Full documentary film edit",
+      teaserReel: "2-3 Min Cinematic Teaser Reel",
+      fullFilm: "Full HD Film",
       socialReels: "Instagram & WhatsApp Reels",
-      parentAlbum: "Mini Parent Replica Album(s)"
+      parentAlbum: "Mini Printed Album(s)"
     };
     for (const key in delivItems) {
       if (customizerState[key]) {
@@ -1119,8 +1327,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const addLabels = {
       drone: "Aerial Drone Cinematography",
       ai: "AI Instant QR Sharing Portal",
-      livestream: "Private Event Live Stream Broadcast",
-      prewed: "Pre-Wedding Concept Film Shoot"
+      livestream: "Private Event Live Stream Broadcast"
     };
     let addonsCount = 0;
     for (const key in addLabels) {
@@ -1250,7 +1457,7 @@ document.addEventListener("DOMContentLoaded", () => {
         customizerState.drone = false;
         customizerState.ai = false;
         customizerState.livestream = false;
-        customizerState.prewed = false;
+        customizerState.prewedEnabled = false;
         customizerState.albumsCount = 1;
         customizerState.framesCount = 1;
 
@@ -1421,6 +1628,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const eventText = eventSelector.options[eventSelector.selectedIndex].text;
       const serviceSelector = document.getElementById("booking-service");
       const serviceText = serviceSelector.options[serviceSelector.selectedIndex].text;
+      const serviceVal = serviceSelector ? serviceSelector.value : "";
       const dateVal = selectedDateInput ? selectedDateInput.value : "";
       const brief = document.getElementById("booking-brief").value || "No description provided";
 
@@ -1438,39 +1646,54 @@ document.addEventListener("DOMContentLoaded", () => {
       const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
       const formattedDate = `${months[parseInt(dateParts[1]) - 1]} ${parseInt(dateParts[2])}, ${dateParts[0]}`;
 
+      const budgetSelector = document.getElementById("booking-budget");
+      const budgetText = budgetSelector ? budgetSelector.options[budgetSelector.selectedIndex].text : "Not specified";
+
       // Assemble Package Customizer config values into message
       let packageConfig = `Service Tier: ${serviceText}\n`;
       packageConfig += `Crew Details:\n`;
-      const labels = {
-        candidPhotographers: "Candid Photographer(s)",
-        traditionalPhotographers: "Traditional Photographer(s)",
-        cinematographers: "Cinematographer(s)",
-        traditionalVideographers: "Traditional Videographer(s)"
-      };
-      let crewCount = 0;
-      for (const key in labels) {
-        const count = customizerState[key];
-        if (count > 0) {
-          packageConfig += `- ${count} ${labels[key]}\n`;
-          crewCount++;
+      const sessionsList = [
+        { id: "prewed", label: "Pre/Post Shoot" },
+        { id: "engagement", label: "Engagement Day" },
+        { id: "eve", label: "Wedding Eve" },
+        { id: "day", label: "Wedding Day" }
+      ];
+      let crewDetailsAdded = false;
+      sessionsList.forEach(s => {
+        if (customizerState[`${s.id}Enabled`] && (s.id !== "prewed" || serviceVal !== "silver")) {
+          const ph = customizerState[`${s.id}Photographers`];
+          const vi = customizerState[`${s.id}Videographers`];
+          if (ph > 0 || vi > 0) {
+            const crewText = [];
+            if (ph > 0) crewText.push(`${ph} Photographer${ph > 1 ? 's' : ''}`);
+            if (vi > 0) crewText.push(`${vi} Videographer${vi > 1 ? 's' : ''}`);
+            packageConfig += `- ${s.label}: ${crewText.join(" + ")}\n`;
+            crewDetailsAdded = true;
+          }
         }
-      }
-      if (crewCount === 0) packageConfig += "- Default crew selection\n";
+      });
+      if (!crewDetailsAdded) packageConfig += "- Default crew selection\n";
 
       packageConfig += `\nDeliverables:\n`;
-      packageConfig += `- Photos: ${customizerState.editedPhotos === 'unlimited' ? 'Unlimited' : customizerState.editedPhotos} Retouched Images\n`;
+      packageConfig += `- Photos: ${customizerState.editedPhotos === '0' ? 'No' : customizerState.editedPhotos} Retouched Images\n`;
       if (customizerState.albumsCount > 0) {
-        packageConfig += `- Print Albums: ${customizerState.albumsCount} book(s)\n`;
+        if (serviceVal === "silver") {
+          packageConfig += `- Print Album: 80 Pages Printed Album\n`;
+        } else if (serviceVal === "gold") {
+          packageConfig += `- Print Album: 120 Pages Luster Printed Album with Premium Box & Bag\n`;
+        } else if (serviceVal === "diamond") {
+          packageConfig += `- Print Album: 140 Pages Luster Printed Album with Premium Box & Bag\n`;
+        } else {
+          packageConfig += `- Print Albums: ${customizerState.albumsCount} book(s)\n`;
+        }
       }
-      if (customizerState.framesCount > 0) {
-        packageConfig += `- Photo Frames: ${customizerState.framesCount} frame(s)\n`;
-      }
+
       
       const items = {
-        teaserReel: "3-Min Teaser Reel",
-        fullFilm: "Full Documentary cut edit",
+        teaserReel: "2-3 Min Teaser Reel",
+        fullFilm: "Full HD Film",
         socialReels: "Instagram & WhatsApp Reels",
-        parentAlbum: "Mini Parent Album(s)"
+        parentAlbum: "Mini Printed Album(s)"
       };
       for (const key in items) {
         if (customizerState[key]) {
@@ -1482,8 +1705,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const addons = {
         drone: "Aerial Drone Cinematography",
         ai: "AI Instant QR Sharing System",
-        livestream: "Private Live Stream Broadcast",
-        prewed: "Pre-Wedding Session Shoot"
+        livestream: "Private Live Stream Broadcast"
       };
       let addonCount = 0;
       for (const key in addons) {
@@ -1514,7 +1736,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let gCalUrl = "";
       if (datesParam) {
         const gCalTitle = `DoubleLayer: ${eventText} - ${name}`;
-        const gCalDetails = `Client Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nCuration: ${serviceText}\nBrief: ${brief}\n\nGenerated by DoubleLayer Booking Engine.`;
+        const gCalDetails = `Client Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nCuration: ${serviceText}\nBudget: ${budgetText}\nBrief: ${brief}\n\nGenerated by DoubleLayer Booking Engine.`;
         const gCalLocation = location;
         gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(gCalTitle)}&dates=${datesParam}&details=${encodeURIComponent(gCalDetails)}&location=${encodeURIComponent(gCalLocation)}`;
       }
@@ -1527,6 +1749,7 @@ document.addEventListener("DOMContentLoaded", () => {
       waText += `Email: ${email}\n`;
       waText += `Event Venue: ${location}\n`;
       waText += `Event Type: ${eventText}\n`;
+      waText += `Estimate Budget: ${budgetText}\n`;
       waText += `Selected Date: ${formattedDate}\n`;
       waText += `========================================\n\n`;
       waText += `[PACKAGE CONFIGURATION]\n${packageConfig}\n`;
@@ -1710,11 +1933,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // Update the visual summary card on the left
     syncSummaryDisplayCard();
 
-    // Scroll smoothly to booking container
+    // Instead of scrolling smoothly to booking container immediately, show gift modal first!
     const targetIdx = sections.findIndex(sec => sec.getAttribute("id") === "booking");
     if (targetIdx !== -1) {
-      turnPageTo(targetIdx);
-      window.location.hash = "#booking";
+      showGiftModal("custom", () => {
+        turnPageTo(targetIdx);
+        window.location.hash = "#booking";
+      });
+    } else {
+      turnPageTo(0);
     }
   };
 
@@ -1915,52 +2142,52 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Star rating input hover/click handling (Modal)
+  // Star rating input handling (Modal - with event delegation to support Lucide icons)
   if (ratingStarsSelection && selectedRatingInput) {
-    const stars = Array.from(ratingStarsSelection.querySelectorAll(".rating-star"));
-    
-    stars.forEach((star, idx) => {
-      star.addEventListener("click", () => {
-        const ratingValue = idx + 1;
-        selectedRatingInput.value = ratingValue;
-        
-        // Highlight active stars
-        stars.forEach((s, sIdx) => {
-          if (sIdx < ratingValue) {
-            s.classList.add("active");
-            s.style.color = "var(--gold-accent)";
-            s.style.fill = "var(--gold-accent)";
-          } else {
-            s.classList.remove("active");
-            s.style.color = "";
-            s.style.fill = "";
-          }
-        });
+    ratingStarsSelection.addEventListener("click", (e) => {
+      const star = e.target.closest(".rating-star");
+      if (!star) return;
+      
+      const ratingValue = parseInt(star.getAttribute("data-rating")) || 5;
+      selectedRatingInput.value = ratingValue;
+      
+      // Highlight active stars
+      const stars = Array.from(ratingStarsSelection.querySelectorAll(".rating-star"));
+      stars.forEach((s, sIdx) => {
+        if (sIdx < ratingValue) {
+          s.classList.add("active");
+          s.style.color = "var(--gold-accent)";
+          s.style.fill = "var(--gold-accent)";
+        } else {
+          s.classList.remove("active");
+          s.style.color = "";
+          s.style.fill = "";
+        }
       });
     });
   }
 
-  // Star rating input handling (Inline Form)
+  // Star rating input handling (Inline Form - with event delegation to support Lucide icons)
   if (inlineRatingStars && inlineSelectedRating) {
-    const stars = Array.from(inlineRatingStars.querySelectorAll(".inline-rating-star"));
-    
-    stars.forEach((star, idx) => {
-      star.addEventListener("click", () => {
-        const ratingValue = idx + 1;
-        inlineSelectedRating.value = ratingValue;
-        
-        // Highlight active stars
-        stars.forEach((s, sIdx) => {
-          if (sIdx < ratingValue) {
-            s.classList.add("active");
-            s.style.color = "var(--gold-accent)";
-            s.style.fill = "var(--gold-accent)";
-          } else {
-            s.classList.remove("active");
-            s.style.color = "";
-            s.style.fill = "";
-          }
-        });
+    inlineRatingStars.addEventListener("click", (e) => {
+      const star = e.target.closest(".inline-rating-star");
+      if (!star) return;
+      
+      const ratingValue = parseInt(star.getAttribute("data-rating")) || 5;
+      inlineSelectedRating.value = ratingValue;
+      
+      // Highlight active stars
+      const stars = Array.from(inlineRatingStars.querySelectorAll(".inline-rating-star"));
+      stars.forEach((s, sIdx) => {
+        if (sIdx < ratingValue) {
+          s.classList.add("active");
+          s.style.color = "var(--gold-accent)";
+          s.style.fill = "var(--gold-accent)";
+        } else {
+          s.classList.remove("active");
+          s.style.color = "";
+          s.style.fill = "";
+        }
       });
     });
   }
@@ -2086,58 +2313,199 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   window.switchLegalTab = switchLegalTab;
 
-  // --- MOBILE FLOATING SOCIAL CYCLE ENGINE ---
+  // --- MOBILE FLOATING SOCIAL ---
   const mobileSocialBtn = document.getElementById("mobile-social-btn");
-  if (mobileSocialBtn) {
-    const socialPlatforms = [
-      {
-        class: "wa-icon",
-        url: "https://wa.me/919446802570",
-        title: "WhatsApp Chat",
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>`
-      },
-      {
-        class: "ig-icon",
-        url: "https://www.instagram.com",
-        title: "Instagram",
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>`
-      },
-      {
-        class: "fb-icon",
-        url: "https://www.facebook.com",
-        title: "Facebook",
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>`
-      },
-      {
-        class: "li-icon",
-        url: "https://www.linkedin.com",
-        title: "LinkedIn",
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>`
+
+  // --- COMPLIMENTARY GIFT POPUP SYSTEM ---
+  function triggerConfettiPoppers() {
+    const colors = ['#d4af37', '#f1e1a6', '#cfab2f', '#ffffff', '#e6e6e6', '#fadadd'];
+    const container = document.body;
+    const particleCount = 80;
+    const particles = [];
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    for (let i = 0; i < particleCount; i++) {
+      const side = i % 2; // 0 = left, 1 = right
+      const el = document.createElement("div");
+      el.className = "confetti-particle";
+      
+      const sizeW = Math.random() * 8 + 6;
+      const sizeH = Math.random() * 6 + 6;
+      el.style.width = sizeW + "px";
+      el.style.height = sizeH + "px";
+      el.style.background = colors[Math.floor(Math.random() * colors.length)];
+      el.style.position = "fixed";
+      el.style.zIndex = "2600";
+      el.style.pointerEvents = "none";
+      el.style.borderRadius = "2px";
+      
+      let x = side === 0 ? 0 : width;
+      let y = height;
+      
+      el.style.left = "0px";
+      el.style.top = "0px";
+      el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      
+      container.appendChild(el);
+
+      const angle = side === 0 
+        ? (Math.random() * 45 + 15) * Math.PI / 180 
+        : (Math.random() * 45 + 120) * Math.PI / 180;
+      const speed = Math.random() * 15 + 15;
+      
+      particles.push({
+        el: el,
+        x: x,
+        y: y,
+        vx: Math.cos(angle) * speed,
+        vy: -Math.sin(angle) * speed,
+        rotation: Math.random() * 360,
+        vRotation: Math.random() * 10 - 5,
+        opacity: 1,
+        life: 1
+      });
+    }
+
+    const gravity = 0.45;
+    const friction = 0.98;
+
+    function update() {
+      let active = false;
+      for (let p of particles) {
+        if (p.life <= 0) continue;
+        
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += gravity;
+        p.vx *= friction;
+        p.vy *= friction;
+        p.rotation += p.vRotation;
+        
+        if (p.vy > 0) {
+          p.life -= 0.015;
+        }
+        
+        if (p.life <= 0 || p.y > height + 20) {
+          p.life = 0;
+          p.el.remove();
+        } else {
+          p.el.style.transform = `translate3d(${p.x}px, ${p.y}px, 0) rotate(${p.rotation}deg)`;
+          p.el.style.opacity = p.life;
+          active = true;
+        }
       }
-    ];
+      if (active) {
+        requestAnimationFrame(update);
+      }
+    }
 
-    let currentPlatformIdx = 0;
+    requestAnimationFrame(update);
+  }
 
-    setInterval(() => {
-      // Fade out transition (subtle micro-animation)
-      mobileSocialBtn.style.transform = "scale(0.3) rotate(180deg)";
-      mobileSocialBtn.style.opacity = "0";
+  function showGiftModal(tier, onRedirect) {
+    const overlay = document.getElementById("gift-modal-overlay");
+    const giftBox = document.getElementById("gift-box-trigger");
+    const instruction = document.getElementById("gift-tap-instruction");
+    const revealContent = document.getElementById("gift-reveal-content");
+    const itemsList = document.getElementById("gift-reveal-items-list");
+    const countdownSec = document.getElementById("gift-countdown-sec");
 
-      setTimeout(() => {
-        currentPlatformIdx = (currentPlatformIdx + 1) % socialPlatforms.length;
-        const platform = socialPlatforms[currentPlatformIdx];
+    if (!overlay || !giftBox || !instruction || !revealContent || !itemsList) {
+      onRedirect();
+      return;
+    }
 
-        // Reset classes
-        mobileSocialBtn.className = platform.class;
-        mobileSocialBtn.href = platform.url;
-        mobileSocialBtn.title = platform.title;
-        mobileSocialBtn.innerHTML = platform.svg;
+    // Determine gifts based on tier
+    let gifts = [];
+    if (tier === "silver") {
+      gifts = [
+        { name: "Visual Wall Calendar", icon: "calendar" },
+        { name: "Premium Desktop Photo Frame", icon: "image" }
+      ];
+    } else if (tier === "gold") {
+      gifts = [
+        { name: "Pre/Post-Wedding Concept Shoot", icon: "video" },
+        { name: "30 Retouched Photos on the Same Day", icon: "sparkles" },
+        { name: "Visual Wall Calendar", icon: "calendar" },
+        { name: "Premium Desktop Photo Frame", icon: "image" }
+      ];
+    } else if (tier === "diamond") {
+      gifts = [
+        { name: "Pre/Post-Wedding Concept Shoot", icon: "video" },
+        { name: "60 Retouched Photos on the Same Day", icon: "sparkles" },
+        { name: "Mini Printed Album", icon: "book-open" },
+        { name: "Visual Wall Calendar (2 Sets)", icon: "calendar" },
+        { name: "Premium Curation Wall Frames (2 Sets)", icon: "image" }
+      ];
+    } else {
+      gifts = [
+        { name: "Visual Wall Calendar", icon: "calendar" },
+        { name: "Premium Desktop Photo Frame", icon: "image" }
+      ];
+    }
 
-        // Fade back in
-        mobileSocialBtn.style.transform = "scale(1) rotate(360deg)";
-        mobileSocialBtn.style.opacity = "1";
-      }, 300); // sync with rotate/scale delay
-    }, 5000);
+    // Build the list
+    itemsList.innerHTML = gifts.map(g => `
+      <div class="gift-reveal-item">
+        <i data-lucide="${g.icon}"></i>
+        <span>${g.name}</span>
+      </div>
+    `).join("");
+
+    // Initialize/refresh Lucide icons inside the dynamically injected HTML
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons({
+        attrs: {
+          class: 'lucide'
+        },
+        nameAttr: 'data-lucide'
+      });
+    }
+
+    // Reset popup state
+    overlay.classList.add("open");
+    giftBox.classList.remove("opened");
+    instruction.style.display = "block";
+    revealContent.style.display = "none";
+    countdownSec.textContent = "10";
+
+    let opened = false;
+    let timer = null;
+
+    function openGift() {
+      if (opened) return;
+      opened = true;
+
+      // Add opened animations
+      giftBox.classList.add("opened");
+      instruction.style.display = "none";
+      revealContent.style.display = "block";
+
+      // Trigger poppers
+      triggerConfettiPoppers();
+
+      // Start countdown
+      let count = 10;
+      timer = setInterval(() => {
+        count--;
+        countdownSec.textContent = count;
+        if (count <= 0) {
+          clearInterval(timer);
+          overlay.classList.remove("open");
+          onRedirect();
+        }
+      }, 1000);
+    }
+
+    // Single-use listener for clicking anywhere on overlay to open
+    const tapHandler = function(e) {
+      if (!opened) {
+        openGift();
+        overlay.removeEventListener("click", tapHandler);
+      }
+    };
+    overlay.addEventListener("click", tapHandler);
   }
 
 });
