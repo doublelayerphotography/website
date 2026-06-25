@@ -2721,20 +2721,20 @@ footer {
   }
 
   .logo {
-    position: static;
-    transform: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     width: auto;
     z-index: 10;
-    margin: 0 !important;
   }
 
   .logo-img {
     height: 48px !important;
     width: auto !important;
-    margin: 0 !important;
+    margin: 0 auto !important;
   }
 
   .package-tabs-wrapper {
@@ -2780,6 +2780,10 @@ footer {
     display: inline-block !important;
   }
 
+  .icon-only-nav .nav-link {
+    justify-content: flex-start !important;
+  }
+
   .nav-link {
     font-size: 14px;
     justify-content: flex-start;
@@ -2798,7 +2802,7 @@ footer {
 
   .nav-footer {
     display: block !important;
-    order: 1;
+    order: 2;
     z-index: 10;
     margin: 0;
   }
@@ -2816,7 +2820,7 @@ footer {
 
   .mobile-toggle {
     display: block;
-    order: 2;
+    order: 1;
     z-index: 10;
     background: transparent;
     border: none;
