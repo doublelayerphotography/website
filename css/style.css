@@ -10,23 +10,55 @@
 
 /* --- 1. FONTS & ROOT VARIABLES --- */
 :root {
-  --bg-color: #050609;
-  --bg-gradient: radial-gradient(circle at center, #0e1017 0%, #050609 100%);
-  --text-main: #F8FAFC;
-  --text-muted: #64748B;
+  --bg-color: #ffffff;
+  --bg-gradient: radial-gradient(circle at center, #ffffff 0%, #f1f5f9 100%);
+  --text-main: #0f172a;
+  --text-muted: #475569;
   --gold-accent: #cfa853;
   --gold-accent-light: #e5c473;
   --gold-accent-dark: #a8853b;
-  --gold-glow: rgba(207, 168, 83, 0.15);
-  --silver-accent: #C0C0C0;
-  --diamond-accent: #b9f2ff;
+  --gold-glow: rgba(207, 168, 83, 0.08);
+  --silver-accent: #8a8a8a;
+  --diamond-accent: #0284c7;
   
-  /* Glassmorphic tokens */
-  --glass-bg: rgba(9, 11, 17, 0.45);
-  --glass-bg-hover: rgba(14, 17, 26, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.03);
-  --glass-border-hover: rgba(207, 168, 83, 0.18);
+  /* Glassmorphic tokens for Light Theme */
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-bg-hover: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(15, 23, 42, 0.08);
+  --glass-border-hover: rgba(207, 168, 83, 0.4);
   --glass-blur: 28px;
+
+  /* Shadow & Button variables */
+  --shadow-panel: 0 25px 50px -12px rgba(15, 23, 42, 0.08);
+  --shadow-card: 0 15px 35px 0 rgba(15, 23, 42, 0.04);
+  --shadow-card-hover: 0 25px 45px 0 rgba(15, 23, 42, 0.12), 0 0 20px 0 var(--gold-glow);
+  --shadow-inset: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+  --shadow-btn: 0 4px 15px rgba(15, 23, 42, 0.15);
+
+  /* Input and dropdown overrides */
+  --input-bg: rgba(15, 23, 42, 0.02);
+  --input-placeholder: rgba(15, 23, 42, 0.35);
+  --input-focus-bg: rgba(255, 255, 255, 0.95);
+  --select-option-bg: #ffffff;
+  --select-option-color: #0f172a;
+  --nav-link-hover-bg: rgba(15, 23, 42, 0.03);
+
+  /* Calendar panel day colors */
+  --cal-day-past-color: rgba(15, 23, 42, 0.15);
+  --cal-day-available-bg: rgba(15, 23, 42, 0.02);
+
+  /* Logo filter and blend controls */
+  --logo-filter: brightness(0.1) contrast(1.2);
+  --logo-blend: normal;
+
+  /* Background Orb configurations */
+  --orb-blend: multiply;
+  --orb-opacity: 0.06;
+
+  /* Button colors */
+  --btn-primary-bg: #0f172a;
+  --btn-primary-color: #ffffff;
+  --nav-menu-mobile-bg: rgba(255, 255, 255, 0.98);
 }
 
 /* --- 2. GLOBAL RESET & BASE RULES --- */
@@ -82,8 +114,8 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(150px);
-  opacity: 0.22;
-  mix-blend-mode: screen;
+  opacity: var(--orb-opacity, 0.22);
+  mix-blend-mode: var(--orb-blend, screen);
 }
 
 .orb-gold {
@@ -146,8 +178,8 @@ body {
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--glass-border);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 
-              inset 0 1px 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow-panel), 
+              var(--shadow-inset);
 }
 
 .glass-card {
@@ -156,8 +188,8 @@ body {
   -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--glass-border);
   border-radius: 20px;
-  box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5),
-              inset 0 1px 1px 0 rgba(255, 255, 255, 0.03);
+  box-shadow: var(--shadow-card),
+              var(--shadow-inset);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
@@ -166,8 +198,7 @@ body {
 .glass-card:hover {
   transform: translateY(-5px);
   border-color: var(--glass-border-hover);
-  box-shadow: 0 25px 45px 0 rgba(0, 0, 0, 0.65),
-              0 0 20px 0 var(--gold-glow);
+  box-shadow: var(--shadow-card-hover);
 }
 
 /* --- 5. TYPOGRAPHY RULES --- */
@@ -223,13 +254,13 @@ header {
   width: 80px;
   height: calc(100% - 48px);
   z-index: 100;
-  background: rgba(10, 11, 16, 0.3);
+  background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--glass-border);
   border-radius: 30px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6),
-              inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow-panel),
+              var(--shadow-inset);
 }
 
 .nav-container {
@@ -253,7 +284,8 @@ header {
   width: 62px;
   height: auto;
   display: block;
-  mix-blend-mode: screen;
+  mix-blend-mode: var(--logo-blend);
+  filter: var(--logo-filter);
   transition: opacity 0.3s ease, transform 0.3s ease;
   margin: 0 auto;
   animation: logoPulse 4s infinite ease-in-out;
@@ -308,17 +340,17 @@ header {
 }
 
 .nav-link:hover, .nav-link.active {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  background: var(--nav-link-hover-bg);
+  box-shadow: var(--shadow-inset);
 }
 
 .nav-link.active {
   border-left: 2px solid var(--gold-accent);
   padding-left: 10px;
   color: var(--gold-accent);
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  background: var(--nav-link-hover-bg);
+  box-shadow: var(--shadow-inset);
   border-radius: 12px;
 }
 
@@ -619,7 +651,8 @@ section.flipped-prev {
   height: 135px;
   width: auto;
   object-fit: contain;
-  mix-blend-mode: screen;
+  mix-blend-mode: var(--logo-blend);
+  filter: var(--logo-filter);
 }
 
 .hero-title {
@@ -697,9 +730,9 @@ section.flipped-prev {
 }
 
 .btn-primary {
-  background: var(--text-main);
-  color: #050609;
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.08);
+  background: var(--btn-primary-bg, var(--text-main));
+  color: var(--btn-primary-color, #050609);
+  box-shadow: var(--shadow-btn);
 }
 
 .btn-primary:hover {
@@ -919,7 +952,7 @@ section.flipped-prev {
 
 .gallery-item-overlay {
   padding: 20px;
-  background: rgba(10, 11, 16, 0.45);
+  background: var(--glass-bg);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1517,10 +1550,10 @@ section.flipped-prev {
 }
 
 .input-field {
-  background: rgba(255, 255, 255, 0.01);
+  background: var(--input-bg);
   border: 1px solid var(--glass-border);
   border-radius: 12px;
-  color: #fff;
+  color: var(--text-main);
   font-family: 'Montserrat', sans-serif;
   font-size: 13px;
   padding: 14px 18px;
@@ -1530,12 +1563,12 @@ section.flipped-prev {
 }
 
 .input-field::placeholder {
-  color: rgba(255, 255, 255, 0.18);
+  color: var(--input-placeholder);
 }
 
 .input-field:focus {
   border-color: rgba(207, 168, 83, 0.45);
-  background: rgba(207, 168, 83, 0.02);
+  background: var(--input-focus-bg);
   box-shadow: 0 0 15px rgba(207, 168, 83, 0.08);
 }
 
@@ -1548,8 +1581,8 @@ section.flipped-prev {
 }
 
 .select-field option {
-  background: #0B0D14;
-  color: #fff;
+  background: var(--select-option-bg);
+  color: var(--select-option-color);
 }
 
 .textarea-field {
@@ -1617,7 +1650,7 @@ section.flipped-prev {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #fff;
+  color: var(--text-main);
 }
 
 .cal-weekdays {
@@ -1626,7 +1659,7 @@ section.flipped-prev {
   gap: 6px;
   text-align: center;
   margin-bottom: 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--glass-border);
   padding-bottom: 8px;
 }
 
@@ -1666,15 +1699,15 @@ section.flipped-prev {
 }
 
 .cal-day.past {
-  color: rgba(255, 255, 255, 0.15);
+  color: var(--cal-day-past-color);
   cursor: not-allowed;
   pointer-events: none;
 }
 
 .cal-day.available {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.04);
-  color: #fff;
+  background: var(--cal-day-available-bg);
+  border-color: var(--glass-border);
+  color: var(--text-main);
 }
 
 .cal-day.available:hover {
@@ -2756,7 +2789,7 @@ footer {
     top: 85px;
     left: 16px;
     right: 16px;
-    background: rgba(10, 11, 16, 0.95);
+    background: var(--nav-menu-mobile-bg);
     backdrop-filter: blur(var(--glass-blur));
     border: 1px solid var(--glass-border);
     border-radius: 20px;
