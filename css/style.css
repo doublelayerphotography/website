@@ -1208,7 +1208,7 @@ section.flipped-prev {
   width: 100%;
 }
 
-/* Customizer Unified Package Card ( Baptism, Fixation ) */
+/* Customizer Unified Package Card ( Christening, Fixation ) */
 .unified-package-card {
   border-radius: 24px;
   padding: 45px;
@@ -2721,11 +2721,10 @@ footer {
   }
 
   .logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    position: static;
+    transform: none;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: auto;
     z-index: 10;
@@ -2735,7 +2734,21 @@ footer {
   .logo-img {
     height: 48px !important;
     width: auto !important;
-    margin: 0 auto !important;
+    margin: 0 !important;
+  }
+
+  .package-tabs-wrapper {
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    padding: 0 16px 8px 16px !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .package-tabs-wrapper::-webkit-scrollbar {
+    display: none !important;
+  }
+  .package-tabs {
+    flex-wrap: nowrap !important;
   }
 
   .nav-menu {
@@ -2780,7 +2793,7 @@ footer {
 
   .nav-footer {
     display: block !important;
-    order: 2;
+    order: 1;
     z-index: 10;
     margin: 0;
   }
@@ -2798,7 +2811,7 @@ footer {
 
   .mobile-toggle {
     display: block;
-    order: 1;
+    order: 2;
     z-index: 10;
     background: transparent;
     border: none;

@@ -463,8 +463,9 @@ document.addEventListener("DOMContentLoaded", () => {
     "dr-eldhose-anju": {
       title: "Dr. Eldhose & Dr. Anju",
       category: "Wedding / Ceremony",
-      cover: "images/Dr.%20Eldhode%20And%20Dr.%20Anju/2CBECDAE-DDDF-4BA1-96D1-6881802C8813.JPG.jpeg",
+      cover: "images/Dr.%20Eldhode%20And%20Dr.%20Anju/01.jpeg",
       images: [
+        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/01.jpeg",
         "images/Dr.%20Eldhode%20And%20Dr.%20Anju/2CBECDAE-DDDF-4BA1-96D1-6881802C8813.JPG.jpeg",
         "images/Dr.%20Eldhode%20And%20Dr.%20Anju/5EBB462B-FEE9-4E96-A80B-8C3F94C8B515.JPG.jpeg",
         "images/Dr.%20Eldhode%20And%20Dr.%20Anju/5F2D7AC5-2B24-4363-97B0-ABDE29C9A1A7.JPG.jpeg",
@@ -475,7 +476,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "images/Dr.%20Eldhode%20And%20Dr.%20Anju/61D32A3F-01E8-407E-8502-9C6AA4779F0D.JPG.jpeg",
         "images/Dr.%20Eldhode%20And%20Dr.%20Anju/63CA7C52-0CFE-4FE1-8EE5-12FAACF53764.JPG.jpeg",
         "images/Dr.%20Eldhode%20And%20Dr.%20Anju/73CA277B-4B93-4E26-9450-AE9B202145A6.JPG.jpeg",
-        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/77A407FD-D671-460A-A073-9630AA19359C.JPG.jpeg",
         "images/Dr.%20Eldhode%20And%20Dr.%20Anju/78D9E097-6F8B-4DA2-B7E8-EBA47ED0D92B.JPG.jpeg",
         "images/Dr.%20Eldhode%20And%20Dr.%20Anju/215C4CCA-92A7-4A98-94BA-685CA6257793.JPG.jpeg",
         "images/Dr.%20Eldhode%20And%20Dr.%20Anju/217BDBD1-1009-433A-9BEA-5199570B8AEB.JPG.jpeg",
@@ -512,9 +512,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "images/Dr.%20Eldhode%20And%20Dr.%20Anju/IMG_2484.JPG.jpeg"
       ]
     },
-    "baptism": {
-      title: "Baptism Ceremony",
-      category: "Baptism / Ceremony",
+    "christening": {
+      title: "Christening Ceremony",
+      category: "Christening / Ceremony",
       cover: "images/BAPTISM/IMG_0518.JPG",
       images: [
         "images/BAPTISM/IMG_0518.JPG",
@@ -1465,11 +1465,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const packageNameEl = document.getElementById("unified-package-name");
         if (packageNameEl) {
           const names = {
-            baptism: "Standard Baptism Package",
+            christening: "Standard Christening Package",
             fixation: "Standard Fixation Ceremony Package",
-            bridetobe: "Standard Bride-to-be Package",
-            coupletobe: "Standard Couple-to-be Package",
-            groomtobe: "Standard Groom-to-be Package"
+            bridetobe: "Standard Bride-to-be Package"
           };
           packageNameEl.textContent = names[eventKey] || "Standard Event Package";
         }
