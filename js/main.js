@@ -1781,7 +1781,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Auto redirect after 1.5 seconds
       setTimeout(() => {
-        window.open(waUrl, "_blank");
+        window.location.href = waUrl;
       }, 1500);
     });
   }
@@ -1825,7 +1825,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Auto redirect after 1.5 seconds
       setTimeout(() => {
-        window.open(waUrl, "_blank");
+        window.location.href = waUrl;
       }, 1500);
     });
   }
