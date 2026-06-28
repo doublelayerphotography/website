@@ -2021,6 +2021,17 @@ document.addEventListener("DOMContentLoaded", () => {
         addons: addonsList
       };
 
+      // Send details silently in the background to Google Sheets
+      const sheetUrl = "https://script.google.com/macros/s/AKfycbz0MS7LPp86ntdPUycWq7nOS4HYCjiEqNkZwRQ5p-Jkg3UoV3nxn8vywj_RVHw5nP1MoQ/exec";
+      fetch(sheetUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(window.latestBookingDetails)
+      }).catch(err => console.error("Google Sheets logging failed:", err));
+
       // Build WhatsApp message (without calendar URL)
       let waText = `Doublelayer Photography Booking Request!\n`;
       waText += `========================================\n`;
