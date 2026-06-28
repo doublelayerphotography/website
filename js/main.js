@@ -945,14 +945,64 @@ document.addEventListener("DOMContentLoaded", () => {
     const serviceDropdown = document.getElementById("booking-service");
     const serviceVal = serviceDropdown ? serviceDropdown.value : "custom";
 
-    // Hide/show prewed session card on Silver
+    const eventDropdown = document.getElementById("booking-event");
+    const eventVal = eventDropdown ? eventDropdown.value : "wedding";
+
     const prewedCard = document.getElementById("session-card-prewed");
-    if (prewedCard) {
-      if (serviceVal === "silver") {
+    const engagementCard = document.getElementById("session-card-engagement");
+    const eveCard = document.getElementById("session-card-eve");
+    const dayCard = document.getElementById("session-card-day");
+    
+    // Day session checkbox label
+    const dayLabel = dayCard ? dayCard.querySelector(".session-checkbox-label span") : null;
+    
+    // Premium features and deliverables control blocks
+    const controlBlocks = document.querySelectorAll(".customizer-modal-controls .control-block");
+
+    if (eventVal !== "wedding") {
+      // Non-wedding event: Hide prewed, engagement, eve sessions
+      if (prewedCard) {
         prewedCard.style.display = "none";
         customizerState.prewedEnabled = false;
-      } else {
-        prewedCard.style.display = "block";
+      }
+      if (engagementCard) {
+        engagementCard.style.display = "none";
+        customizerState.engagementEnabled = false;
+      }
+      if (eveCard) {
+        eveCard.style.display = "none";
+        customizerState.eveEnabled = false;
+      }
+      
+      if (dayLabel) {
+        dayLabel.textContent = eventVal === "christening" ? "Christening Day Coverage" :
+                               eventVal === "fixation" ? "Fixation Ceremony Day Coverage" :
+                               eventVal === "bridetobe" ? "Bride-to-be Day Coverage" : "Event Day Coverage";
+      }
+      
+      // Hide sections 2 (Premium Features) and 3 (Curation Deliverables) in the controls column
+      if (controlBlocks.length >= 3) {
+        controlBlocks[1].style.display = "none";
+        controlBlocks[2].style.display = "none";
+      }
+    } else {
+      // Wedding event: Show all applicable sessions
+      if (prewedCard) {
+        if (serviceVal === "silver") {
+          prewedCard.style.display = "none";
+          customizerState.prewedEnabled = false;
+        } else {
+          prewedCard.style.display = "block";
+        }
+      }
+      if (engagementCard) engagementCard.style.display = "block";
+      if (eveCard) eveCard.style.display = "block";
+      
+      if (dayLabel) dayLabel.textContent = "Wedding Day";
+      
+      if (controlBlocks.length >= 3) {
+        controlBlocks[1].style.display = "block";
+        controlBlocks[2].style.display = "block";
       }
     }
 
@@ -1220,22 +1270,27 @@ document.addEventListener("DOMContentLoaded", () => {
   // Sync state back to main booking form display panel
   function applyCustomizerToBooking() {
     const bookingService = document.getElementById("booking-service");
+    const eventVal = document.getElementById("booking-event") ? document.getElementById("booking-event").value : "wedding";
     let matchedTier = "custom";
     if (bookingService) {
-      // Determine if the customizer state matches a standard template
-      for (const tier in defaultTemplates) {
-        const template = defaultTemplates[tier];
-        let isMatch = true;
-        for (const key in template) {
-          if (customizerState[key] !== template[key]) {
-            isMatch = false;
+      if (eventVal === "wedding") {
+        // Determine if the customizer state matches a standard template
+        for (const tier in defaultTemplates) {
+          const template = defaultTemplates[tier];
+          let isMatch = true;
+          for (const key in template) {
+            if (customizerState[key] !== template[key]) {
+              isMatch = false;
+              break;
+            }
+          }
+          if (isMatch) {
+            matchedTier = tier;
             break;
           }
         }
-        if (isMatch) {
-          matchedTier = tier;
-          break;
-        }
+      } else {
+        matchedTier = "custom";
       }
       bookingService.value = matchedTier;
     }
@@ -1473,14 +1528,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const packagesCardsGrid = document.getElementById("packages-cards-grid");
     const calculatorBanner = document.getElementById("wedding-calculator-banner");
     const unifiedCard = document.getElementById("unified-package-card");
+    const bookingService = document.getElementById("booking-service");
+    const serviceContainer = bookingService ? bookingService.closest(".form-item") : null;
 
     if (eventKey === "wedding") {
       if (packagesCardsGrid) packagesCardsGrid.style.display = "grid";
       if (calculatorBanner) calculatorBanner.style.display = "flex";
       if (unifiedCard) unifiedCard.style.display = "none";
+      if (serviceContainer) serviceContainer.style.display = "block";
     } else {
       if (packagesCardsGrid) packagesCardsGrid.style.display = "none";
       if (calculatorBanner) calculatorBanner.style.display = "none";
+      if (bookingService) bookingService.value = "custom";
+      if (serviceContainer) serviceContainer.style.display = "none";
       if (unifiedCard) {
         unifiedCard.style.display = "block";
         
