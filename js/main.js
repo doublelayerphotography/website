@@ -880,7 +880,7 @@ document.addEventListener("DOMContentLoaded", () => {
       eveVideographers: 1,
       dayPhotographers: 1,
       dayVideographers: 1,
-      albumsCount: 0,
+      albumsCount: 1,
       framesCount: 1,
       drone: false,
       ai: false,
