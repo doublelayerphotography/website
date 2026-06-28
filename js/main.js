@@ -1558,6 +1558,18 @@ document.addEventListener("DOMContentLoaded", () => {
       if (calculatorBanner) calculatorBanner.style.display = "flex";
       if (unifiedCard) unifiedCard.style.display = "none";
       if (serviceContainer) serviceContainer.style.display = "block";
+
+      // Reset customizer state to Gold Wedding baseline when returning to Wedding
+      const goldTemplate = defaultTemplates.gold;
+      for (const key in goldTemplate) {
+        customizerState[key] = goldTemplate[key];
+      }
+      customizerState.isCustomized = false;
+      if (bookingService) {
+        bookingService.value = "gold";
+      }
+      updateCustomizerUI();
+      syncSummaryDisplayCard();
     } else {
       if (packagesCardsGrid) packagesCardsGrid.style.display = "none";
       if (calculatorBanner) calculatorBanner.style.display = "none";
