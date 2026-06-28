@@ -862,7 +862,8 @@ document.addEventListener("DOMContentLoaded", () => {
     fullFilm: false,
     socialReels: true,
     parentAlbum: true,
-    editedPhotos: "100"
+    editedPhotos: "100",
+    isCustomized: false
   };
 
   const defaultTemplates = {
@@ -1154,6 +1155,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (cb) {
       customizerState[`${session}Enabled`] = cb.checked;
     }
+    customizerState.isCustomized = true;
     updateCustomizerUI();
     syncSummaryDisplayCard();
   };
@@ -1161,12 +1163,14 @@ document.addEventListener("DOMContentLoaded", () => {
   window.adjustSessionCrew = function(session, role, amount) {
     const key = `${session}${role}`;
     customizerState[key] = Math.max(0, Math.min(10, customizerState[key] + amount));
+    customizerState.isCustomized = true;
     updateCustomizerUI();
     syncSummaryDisplayCard();
   };
 
   window.adjustCustomizerDeliverable = function(item, amount) {
     customizerState[item] = Math.max(0, Math.min(5, customizerState[item] + amount));
+    customizerState.isCustomized = true;
     updateCustomizerUI();
     syncSummaryDisplayCard();
   };
@@ -1176,6 +1180,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (inputEl) {
       customizerState[addon] = inputEl.checked;
     }
+    customizerState.isCustomized = true;
     updateCustomizerUI();
     syncSummaryDisplayCard();
   };
@@ -1197,7 +1202,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       customizerState.albumsCount = 0;
     }
-    
+    customizerState.isCustomized = true;
     updateCustomizerUI();
     syncSummaryDisplayCard();
   };
@@ -1207,6 +1212,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (photosDropdown) {
       customizerState.editedPhotos = photosDropdown.value;
     }
+    customizerState.isCustomized = true;
     updateCustomizerUI();
     syncSummaryDisplayCard();
   };
@@ -1270,11 +1276,17 @@ document.addEventListener("DOMContentLoaded", () => {
     details.style.display = "block";
 
     // Set Curation Tier Label
+    const eventVal = document.getElementById("booking-event") ? document.getElementById("booking-event").value : "";
     const tierLabels = {
       silver: "Silver Package (Essential)",
       gold: "Gold Package (Recommended)",
       diamond: "Diamond Package (Luxury)",
-      custom: "Custom Bespoke Configuration"
+      custom: customizerState.isCustomized ? "Custom Bespoke Configuration" : (
+        eventVal === "christening" ? "Standard Christening Package" :
+        eventVal === "fixation" ? "Standard Fixation Ceremony Package" :
+        eventVal === "bridetobe" ? "Standard Bride-to-be Package" :
+        "Custom Bespoke Configuration"
+      )
     };
     tierName.textContent = tierLabels[serviceVal] || "Custom Package";
 
@@ -1382,6 +1394,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (const key in template) {
       customizerState[key] = template[key];
     }
+    customizerState.isCustomized = false;
 
     const serviceDropdown = document.getElementById("booking-service");
     if (serviceDropdown) {
@@ -1408,6 +1421,7 @@ document.addEventListener("DOMContentLoaded", () => {
           for (const key in template) {
             customizerState[key] = template[key];
           }
+          customizerState.isCustomized = false;
         }
       }
       updateCustomizerUI();
@@ -1478,17 +1492,30 @@ document.addEventListener("DOMContentLoaded", () => {
           if (label) label.classList.remove("active");
         });
         
-        // Load default state as baseline (like the gold package default)
-        const goldTemplate = defaultTemplates.gold;
-        for (const key in goldTemplate) {
-          customizerState[key] = goldTemplate[key];
-        }
+        // Reset customized flag
+        customizerState.isCustomized = false;
+
+        // Set default state properties
         customizerState.drone = false;
         customizerState.ai = false;
         customizerState.livestream = false;
         customizerState.prewedEnabled = false;
+        customizerState.engagementEnabled = false;
+        customizerState.eveEnabled = false;
+        customizerState.dayEnabled = true;
+        
+        customizerState.prewedPhotographers = 0;
+        customizerState.prewedVideographers = 0;
+        customizerState.engagementPhotographers = 0;
+        customizerState.engagementVideographers = 0;
+        customizerState.evePhotographers = 0;
+        customizerState.eveVideographers = 0;
+        
         customizerState.albumsCount = 1;
         customizerState.framesCount = 1;
+        customizerState.socialReels = false;
+        customizerState.parentAlbum = false;
+        customizerState.editedPhotos = "30";
 
         // Set the unified package name and details based on the event key
         const packageNameEl = document.getElementById("unified-package-name");
@@ -1508,6 +1535,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (eventKey === "christening") {
           customizerState.fullFilm = true;
           customizerState.teaserReel = true;
+          customizerState.dayPhotographers = 1;
+          customizerState.dayVideographers = 1;
           if (unifiedDetailCoverage) unifiedDetailCoverage.innerHTML = `<i data-lucide="camera"></i> <div><strong>Coverage</strong><span class="pack-detail-bracket">(1 Function Photographer + 1 Function Cinematographer)</span></div>`;
           if (unifiedDetailAlbum) unifiedDetailAlbum.innerHTML = `<i data-lucide="book-open"></i> <div><strong>Album</strong><span class="pack-detail-bracket">(50 Pages Printed Album with Premium Box or Bag)</span></div>`;
           if (unifiedDetailFilm) {
@@ -1517,6 +1546,8 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (eventKey === "fixation") {
           customizerState.fullFilm = true;
           customizerState.teaserReel = true;
+          customizerState.dayPhotographers = 1;
+          customizerState.dayVideographers = 1;
           if (unifiedDetailCoverage) unifiedDetailCoverage.innerHTML = `<i data-lucide="camera"></i> <div><strong>Coverage</strong><span class="pack-detail-bracket">(1 Function Photographer + 1 Function Cinematographer)</span></div>`;
           if (unifiedDetailAlbum) unifiedDetailAlbum.innerHTML = `<i data-lucide="book-open"></i> <div><strong>Album</strong><span class="pack-detail-bracket">(80 Pages Printed Album with Premium Box or Bag)</span></div>`;
           if (unifiedDetailFilm) {
@@ -1526,7 +1557,9 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (eventKey === "bridetobe") {
           customizerState.fullFilm = false;
           customizerState.teaserReel = false;
-          if (unifiedDetailCoverage) unifiedDetailCoverage.innerHTML = `<i data-lucide="camera"></i> <div><strong>Coverage</strong><span class="pack-detail-bracket">(1 Function Photographer + 1 Function Cinematographer)</span></div>`;
+          customizerState.dayPhotographers = 1;
+          customizerState.dayVideographers = 0;
+          if (unifiedDetailCoverage) unifiedDetailCoverage.innerHTML = `<i data-lucide="camera"></i> <div><strong>Coverage</strong><span class="pack-detail-bracket">(1 Function Photographer)</span></div>`;
           if (unifiedDetailAlbum) unifiedDetailAlbum.innerHTML = `<i data-lucide="book-open"></i> <div><strong>Album</strong><span class="pack-detail-bracket">(40 Pages Printed Album)</span></div>`;
           if (unifiedDetailFilm) {
             unifiedDetailFilm.style.display = "none";
@@ -1710,7 +1743,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const budgetText = budgetSelector ? budgetSelector.options[budgetSelector.selectedIndex].text : "Not specified";
 
       // Assemble Package Customizer config values into message
-      let packageConfig = `Service Tier: ${serviceText}\n`;
+      const eventVal = eventSelector ? eventSelector.value : "";
+      const displayServiceText = serviceVal === "custom" && !customizerState.isCustomized ? (
+        eventVal === "christening" ? "Standard Christening Package" :
+        eventVal === "fixation" ? "Standard Fixation Ceremony Package" :
+        eventVal === "bridetobe" ? "Standard Bride-to-be Package" :
+        serviceText
+      ) : serviceText;
+      let packageConfig = `Service Tier: ${displayServiceText}\n`;
       packageConfig += `Crew Details:\n`;
       const sessionsList = [
         { id: "prewed", label: "Pre/Post Shoot" },
@@ -2012,6 +2052,27 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     } else {
       turnPageTo(0);
+    }
+  };
+
+  window.openCustomizerForUnified = function() {
+    const select = document.getElementById("booking-service");
+    if (select) {
+      select.value = "custom";
+    }
+
+    const eventSelect = document.getElementById("booking-event");
+    if (eventSelect) {
+      const activeTab = document.querySelector(".pack-tab-btn.active");
+      if (activeTab) {
+        eventSelect.value = activeTab.getAttribute("data-event");
+      }
+    }
+
+    if (customizerModal) {
+      customizerModal.style.display = "block";
+      document.body.style.overflow = "hidden";
+      updateCustomizerUI();
     }
   };
 
