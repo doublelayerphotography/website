@@ -2070,8 +2070,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (customizerModal) {
-      customizerModal.style.display = "block";
-      document.body.style.overflow = "hidden";
+      customizerModal.classList.add("open");
       updateCustomizerUI();
     }
   };
