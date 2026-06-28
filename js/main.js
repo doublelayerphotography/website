@@ -1004,11 +1004,20 @@ document.addEventListener("DOMContentLoaded", () => {
       if (serviceVal === "silver") {
         albumDesc.textContent = "80 Pages Printed Album";
       } else if (serviceVal === "gold") {
-        albumDesc.textContent = "120 Pages Luster Printed Album with Premium Box & Bag";
+        albumDesc.textContent = "120 Pages Luster Printed Album with Premium Box or Bag";
       } else if (serviceVal === "diamond") {
-        albumDesc.textContent = "140 Pages Luster Printed Album with Premium Box & Bag";
+        albumDesc.textContent = "140 Pages Luster Printed Album with Premium Box or Bag";
       } else {
-        albumDesc.textContent = "Premium Flush-Mount Album";
+        const eventVal = document.getElementById("booking-event") ? document.getElementById("booking-event").value : "";
+        if (eventVal === "christening") {
+          albumDesc.textContent = "50 Pages Printed Album with Premium Box or Bag";
+        } else if (eventVal === "fixation") {
+          albumDesc.textContent = "80 Pages Printed Album with Premium Box or Bag";
+        } else if (eventVal === "bridetobe") {
+          albumDesc.textContent = "40 Pages Printed Album";
+        } else {
+          albumDesc.textContent = "Premium Flush-Mount Album";
+        }
       }
     }
 
@@ -1069,14 +1078,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (customizerState.albumsCount > 0) {
         const li = document.createElement("li");
+        const prefix = customizerState.albumsCount > 1 ? `${customizerState.albumsCount} x ` : "";
         if (serviceVal === "silver") {
           li.textContent = "80 Pages Printed Album";
         } else if (serviceVal === "gold") {
-          li.textContent = "120 Pages Luster Printed Album with Premium Box & Bag";
+          li.textContent = "120 Pages Luster Printed Album with Premium Box or Bag";
         } else if (serviceVal === "diamond") {
-          li.textContent = "140 Pages Luster Printed Album with Premium Box & Bag";
+          li.textContent = "140 Pages Luster Printed Album with Premium Box or Bag";
         } else {
-          li.textContent = `${customizerState.albumsCount} x Printed Album(s)`;
+          const eventVal = document.getElementById("booking-event") ? document.getElementById("booking-event").value : "";
+          if (eventVal === "christening") {
+            li.textContent = `${prefix}50 Pages Printed Album with Premium Box or Bag`;
+          } else if (eventVal === "fixation") {
+            li.textContent = `${prefix}80 Pages Printed Album with Premium Box or Bag`;
+          } else if (eventVal === "bridetobe") {
+            li.textContent = `${prefix}40 Pages Printed Album`;
+          } else {
+            li.textContent = `${customizerState.albumsCount} x Printed Album(s)`;
+          }
         }
         delivListEl.appendChild(li);
       }
@@ -1295,14 +1314,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (customizerState.albumsCount > 0) {
       const li = document.createElement("li");
+      const prefix = customizerState.albumsCount > 1 ? `${customizerState.albumsCount} x ` : "";
       if (serviceVal === "silver") {
         li.textContent = "80 Pages Printed Album";
       } else if (serviceVal === "gold") {
-        li.textContent = "120 Pages Luster Printed Album with Premium Box & Bag";
+        li.textContent = "120 Pages Luster Printed Album with Premium Box or Bag";
       } else if (serviceVal === "diamond") {
-        li.textContent = "140 Pages Luster Printed Album with Premium Box & Bag";
+        li.textContent = "140 Pages Luster Printed Album with Premium Box or Bag";
       } else {
-        li.textContent = `${customizerState.albumsCount} x Printed Album(s)`;
+        const eventVal = document.getElementById("booking-event") ? document.getElementById("booking-event").value : "";
+        if (eventVal === "christening") {
+          li.textContent = `${prefix}50 Pages Printed Album with Premium Box or Bag`;
+        } else if (eventVal === "fixation") {
+          li.textContent = `${prefix}80 Pages Printed Album with Premium Box or Bag`;
+        } else if (eventVal === "bridetobe") {
+          li.textContent = `${prefix}40 Pages Printed Album`;
+        } else {
+          li.textContent = `${customizerState.albumsCount} x Printed Album(s)`;
+        }
       }
       delivList.appendChild(li);
     }
@@ -1461,8 +1490,12 @@ document.addEventListener("DOMContentLoaded", () => {
         customizerState.albumsCount = 1;
         customizerState.framesCount = 1;
 
-        // Set the unified package name based on the event key
+        // Set the unified package name and details based on the event key
         const packageNameEl = document.getElementById("unified-package-name");
+        const unifiedDetailCoverage = document.getElementById("unified-detail-coverage");
+        const unifiedDetailAlbum = document.getElementById("unified-detail-album");
+        const unifiedDetailFilm = document.getElementById("unified-detail-film");
+
         if (packageNameEl) {
           const names = {
             christening: "Standard Christening Package",
@@ -1471,6 +1504,35 @@ document.addEventListener("DOMContentLoaded", () => {
           };
           packageNameEl.textContent = names[eventKey] || "Standard Event Package";
         }
+
+        if (eventKey === "christening") {
+          customizerState.fullFilm = true;
+          customizerState.teaserReel = true;
+          if (unifiedDetailCoverage) unifiedDetailCoverage.innerHTML = `<i data-lucide="camera"></i> <div><strong>Coverage</strong><span class="pack-detail-bracket">(1 Function Photographer + 1 Function Cinematographer)</span></div>`;
+          if (unifiedDetailAlbum) unifiedDetailAlbum.innerHTML = `<i data-lucide="book-open"></i> <div><strong>Album</strong><span class="pack-detail-bracket">(50 Pages Printed Album with Premium Box or Bag)</span></div>`;
+          if (unifiedDetailFilm) {
+            unifiedDetailFilm.style.display = "flex";
+            unifiedDetailFilm.innerHTML = `<i data-lucide="film"></i> <div><strong>Film</strong><span class="pack-detail-bracket">(Full HD Film + Event Highlights 2-3 Min)</span></div>`;
+          }
+        } else if (eventKey === "fixation") {
+          customizerState.fullFilm = true;
+          customizerState.teaserReel = true;
+          if (unifiedDetailCoverage) unifiedDetailCoverage.innerHTML = `<i data-lucide="camera"></i> <div><strong>Coverage</strong><span class="pack-detail-bracket">(1 Function Photographer + 1 Function Cinematographer)</span></div>`;
+          if (unifiedDetailAlbum) unifiedDetailAlbum.innerHTML = `<i data-lucide="book-open"></i> <div><strong>Album</strong><span class="pack-detail-bracket">(80 Pages Printed Album with Premium Box or Bag)</span></div>`;
+          if (unifiedDetailFilm) {
+            unifiedDetailFilm.style.display = "flex";
+            unifiedDetailFilm.innerHTML = `<i data-lucide="film"></i> <div><strong>Film</strong><span class="pack-detail-bracket">(Full HD Film + Event Highlights 2-3 Min)</span></div>`;
+          }
+        } else if (eventKey === "bridetobe") {
+          customizerState.fullFilm = false;
+          customizerState.teaserReel = false;
+          if (unifiedDetailCoverage) unifiedDetailCoverage.innerHTML = `<i data-lucide="camera"></i> <div><strong>Coverage</strong><span class="pack-detail-bracket">(1 Function Photographer + 1 Function Cinematographer)</span></div>`;
+          if (unifiedDetailAlbum) unifiedDetailAlbum.innerHTML = `<i data-lucide="book-open"></i> <div><strong>Album</strong><span class="pack-detail-bracket">(40 Pages Printed Album)</span></div>`;
+          if (unifiedDetailFilm) {
+            unifiedDetailFilm.style.display = "none";
+          }
+        }
+        if (window.lucide) window.lucide.createIcons();
         
         // Sync customizer UI and booking summary
         updateCustomizerUI();
@@ -1675,14 +1737,24 @@ document.addEventListener("DOMContentLoaded", () => {
       packageConfig += `\nDeliverables:\n`;
       packageConfig += `- Photos: ${customizerState.editedPhotos === '0' ? 'No' : customizerState.editedPhotos} Retouched Images\n`;
       if (customizerState.albumsCount > 0) {
+        const eventVal = document.getElementById("booking-event") ? document.getElementById("booking-event").value : "";
+        const prefix = customizerState.albumsCount > 1 ? `${customizerState.albumsCount} x ` : "";
         if (serviceVal === "silver") {
           packageConfig += `- Print Album: 80 Pages Printed Album\n`;
         } else if (serviceVal === "gold") {
-          packageConfig += `- Print Album: 120 Pages Luster Printed Album with Premium Box & Bag\n`;
+          packageConfig += `- Print Album: 120 Pages Luster Printed Album with Premium Box or Bag\n`;
         } else if (serviceVal === "diamond") {
-          packageConfig += `- Print Album: 140 Pages Luster Printed Album with Premium Box & Bag\n`;
+          packageConfig += `- Print Album: 140 Pages Luster Printed Album with Premium Box or Bag\n`;
         } else {
-          packageConfig += `- Print Albums: ${customizerState.albumsCount} book(s)\n`;
+          if (eventVal === "christening") {
+            packageConfig += `- Print Album: ${prefix}50 Pages Printed Album with Premium Box or Bag\n`;
+          } else if (eventVal === "fixation") {
+            packageConfig += `- Print Album: ${prefix}80 Pages Printed Album with Premium Box or Bag\n`;
+          } else if (eventVal === "bridetobe") {
+            packageConfig += `- Print Album: ${prefix}40 Pages Printed Album\n`;
+          } else {
+            packageConfig += `- Print Album: ${customizerState.albumsCount} x Printed Album(s)\n`;
+          }
         }
       }
 
