@@ -957,7 +957,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const dayLabel = dayCard ? dayCard.querySelector(".session-checkbox-label span") : null;
     
     // Premium features and deliverables control blocks
-    const controlBlocks = document.querySelectorAll(".customizer-modal-controls .control-block");
+    const featuresBlock = document.getElementById("customizer-features-block");
+    const deliverablesBlock = document.getElementById("customizer-deliverables-block");
 
     if (eventVal !== "wedding") {
       // Non-wedding event: Hide prewed, engagement, eve sessions
@@ -980,11 +981,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                eventVal === "bridetobe" ? "Bride-to-be Day Coverage" : "Event Day Coverage";
       }
       
-      // Hide sections 2 (Premium Features) and 3 (Curation Deliverables) in the controls column
-      if (controlBlocks.length >= 3) {
-        controlBlocks[1].style.display = "none";
-        controlBlocks[2].style.display = "none";
-      }
+      // Hide sections 2 (Premium Features) and 3 (Curation Deliverables)
+      if (featuresBlock) featuresBlock.style.display = "none";
+      if (deliverablesBlock) deliverablesBlock.style.display = "none";
     } else {
       // Wedding event: Show all applicable sessions
       if (prewedCard) {
@@ -1000,10 +999,8 @@ document.addEventListener("DOMContentLoaded", () => {
       
       if (dayLabel) dayLabel.textContent = "Wedding Day";
       
-      if (controlBlocks.length >= 3) {
-        controlBlocks[1].style.display = "block";
-        controlBlocks[2].style.display = "block";
-      }
+      if (featuresBlock) featuresBlock.style.display = "block";
+      if (deliverablesBlock) deliverablesBlock.style.display = "block";
     }
 
     // Sync session checkboxes, summaries and values
@@ -1523,6 +1520,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  function adjustServiceDropdownOptions(eventKey) {
+    const serviceDropdown = document.getElementById("booking-service");
+    if (!serviceDropdown) return;
+
+    if (eventKey !== "wedding") {
+      serviceDropdown.value = "custom";
+      Array.from(serviceDropdown.options).forEach(opt => {
+        if (opt.value === "silver" || opt.value === "gold" || opt.value === "diamond") {
+          opt.disabled = true;
+          opt.style.display = "none";
+        } else {
+          opt.disabled = false;
+          opt.style.display = "block";
+        }
+      });
+    } else {
+      Array.from(serviceDropdown.options).forEach(opt => {
+        opt.disabled = false;
+        opt.style.display = "block";
+      });
+    }
+  }
+
   // Toggle layout details for other event types (e.g. Wedding packages vs Baptism templates)
   function togglePricingLayout(eventKey) {
     const packagesCardsGrid = document.getElementById("packages-cards-grid");
@@ -1530,6 +1550,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const unifiedCard = document.getElementById("unified-package-card");
     const bookingService = document.getElementById("booking-service");
     const serviceContainer = bookingService ? bookingService.closest(".form-item") : null;
+
+    adjustServiceDropdownOptions(eventKey);
 
     if (eventKey === "wedding") {
       if (packagesCardsGrid) packagesCardsGrid.style.display = "grid";
