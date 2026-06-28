@@ -946,7 +946,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const serviceVal = serviceDropdown ? serviceDropdown.value : "custom";
 
     const eventDropdown = document.getElementById("booking-event");
-    const eventVal = eventDropdown ? eventDropdown.value : "wedding";
+    const eventVal = eventDropdown && eventDropdown.value ? eventDropdown.value : "wedding";
 
     const prewedCard = document.getElementById("session-card-prewed");
     const engagementCard = document.getElementById("session-card-engagement");
@@ -1267,7 +1267,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Sync state back to main booking form display panel
   function applyCustomizerToBooking() {
     const bookingService = document.getElementById("booking-service");
-    const eventVal = document.getElementById("booking-event") ? document.getElementById("booking-event").value : "wedding";
+    const eventDropdown = document.getElementById("booking-event");
+    const eventVal = eventDropdown && eventDropdown.value ? eventDropdown.value : "wedding";
     let matchedTier = "custom";
     if (bookingService) {
       if (eventVal === "wedding") {
@@ -1327,8 +1328,8 @@ document.addEventListener("DOMContentLoaded", () => {
     placeholder.style.display = "none";
     details.style.display = "block";
 
-    // Set Curation Tier Label
-    const eventVal = document.getElementById("booking-event") ? document.getElementById("booking-event").value : "";
+    const eventDropdown = document.getElementById("booking-event");
+    const eventVal = eventDropdown && eventDropdown.value ? eventDropdown.value : "wedding";
     const tierLabels = {
       silver: "Silver Package (Essential)",
       gold: "Gold Package (Recommended)",
@@ -1447,6 +1448,11 @@ document.addEventListener("DOMContentLoaded", () => {
       customizerState[key] = template[key];
     }
     customizerState.isCustomized = false;
+
+    const eventDropdown = document.getElementById("booking-event");
+    if (eventDropdown) {
+      eventDropdown.value = "wedding";
+    }
 
     const serviceDropdown = document.getElementById("booking-service");
     if (serviceDropdown) {
@@ -1668,9 +1674,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Customizer modal buttons
   if (openCustomizerBtn) {
     openCustomizerBtn.addEventListener("click", () => {
+      const eventDropdown = document.getElementById("booking-event");
+      if (eventDropdown && !eventDropdown.value) {
+        eventDropdown.value = "wedding";
+      }
+      const serviceDropdown = document.getElementById("booking-service");
+      if (serviceDropdown && !serviceDropdown.value) {
+        serviceDropdown.value = "gold";
+        // Pre-load Gold template defaults
+        const goldTemplate = defaultTemplates.gold;
+        for (const key in goldTemplate) {
+          customizerState[key] = goldTemplate[key];
+        }
+        customizerState.isCustomized = false;
+      }
+
       if (customizerModal) {
         customizerModal.classList.add("open");
         updateCustomizerUI();
