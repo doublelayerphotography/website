@@ -261,8 +261,31 @@
           <tr><td class="lbl">Selected Date:</td><td id="c-date"></td></tr>
           <tr><td class="lbl">Venue Location:</td><td id="c-venue"></td></tr>
           <tr><td class="lbl">Selected Package:</td><td id="c-package"></td></tr>
+          <tr><td class="lbl">Estimate Budget:</td><td id="c-budget"></td></tr>
         </table>
       </div>
+    </div>
+
+    <div class="section-title">Custom Configuration Setup</div>
+    <div class="setup-grid">
+      <div>
+        <h4 style="margin: 0 0 10px 0; font-size: 13px; text-transform: uppercase; color: var(--gold-muted);">Visual Curation Crew</h4>
+        <ul class="config-list" id="crew-list"></ul>
+      </div>
+      <div>
+        <h4 style="margin: 0 0 10px 0; font-size: 13px; text-transform: uppercase; color: var(--gold-muted);">Included Deliverables</h4>
+        <ul class="config-list" id="deliverables-list"></ul>
+      </div>
+    </div>
+
+    <div id="addons-section" style="display:none;">
+      <div class="section-title">Selected Add-ons</div>
+      <ul class="config-list" id="addons-list"></ul>
+    </div>
+
+    <div id="brief-section" style="display:none;">
+      <div class="section-title">Creative Vision & Brief</div>
+      <p style="font-size: 14px; line-height: 1.6; color: var(--text-main); margin: 0; white-space: pre-line;" id="c-brief"></p>
     </div>
 
     <div class="footer">
@@ -286,26 +309,27 @@
           const decodedJson = decodeURIComponent(escape(atob(base64Data)));
           const rawData = JSON.parse(decodedJson);
 
-          // Map compressed 1-letter keys
+          // Map compressed 1-letter keys back to full descriptive variables
           const details = {
             name: rawData.n,
             phone: rawData.p,
             email: rawData.e,
             location: rawData.l,
             eventText: rawData.c,
+            budgetText: rawData.b,
             formattedDate: rawData.d,
-            packageText: rawData.s
+            brief: rawData.v,
+            crewDetails: rawData.w,
+            deliverables: rawData.r,
+            addons: rawData.a,
+            serviceVal: rawData.s
           };
 
-          // Detect package tier from packageText to apply themed colors
-          const pkgLower = details.packageText.toLowerCase();
-          const serviceVal = pkgLower.includes("silver") ? "silver" : (pkgLower.includes("diamond") ? "diamond" : "gold");
-
           // Apply package-themed color variables dynamically
-          if (serviceVal === "silver") {
+          if (details.serviceVal === "silver") {
             document.documentElement.style.setProperty('--gold-muted', '#8a95a5');
             document.documentElement.style.setProperty('--gold-accent', '#cbd2db');
-          } else if (serviceVal === "diamond") {
+          } else if (details.serviceVal === "diamond") {
             document.documentElement.style.setProperty('--gold-muted', '#0070f3');
             document.documentElement.style.setProperty('--gold-accent', '#00E5FF');
           }
@@ -319,10 +343,73 @@
           document.getElementById("c-event").textContent = details.eventText;
           document.getElementById("c-date").textContent = details.formattedDate;
           document.getElementById("c-venue").textContent = details.location;
-          document.getElementById("c-package").textContent = details.packageText;
+          
+          const packageText = details.serviceVal === "custom" ? `Custom ${details.eventText}` : `${details.eventText} (${details.serviceVal.toUpperCase()})`;
+          document.getElementById("c-package").textContent = packageText;
+          document.getElementById("c-budget").textContent = details.budgetText;
 
           // Date generated
           document.getElementById("receipt-date").textContent = "Generated: " + new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+          // Populate Crew list
+          const crewUl = document.getElementById("crew-list");
+          if (details.crewDetails && details.crewDetails.length > 0) {
+            details.crewDetails.forEach(c => {
+              const li = document.createElement("li");
+              li.textContent = c;
+              crewUl.appendChild(li);
+            });
+          } else {
+            const li = document.createElement("li");
+            li.textContent = "Default crew selection";
+            crewUl.appendChild(li);
+          }
+
+          // Populate Deliverables list
+          const delivUl = document.getElementById("deliverables-list");
+          if (details.deliverables && details.deliverables.length > 0) {
+            details.deliverables.forEach(d => {
+              const li = document.createElement("li");
+              li.textContent = d;
+              delivUl.appendChild(li);
+            });
+          }
+
+          // Populate Add-ons
+          if (details.addons && details.addons.length > 0) {
+            document.getElementById("addons-section").style.display = "block";
+            const addonsUl = document.getElementById("addons-list");
+            let hasDefaultStar = false;
+
+            details.addons.forEach(a => {
+              const li = document.createElement("li");
+              
+              // If diamond package, star the default add-ons: "Aerial Drone Cinema" and "AI Instant QR Sharing"
+              if (details.serviceVal === "diamond" && (a === "Aerial Drone Cinema" || a === "AI Instant QR Sharing")) {
+                li.innerHTML = `${a}<span style="color:var(--gold-accent); margin-left:3px; font-weight:bold;">*</span>`;
+                hasDefaultStar = true;
+              } else {
+                li.textContent = a;
+              }
+              addonsUl.appendChild(li);
+            });
+
+            if (hasDefaultStar) {
+              const starNote = document.createElement("div");
+              starNote.style.fontSize = "11px";
+              starNote.style.color = "var(--text-muted)";
+              starNote.style.marginTop = "10px";
+              starNote.style.fontStyle = "italic";
+              starNote.textContent = "* Included in the package by default.";
+              document.getElementById("addons-section").appendChild(starNote);
+            }
+          }
+
+          // Populate Brief
+          if (details.brief && details.brief !== "No description provided") {
+            document.getElementById("brief-section").style.display = "block";
+            document.getElementById("c-brief").textContent = details.brief;
+          }
 
           // Show container
           document.getElementById("receipt-container").style.display = "block";

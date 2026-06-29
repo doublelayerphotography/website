@@ -2022,18 +2022,22 @@ document.addEventListener("DOMContentLoaded", () => {
         serviceVal: serviceVal
       };
 
-      // Create Base64 payload for dynamic receipt url containing only basic details
+      // Create Base64 payload for dynamic receipt url containing the full details compressed
       let receiptUrl = "";
       try {
-        const packageText = serviceVal === "custom" ? `Custom ${eventText}` : `${eventText} (${serviceVal.toUpperCase()})`;
         const compressedData = {
           n: name,
           p: phone,
           e: email,
           l: location,
           c: eventText,
+          b: budgetText,
           d: formattedDate,
-          s: packageText
+          v: brief,
+          w: crewDetailsList,
+          r: deliverablesList,
+          a: addonsList,
+          s: serviceVal
         };
         const bookingDataJson = JSON.stringify(compressedData);
         const base64Data = btoa(unescape(encodeURIComponent(bookingDataJson)));
@@ -2290,7 +2294,9 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   window.downloadBookingReceipt = function() {
-    if (window.latestBookingDetails) {
+    if (window.latestReceiptUrl) {
+      window.open(window.latestReceiptUrl, "_blank");
+    } else if (window.latestBookingDetails) {
       window.downloadBookingPDF(window.latestBookingDetails);
     }
   };
