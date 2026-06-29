@@ -2092,6 +2092,11 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
       if (window.lucide) window.lucide.createIcons();
+
+      // Automatically redirect to WhatsApp after 2 seconds
+      setTimeout(() => {
+        window.location.href = waUrl;
+      }, 2000);
     });
   }
 
