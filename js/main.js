@@ -2018,10 +2018,24 @@ document.addEventListener("DOMContentLoaded", () => {
         brief,
         crewDetails: crewDetailsList,
         deliverables: deliverablesList,
-        addons: addonsList
+        addons: addonsList,
+        serviceVal: serviceVal
       };
 
-      // Send details silently in the background to Google Sheets
+      // Create Base64 payload for dynamic receipt url
+      let receiptUrl = "";
+      try {
+        const bookingDataJson = JSON.stringify(window.latestBookingDetails);
+        const base64Data = btoa(unescape(encodeURIComponent(bookingDataJson)));
+        receiptUrl = `https://doublelayerphotography.com/receipt.html?data=${base64Data}`;
+        window.latestReceiptUrl = receiptUrl;
+        window.latestBookingDetails.receiptUrl = receiptUrl;
+      } catch (err) {
+        console.error("Failed to generate receipt url:", err);
+        window.latestReceiptUrl = "";
+      }
+
+      // Send details silently in the background to Google Sheets (including receiptUrl)
       const sheetUrl = "https://script.google.com/macros/s/AKfycbz0MS7LPp86ntdPUycWq7nOS4HYCjiEqNkZwRQ5p-Jkg3UoV3nxn8vywj_RVHw5nP1MoQ/exec";
       fetch(sheetUrl, {
         method: "POST",
@@ -2032,23 +2046,11 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(window.latestBookingDetails)
       }).catch(err => console.error("Google Sheets logging failed:", err));
 
-      // Create Base64 payload for dynamic receipt url
-      let receiptUrl = "";
-      try {
-        const bookingDataJson = JSON.stringify(window.latestBookingDetails);
-        const base64Data = btoa(unescape(encodeURIComponent(bookingDataJson)));
-        receiptUrl = `https://doublelayerphotography.com/receipt.html?data=${base64Data}`;
-        window.latestReceiptUrl = receiptUrl;
-      } catch (err) {
-        console.error("Failed to generate receipt url:", err);
-        window.latestReceiptUrl = "";
-      }
-
       // Build WhatsApp message (simple greeting, client name, and receipt link)
       let waText = `Hi DoubleLayer Photography, I would like to submit a booking inquiry!\n\n`;
       waText += `Name: ${name}\n`;
       if (receiptUrl) {
-        waText += `📄 View Custom Invoice: ${receiptUrl}\n`;
+        waText += `📄 Download Invoice: ${receiptUrl}\n`;
       }
 
       const waUrl = "https://wa.me/919446802570?text=" + encodeURIComponent(waText);

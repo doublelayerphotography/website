@@ -308,6 +308,15 @@
           const decodedJson = decodeURIComponent(escape(atob(base64Data)));
           const details = JSON.parse(decodedJson);
 
+          // Apply package-themed color variables dynamically
+          if (details.serviceVal === "silver") {
+            document.documentElement.style.setProperty('--gold-muted', '#8a95a5');
+            document.documentElement.style.setProperty('--gold-accent', '#cbd2db');
+          } else if (details.serviceVal === "diamond") {
+            document.documentElement.style.setProperty('--gold-muted', '#0070f3');
+            document.documentElement.style.setProperty('--gold-accent', '#00E5FF');
+          }
+
           // Populate client info
           document.getElementById("c-name").textContent = details.name;
           document.getElementById("c-phone").textContent = details.phone;
