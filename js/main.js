@@ -983,9 +983,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                eventVal === "bridetobe" ? "Bride-to-be Day Coverage" : "Event Day Coverage";
       }
       
-      // Hide sections 2 (Premium Features) and 3 (Curation Deliverables)
-      if (featuresBlock) featuresBlock.style.display = "none";
-      if (deliverablesBlock) deliverablesBlock.style.display = "none";
+      // Show sections 2 (Premium Features) and 3 (Curation Deliverables)
+      if (featuresBlock) featuresBlock.style.display = "block";
+      if (deliverablesBlock) deliverablesBlock.style.display = "block";
     } else {
       // Wedding event: Show all applicable sessions
       if (prewedCard) {
@@ -1300,13 +1300,18 @@ document.addEventListener("DOMContentLoaded", () => {
       customizerModal.classList.remove("open");
     }
 
-    // Instead of scrolling smoothly to booking container immediately, show gift modal first!
+    // Instead of scrolling smoothly to booking container immediately, show gift modal first if wedding!
     const targetIdx = sections.findIndex(sec => sec.getAttribute("id") === "booking");
     if (targetIdx !== -1) {
-      showGiftModal(customizerState.baseService || matchedTier, () => {
+      if (eventVal === "wedding") {
+        showGiftModal(customizerState.baseService || matchedTier, () => {
+          turnPageTo(targetIdx);
+          window.location.hash = "#booking";
+        });
+      } else {
         turnPageTo(targetIdx);
         window.location.hash = "#booking";
-      });
+      }
     } else {
       turnPageTo(0);
     }
@@ -1376,10 +1381,19 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } else {
       const li = document.createElement("li");
-      if (eventVal === "bridetobe") {
-        li.textContent = "Event Coverage: 1 Photographer";
+      if (customizerState.isCustomized) {
+        const ph = customizerState.dayPhotographers;
+        const vi = customizerState.dayVideographers;
+        const crewText = [];
+        if (ph > 0) crewText.push(`${ph} Photographer${ph > 1 ? 's' : ''}`);
+        if (vi > 0) crewText.push(`${vi} Videographer${vi > 1 ? 's' : ''}`);
+        li.textContent = `Event Coverage: ${crewText.join(" + ") || "None"}`;
       } else {
-        li.textContent = "Event Coverage: 1 Photographer + 1 Cinematographer";
+        if (eventVal === "bridetobe") {
+          li.textContent = "Event Coverage: 1 Photographer";
+        } else {
+          li.textContent = "Event Coverage: 1 Photographer + 1 Cinematographer";
+        }
       }
       crewList.appendChild(li);
     }
@@ -1981,12 +1995,22 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       } else {
-        if (eventVal === "bridetobe") {
-          crewDetailsList.push("Event Coverage: 1 Photographer");
-          totalCrewCount = 1;
+        if (customizerState.isCustomized) {
+          const ph = customizerState.dayPhotographers;
+          const vi = customizerState.dayVideographers;
+          const crewText = [];
+          if (ph > 0) crewText.push(`${ph} Photographer${ph > 1 ? 's' : ''}`);
+          if (vi > 0) crewText.push(`${vi} Videographer${vi > 1 ? 's' : ''}`);
+          crewDetailsList.push(`Event Coverage: ${crewText.join(" + ") || "None"}`);
+          totalCrewCount = ph + vi;
         } else {
-          crewDetailsList.push("Event Coverage: 1 Photographer + 1 Cinematographer");
-          totalCrewCount = 2;
+          if (eventVal === "bridetobe") {
+            crewDetailsList.push("Event Coverage: 1 Photographer");
+            totalCrewCount = 1;
+          } else {
+            crewDetailsList.push("Event Coverage: 1 Photographer + 1 Cinematographer");
+            totalCrewCount = 2;
+          }
         }
       }
 
@@ -2475,6 +2499,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
       
+      customizerState.isCustomized = true;
+      
       // Update customizer UI and sync with summary
       updateCustomizerUI();
       syncSummaryDisplayCard();
@@ -2501,13 +2527,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Update the visual summary card on the left
     syncSummaryDisplayCard();
 
-    // Instead of scrolling smoothly to booking container immediately, show gift modal first!
+    // Scroll smoothly to booking container immediately
     const targetIdx = sections.findIndex(sec => sec.getAttribute("id") === "booking");
     if (targetIdx !== -1) {
-      showGiftModal("custom", () => {
-        turnPageTo(targetIdx);
-        window.location.hash = "#booking";
-      });
+      turnPageTo(targetIdx);
+      window.location.hash = "#booking";
     } else {
       turnPageTo(0);
     }
