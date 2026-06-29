@@ -394,27 +394,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "images/Susmi%20%26%20Petter/SAR05618.jpg"
       ]
     },
-    "anaka-jithin": {
-      title: "Anaka Jithin",
-      category: "Wedding / Destination",
-      cover: "images/Anaka%20Jithin/IMG_2601.JPG",
-      images: [
-        "images/Anaka%20Jithin/IMG_2601.JPG",
-        "images/Anaka%20Jithin/IMG_2603.JPG",
-        "images/Anaka%20Jithin/IMG_2606.JPG",
-        "images/Anaka%20Jithin/IMG_2607.JPG",
-        "images/Anaka%20Jithin/IMG_2608.JPG",
-        "images/Anaka%20Jithin/IMG_2610.JPG",
-        "images/Anaka%20Jithin/IMG_2611.JPG",
-        "images/Anaka%20Jithin/IMG_2612.JPG",
-        "images/Anaka%20Jithin/IMG_2613.JPG",
-        "images/Anaka%20Jithin/IMG_2614.JPG",
-        "images/Anaka%20Jithin/IMG_2615.JPG",
-        "images/Anaka%20Jithin/IMG_2616.JPG",
-        "images/Anaka%20Jithin/IMG_2620.JPG",
-        "images/Anaka%20Jithin/IMG_2622.JPG"
-      ]
-    },
+
     "tony": {
       title: "Tony",
       category: "Portrait / Studio",
