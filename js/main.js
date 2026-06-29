@@ -2044,24 +2044,12 @@ document.addEventListener("DOMContentLoaded", () => {
         window.latestReceiptUrl = "";
       }
 
-      // Build WhatsApp message (without calendar URL, but including receipt URL)
-      let waText = `Doublelayer Photography Booking Request!\n`;
-      waText += `========================================\n`;
-      waText += `Client Name: ${name}\n`;
-      waText += `Mobile Number: ${phone}\n`;
-      waText += `Email: ${email}\n`;
-      waText += `Event Venue: ${location}\n`;
-      waText += `Event Type: ${eventText}\n`;
-      waText += `Estimate Budget: ${budgetText}\n`;
-      waText += `Selected Date: ${formattedDate}\n`;
-      waText += `========================================\n\n`;
-      waText += `[PACKAGE CONFIGURATION]\n${packageConfig}\n`;
+      // Build WhatsApp message (simple greeting, client name, and receipt link)
+      let waText = `Hi DoubleLayer Photography, I would like to submit a booking inquiry!\n\n`;
+      waText += `Name: ${name}\n`;
       if (receiptUrl) {
-        waText += `========================================\n\n`;
-        waText += `📄 View Booking Invoice:\n${receiptUrl}\n`;
+        waText += `📄 View Custom Invoice: ${receiptUrl}\n`;
       }
-      waText += `========================================\n\n`;
-      waText += `Creative Brief / Vision:\n${brief}`;
 
       const waUrl = "https://wa.me/919446802570?text=" + encodeURIComponent(waText);
 
