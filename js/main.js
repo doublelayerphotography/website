@@ -2022,10 +2022,20 @@ document.addEventListener("DOMContentLoaded", () => {
         serviceVal: serviceVal
       };
 
-      // Create Base64 payload for dynamic receipt url
+      // Create Base64 payload for dynamic receipt url containing only basic details
       let receiptUrl = "";
       try {
-        const bookingDataJson = JSON.stringify(window.latestBookingDetails);
+        const packageText = serviceVal === "custom" ? `Custom ${eventText}` : `${eventText} (${serviceVal.toUpperCase()})`;
+        const compressedData = {
+          n: name,
+          p: phone,
+          e: email,
+          l: location,
+          c: eventText,
+          d: formattedDate,
+          s: packageText
+        };
+        const bookingDataJson = JSON.stringify(compressedData);
         const base64Data = btoa(unescape(encodeURIComponent(bookingDataJson)));
         receiptUrl = `https://doublelayerphotography.com/receipt.html?data=${base64Data}`;
         window.latestReceiptUrl = receiptUrl;
@@ -2046,18 +2056,9 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(window.latestBookingDetails)
       }).catch(err => console.error("Google Sheets logging failed:", err));
 
-      // Build WhatsApp message (client details, package chosen, and link to invoice)
-      const packageText = serviceVal === "custom" ? `Custom ${eventText}` : `${eventText} (${serviceVal.toUpperCase()})`;
-      let waText = `Doublelayer Photography Booking Request!\n`;
-      waText += `========================================\n`;
-      waText += `Client Name: ${name}\n`;
-      waText += `Mobile Number: ${phone}\n`;
-      waText += `Email: ${email}\n`;
-      waText += `Event Venue: ${location}\n`;
-      waText += `Selected Date: ${formattedDate}\n`;
-      waText += `Package: ${packageText}\n`;
+      // Build WhatsApp message (greeting, client name, and download invoice link)
+      let waText = `Hi DoubleLayer, here is a booking request from ${name}.\n\n`;
       if (receiptUrl) {
-        waText += `========================================\n\n`;
         waText += `📄 Download the full invoice:\n${receiptUrl}\n`;
       }
 
@@ -2289,9 +2290,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   window.downloadBookingReceipt = function() {
-    if (window.latestReceiptUrl) {
-      window.open(window.latestReceiptUrl, "_blank");
-    } else if (window.latestBookingDetails) {
+    if (window.latestBookingDetails) {
       window.downloadBookingPDF(window.latestBookingDetails);
     }
   };

@@ -260,31 +260,9 @@
           <tr><td class="lbl">Category:</td><td id="c-event"></td></tr>
           <tr><td class="lbl">Selected Date:</td><td id="c-date"></td></tr>
           <tr><td class="lbl">Venue Location:</td><td id="c-venue"></td></tr>
-          <tr><td class="lbl">Estimate Budget:</td><td id="c-budget"></td></tr>
+          <tr><td class="lbl">Selected Package:</td><td id="c-package"></td></tr>
         </table>
       </div>
-    </div>
-
-    <div class="section-title">Custom Configuration Setup</div>
-    <div class="setup-grid">
-      <div>
-        <h4 style="margin: 0 0 10px 0; font-size: 13px; text-transform: uppercase; color: var(--gold-muted);">Visual Curation Crew</h4>
-        <ul class="config-list" id="crew-list"></ul>
-      </div>
-      <div>
-        <h4 style="margin: 0 0 10px 0; font-size: 13px; text-transform: uppercase; color: var(--gold-muted);">Included Deliverables</h4>
-        <ul class="config-list" id="deliverables-list"></ul>
-      </div>
-    </div>
-
-    <div id="addons-section" style="display:none;">
-      <div class="section-title">Selected Add-ons</div>
-      <ul class="config-list" id="addons-list"></ul>
-    </div>
-
-    <div id="brief-section" style="display:none;">
-      <div class="section-title">Creative Vision & Brief</div>
-      <p style="font-size: 14px; line-height: 1.6; color: var(--text-main); margin: 0; white-space: pre-line;" id="c-brief"></p>
     </div>
 
     <div class="footer">
@@ -295,7 +273,7 @@
 
   <button class="btn-print" onclick="window.print()">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    Print / Save PDF
+    Download the full invoice
   </button>
 
   <script>
@@ -306,13 +284,28 @@
         try {
           // Decode Base64 safely
           const decodedJson = decodeURIComponent(escape(atob(base64Data)));
-          const details = JSON.parse(decodedJson);
+          const rawData = JSON.parse(decodedJson);
+
+          // Map compressed 1-letter keys
+          const details = {
+            name: rawData.n,
+            phone: rawData.p,
+            email: rawData.e,
+            location: rawData.l,
+            eventText: rawData.c,
+            formattedDate: rawData.d,
+            packageText: rawData.s
+          };
+
+          // Detect package tier from packageText to apply themed colors
+          const pkgLower = details.packageText.toLowerCase();
+          const serviceVal = pkgLower.includes("silver") ? "silver" : (pkgLower.includes("diamond") ? "diamond" : "gold");
 
           // Apply package-themed color variables dynamically
-          if (details.serviceVal === "silver") {
+          if (serviceVal === "silver") {
             document.documentElement.style.setProperty('--gold-muted', '#8a95a5');
             document.documentElement.style.setProperty('--gold-accent', '#cbd2db');
-          } else if (details.serviceVal === "diamond") {
+          } else if (serviceVal === "diamond") {
             document.documentElement.style.setProperty('--gold-muted', '#0070f3');
             document.documentElement.style.setProperty('--gold-accent', '#00E5FF');
           }
@@ -326,51 +319,10 @@
           document.getElementById("c-event").textContent = details.eventText;
           document.getElementById("c-date").textContent = details.formattedDate;
           document.getElementById("c-venue").textContent = details.location;
-          document.getElementById("c-budget").textContent = details.budgetText;
+          document.getElementById("c-package").textContent = details.packageText;
 
           // Date generated
           document.getElementById("receipt-date").textContent = "Generated: " + new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-
-          // Populate Crew list
-          const crewUl = document.getElementById("crew-list");
-          if (details.crewDetails && details.crewDetails.length > 0) {
-            details.crewDetails.forEach(c => {
-              const li = document.createElement("li");
-              li.textContent = c;
-              crewUl.appendChild(li);
-            });
-          } else {
-            const li = document.createElement("li");
-            li.textContent = "Default crew selection";
-            crewUl.appendChild(li);
-          }
-
-          // Populate Deliverables list
-          const delivUl = document.getElementById("deliverables-list");
-          if (details.deliverables && details.deliverables.length > 0) {
-            details.deliverables.forEach(d => {
-              const li = document.createElement("li");
-              li.textContent = d;
-              delivUl.appendChild(li);
-            });
-          }
-
-          // Populate Add-ons
-          if (details.addons && details.addons.length > 0) {
-            document.getElementById("addons-section").style.display = "block";
-            const addonsUl = document.getElementById("addons-list");
-            details.addons.forEach(a => {
-              const li = document.createElement("li");
-              li.textContent = a;
-              addonsUl.appendChild(li);
-            });
-          }
-
-          // Populate Brief
-          if (details.brief && details.brief !== "No description provided") {
-            document.getElementById("brief-section").style.display = "block";
-            document.getElementById("c-brief").textContent = details.brief;
-          }
 
           // Show container
           document.getElementById("receipt-container").style.display = "block";
