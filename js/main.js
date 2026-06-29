@@ -2032,7 +2032,19 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(window.latestBookingDetails)
       }).catch(err => console.error("Google Sheets logging failed:", err));
 
-      // Build WhatsApp message (without calendar URL)
+      // Create Base64 payload for dynamic receipt url
+      let receiptUrl = "";
+      try {
+        const bookingDataJson = JSON.stringify(window.latestBookingDetails);
+        const base64Data = btoa(unescape(encodeURIComponent(bookingDataJson)));
+        receiptUrl = `https://doublelayerphotography.com/receipt.html?data=${base64Data}`;
+        window.latestReceiptUrl = receiptUrl;
+      } catch (err) {
+        console.error("Failed to generate receipt url:", err);
+        window.latestReceiptUrl = "";
+      }
+
+      // Build WhatsApp message (without calendar URL, but including receipt URL)
       let waText = `Doublelayer Photography Booking Request!\n`;
       waText += `========================================\n`;
       waText += `Client Name: ${name}\n`;
@@ -2044,6 +2056,10 @@ document.addEventListener("DOMContentLoaded", () => {
       waText += `Selected Date: ${formattedDate}\n`;
       waText += `========================================\n\n`;
       waText += `[PACKAGE CONFIGURATION]\n${packageConfig}\n`;
+      if (receiptUrl) {
+        waText += `========================================\n\n`;
+        waText += `📄 View Booking Invoice:\n${receiptUrl}\n`;
+      }
       waText += `========================================\n\n`;
       waText += `Creative Brief / Vision:\n${brief}`;
 
@@ -2275,7 +2291,9 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   window.downloadBookingReceipt = function() {
-    if (window.latestBookingDetails) {
+    if (window.latestReceiptUrl) {
+      window.open(window.latestReceiptUrl, "_blank");
+    } else if (window.latestBookingDetails) {
       window.downloadBookingPDF(window.latestBookingDetails);
     }
   };
