@@ -858,6 +858,7 @@ document.addEventListener("DOMContentLoaded", () => {
     drone: false,
     ai: false,
     livestream: false,
+    prewed: false,
     teaserReel: true,
     fullFilm: false,
     socialReels: true,
@@ -1070,7 +1071,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Sync checkboxes
-    const addons = ['drone', 'ai', 'livestream', 'teaserReel', 'fullFilm', 'socialReels', 'parentAlbum'];
+    const addons = ['drone', 'ai', 'livestream', 'prewed', 'teaserReel', 'fullFilm', 'socialReels', 'parentAlbum'];
     addons.forEach(addon => {
       const inputEl = document.getElementById(`add-${addon}`);
       const cardEl = document.getElementById(`card-add-${addon}`);
@@ -1170,7 +1171,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const addLabels = {
         drone: "Aerial Drone Cinematography",
         ai: "AI Instant QR Sharing System",
-        livestream: "Private Live Stream Broadcast Feed"
+        livestream: "Private Live Stream Broadcast Feed",
+        prewed: "Pre-Wedding Cinema Session"
       };
       let hasAddons = false;
       for (const addon in addLabels) {
@@ -1421,7 +1423,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const addLabels = {
       drone: "Aerial Drone Cinematography",
       ai: "AI Instant QR Sharing Portal",
-      livestream: "Private Event Live Stream Broadcast"
+      livestream: "Private Event Live Stream Broadcast",
+      prewed: "Pre-Wedding Cinema Session"
     };
     let addonsCount = 0;
     for (const key in addLabels) {
@@ -1999,7 +2002,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const addonsKeys = {
         drone: "Aerial Drone Cinema",
         ai: "AI Instant QR Sharing",
-        livestream: "Live Broadcast Feed"
+        livestream: "Live Broadcast Feed",
+        prewed: "Pre-Wedding Cinema"
       };
       for (const key in addonsKeys) {
         if (customizerState[key]) {
@@ -2591,17 +2595,11 @@ document.addEventListener("DOMContentLoaded", () => {
       dismissIntro();
     });
 
-    // Bind logo clicks to navigate to home and replay the intro video
+    // Bind logo clicks to reload the website
     if (logoTrigger) {
       logoTrigger.addEventListener("click", (e) => {
         e.preventDefault();
-        
-        // Transition to home section (index 0)
-        turnPageTo(0);
-        history.pushState(null, null, "#home");
-        
-        // Re-play the intro
-        playIntro();
+        window.location.href = window.location.origin + window.location.pathname;
       });
     }
 
@@ -3045,5 +3043,84 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     overlay.addEventListener("click", tapHandler);
   }
+
+  // --- 16. PULL-DOWN-TO-RELOAD MOBILE GESTURE (3 SWIPES ON HOME SECTION) ---
+  function showReloadToast(message) {
+    let toast = document.getElementById("reload-toast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "reload-toast";
+      toast.style.position = "fixed";
+      toast.style.top = "30px";
+      toast.style.left = "50%";
+      toast.style.transform = "translateX(-50%)";
+      toast.style.background = "rgba(10, 10, 10, 0.95)";
+      toast.style.color = "var(--gold-accent)";
+      toast.style.border = "1px solid var(--gold-accent)";
+      toast.style.padding = "10px 24px";
+      toast.style.borderRadius = "30px";
+      toast.style.fontSize = "13px";
+      toast.style.fontWeight = "600";
+      toast.style.zIndex = "999999";
+      toast.style.boxShadow = "0 8px 30px rgba(0,0,0,0.6)";
+      toast.style.pointerEvents = "none";
+      toast.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.style.opacity = "1";
+    toast.style.transform = "translateX(-50%) translateY(0)";
+
+    // Auto-hide after 2 seconds
+    clearTimeout(window.reloadToastTimer);
+    window.reloadToastTimer = setTimeout(() => {
+      toast.style.opacity = "0";
+      toast.style.transform = "translateX(-50%) translateY(-10px)";
+    }, 2000);
+  }
+
+  let pullDownCount = 0;
+  let pullDownTimeout;
+  let touchStartY = 0;
+  let touchStartX = 0;
+
+  document.addEventListener("touchstart", (e) => {
+    // Only detect pull-down on the home landing page (currentSectionIndex === 0)
+    if (typeof currentSectionIndex !== "undefined" && currentSectionIndex === 0 && e.touches.length === 1) {
+      touchStartY = e.touches[0].clientY;
+      touchStartX = e.touches[0].clientX;
+    }
+  }, { passive: true });
+
+  document.addEventListener("touchend", (e) => {
+    if (typeof currentSectionIndex !== "undefined" && currentSectionIndex === 0 && e.changedTouches.length === 1) {
+      const touchEndY = e.changedTouches[0].clientY;
+      const touchEndX = e.changedTouches[0].clientX;
+
+      const deltaY = touchEndY - touchStartY;
+      const deltaX = Math.abs(touchEndX - touchStartX);
+
+      // If swiped down at least 120px vertically with little horizontal drift
+      if (deltaY > 120 && deltaX < 60) {
+        pullDownCount++;
+
+        clearTimeout(pullDownTimeout);
+        pullDownTimeout = setTimeout(() => {
+          pullDownCount = 0;
+        }, 3000); // Reset count after 3 seconds of inactivity
+
+        if (pullDownCount === 1) {
+          showReloadToast("Pull down 2 more times to reload...");
+        } else if (pullDownCount === 2) {
+          showReloadToast("Pull down 1 more time to reload...");
+        } else if (pullDownCount >= 3) {
+          showReloadToast("Reloading website...");
+          setTimeout(() => {
+            window.location.href = window.location.origin + window.location.pathname;
+          }, 600);
+        }
+      }
+    }
+  }, { passive: true });
 
 });
