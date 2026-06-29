@@ -2046,11 +2046,19 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(window.latestBookingDetails)
       }).catch(err => console.error("Google Sheets logging failed:", err));
 
-      // Build WhatsApp message (simple greeting, client name, and receipt link)
-      let waText = `Hi DoubleLayer Photography, I would like to submit a booking inquiry!\n\n`;
-      waText += `Name: ${name}\n`;
+      // Build WhatsApp message (client details, package chosen, and link to invoice)
+      const packageText = serviceVal === "custom" ? `Custom ${eventText}` : `${eventText} (${serviceVal.toUpperCase()})`;
+      let waText = `Doublelayer Photography Booking Request!\n`;
+      waText += `========================================\n`;
+      waText += `Client Name: ${name}\n`;
+      waText += `Mobile Number: ${phone}\n`;
+      waText += `Email: ${email}\n`;
+      waText += `Event Venue: ${location}\n`;
+      waText += `Selected Date: ${formattedDate}\n`;
+      waText += `Package: ${packageText}\n`;
       if (receiptUrl) {
-        waText += `📄 Download Invoice: ${receiptUrl}\n`;
+        waText += `========================================\n\n`;
+        waText += `📄 Download the full invoice:\n${receiptUrl}\n`;
       }
 
       const waUrl = "https://wa.me/919446802570?text=" + encodeURIComponent(waText);
