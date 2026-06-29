@@ -261,6 +261,7 @@
           <tr><td class="lbl">Selected Date:</td><td id="c-date"></td></tr>
           <tr><td class="lbl">Venue Location:</td><td id="c-venue"></td></tr>
           <tr><td class="lbl">Selected Package:</td><td id="c-package"></td></tr>
+          <tr><td class="lbl">Total Crew Size:</td><td id="c-crew-count"></td></tr>
           <tr><td class="lbl">Estimate Budget:</td><td id="c-budget"></td></tr>
         </table>
       </div>
@@ -322,14 +323,15 @@
             crewDetails: rawData.w,
             deliverables: rawData.r,
             addons: rawData.a,
-            serviceVal: rawData.s
+            serviceVal: rawData.s,
+            crewCount: rawData.k
           };
 
           // Apply package-themed color variables dynamically
-          if (details.serviceVal === "silver") {
+          if (details.serviceVal && details.serviceVal.includes("silver")) {
             document.documentElement.style.setProperty('--gold-muted', '#8a95a5');
             document.documentElement.style.setProperty('--gold-accent', '#cbd2db');
-          } else if (details.serviceVal === "diamond") {
+          } else if (details.serviceVal && details.serviceVal.includes("diamond")) {
             document.documentElement.style.setProperty('--gold-muted', '#0070f3');
             document.documentElement.style.setProperty('--gold-accent', '#00E5FF');
           }
@@ -344,8 +346,25 @@
           document.getElementById("c-date").textContent = details.formattedDate;
           document.getElementById("c-venue").textContent = details.location;
           
-          const packageText = details.serviceVal === "custom" ? `Custom ${details.eventText}` : `${details.eventText} (${details.serviceVal.toUpperCase()})`;
-          document.getElementById("c-package").textContent = packageText;
+          let displayPackage = "";
+          if (details.serviceVal) {
+            if (details.serviceVal.includes("-custom")) {
+              const basePkg = details.serviceVal.replace("-custom", "").toUpperCase();
+              displayPackage = `Custom ${details.eventText} (${basePkg})`;
+            } else if (details.serviceVal === "custom" || details.serviceVal.includes("custom-unified")) {
+              displayPackage = `Custom ${details.eventText}`;
+            } else if (details.serviceVal.includes("standard-unified")) {
+              displayPackage = `Standard ${details.eventText}`;
+            } else {
+              displayPackage = `${details.eventText} (${details.serviceVal.toUpperCase()})`;
+            }
+          } else {
+            displayPackage = "Custom Shoot";
+          }
+          document.getElementById("c-package").textContent = displayPackage;
+          
+          const crewCountVal = details.crewCount ? details.crewCount + " Member" + (details.crewCount !== 1 ? "s" : "") : "Default Assignment";
+          document.getElementById("c-crew-count").textContent = crewCountVal;
           document.getElementById("c-budget").textContent = details.budgetText;
 
           // Date generated
@@ -385,7 +404,7 @@
               const li = document.createElement("li");
               
               // If diamond package, star the default add-ons: "Aerial Drone Cinema" and "AI Instant QR Sharing"
-              if (details.serviceVal === "diamond" && (a === "Aerial Drone Cinema" || a === "AI Instant QR Sharing")) {
+              if (details.serviceVal && details.serviceVal.includes("diamond") && (a === "Aerial Drone Cinema" || a === "AI Instant QR Sharing")) {
                 li.innerHTML = `${a}<span style="color:var(--gold-accent); margin-left:3px; font-weight:bold;">*</span>`;
                 hasDefaultStar = true;
               } else {

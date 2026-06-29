@@ -836,6 +836,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const saveCustomizerBtn = document.getElementById("customizer-save-btn");
 
   const customizerState = {
+    baseService: "gold",
     prewedEnabled: false,
     engagementEnabled: false,
     eveEnabled: true,
@@ -1302,7 +1303,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Instead of scrolling smoothly to booking container immediately, show gift modal first!
     const targetIdx = sections.findIndex(sec => sec.getAttribute("id") === "booking");
     if (targetIdx !== -1) {
-      showGiftModal(matchedTier, () => {
+      showGiftModal(customizerState.baseService || matchedTier, () => {
         turnPageTo(targetIdx);
         window.location.hash = "#booking";
       });
@@ -1347,30 +1348,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Render Crew per active session
     crewList.innerHTML = "";
-    const sessions = [
-      { id: "prewed", label: "Pre/Post Shoot" },
-      { id: "engagement", label: "Engagement Day" },
-      { id: "eve", label: "Wedding Eve" },
-      { id: "day", label: "Wedding Day" }
-    ];
-    let crewCount = 0;
-    sessions.forEach(s => {
-      if (customizerState[`${s.id}Enabled`] && (s.id !== "prewed" || serviceVal !== "silver")) {
-        const ph = customizerState[`${s.id}Photographers`];
-        const vi = customizerState[`${s.id}Videographers`];
-        if (ph > 0 || vi > 0) {
-          const li = document.createElement("li");
-          const crewText = [];
-          if (ph > 0) crewText.push(`${ph} Photographer${ph > 1 ? 's' : ''}`);
-          if (vi > 0) crewText.push(`${vi} Videographer${vi > 1 ? 's' : ''}`);
-          li.textContent = `${s.label}: ${crewText.join(" + ")}`;
-          crewList.appendChild(li);
-          crewCount += (ph + vi);
+    if (eventVal === "wedding") {
+      const sessions = [
+        { id: "prewed", label: "Pre/Post Shoot" },
+        { id: "engagement", label: "Engagement Day" },
+        { id: "eve", label: "Wedding Eve" },
+        { id: "day", label: "Wedding Day" }
+      ];
+      let crewCount = 0;
+      sessions.forEach(s => {
+        if (customizerState[`${s.id}Enabled`] && (s.id !== "prewed" || serviceVal !== "silver")) {
+          const ph = customizerState[`${s.id}Photographers`];
+          const vi = customizerState[`${s.id}Videographers`];
+          if (ph > 0 || vi > 0) {
+            const li = document.createElement("li");
+            const crewText = [];
+            if (ph > 0) crewText.push(`${ph} Photographer${ph > 1 ? 's' : ''}`);
+            if (vi > 0) crewText.push(`${vi} Videographer${vi > 1 ? 's' : ''}`);
+            li.textContent = `${s.label}: ${crewText.join(" + ")}`;
+            crewList.appendChild(li);
+            crewCount += (ph + vi);
+          }
         }
+      });
+      if (crewCount === 0) {
+        crewList.innerHTML = "<li>Default crew assignments</li>";
       }
-    });
-    if (crewCount === 0) {
-      crewList.innerHTML = "<li>Default crew assignments</li>";
+    } else {
+      const li = document.createElement("li");
+      if (eventVal === "bridetobe") {
+        li.textContent = "Event Coverage: 1 Photographer";
+      } else {
+        li.textContent = "Event Coverage: 1 Photographer + 1 Cinematographer";
+      }
+      crewList.appendChild(li);
     }
 
     // Render Deliverables
@@ -1450,6 +1461,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (const key in template) {
       customizerState[key] = template[key];
     }
+    customizerState.baseService = tier;
     customizerState.isCustomized = false;
 
     const eventDropdown = document.getElementById("booking-event");
@@ -1482,6 +1494,7 @@ document.addEventListener("DOMContentLoaded", () => {
           for (const key in template) {
             customizerState[key] = template[key];
           }
+          customizerState.baseService = selected;
           customizerState.isCustomized = false;
         }
       }
@@ -1945,24 +1958,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Assemble booking details into a structured global object for PDF receipt generation
       const crewDetailsList = [];
-      const sessionsListForPDF = [
-        { id: "prewed", label: "Pre/Post Shoot" },
-        { id: "engagement", label: "Engagement Day" },
-        { id: "eve", label: "Wedding Eve" },
-        { id: "day", label: "Wedding Day" }
-      ];
-      sessionsListForPDF.forEach(s => {
-        if (customizerState[`${s}Enabled`] && (s.id !== "prewed" || serviceVal !== "silver")) {
-          const ph = customizerState[`${s.id}Photographers`];
-          const vi = customizerState[`${s.id}Videographers`];
-          if (ph > 0 || vi > 0) {
-            const crewText = [];
-            if (ph > 0) crewText.push(`${ph} Photographer${ph > 1 ? 's' : ''}`);
-            if (vi > 0) crewText.push(`${vi} Videographer${vi > 1 ? 's' : ''}`);
-            crewDetailsList.push(`${s.label}: ${crewText.join(" + ")}`);
+      let totalCrewCount = 0;
+
+      if (eventVal === "wedding") {
+        const sessionsListForPDF = [
+          { id: "prewed", label: "Pre/Post Shoot" },
+          { id: "engagement", label: "Engagement Day" },
+          { id: "eve", label: "Wedding Eve" },
+          { id: "day", label: "Wedding Day" }
+        ];
+        sessionsListForPDF.forEach(s => {
+          if (customizerState[`${s.id}Enabled`] && (s.id !== "prewed" || serviceVal !== "silver")) {
+            const ph = customizerState[`${s.id}Photographers`];
+            const vi = customizerState[`${s.id}Videographers`];
+            if (ph > 0 || vi > 0) {
+              const crewText = [];
+              if (ph > 0) crewText.push(`${ph} Photographer${ph > 1 ? 's' : ''}`);
+              if (vi > 0) crewText.push(`${vi} Videographer${vi > 1 ? 's' : ''}`);
+              crewDetailsList.push(`${s.label}: ${crewText.join(" + ")}`);
+              totalCrewCount += (ph + vi);
+            }
           }
+        });
+      } else {
+        if (eventVal === "bridetobe") {
+          crewDetailsList.push("Event Coverage: 1 Photographer");
+          totalCrewCount = 1;
+        } else {
+          crewDetailsList.push("Event Coverage: 1 Photographer + 1 Cinematographer");
+          totalCrewCount = 2;
         }
-      });
+      }
 
       const deliverablesList = [];
       deliverablesList.push(`${customizerState.editedPhotos === "0" ? "No" : customizerState.editedPhotos} Retouched Photos`);
@@ -2011,6 +2037,24 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
+      // Calculate serviceValToSend to retain base tier for styling and stars
+      let serviceValToSend = serviceVal;
+      if (eventVal === "wedding") {
+        if (serviceVal === "custom" && customizerState.baseService) {
+          serviceValToSend = customizerState.baseService + "-custom";
+        }
+      } else {
+        let isUnifiedCustomized = false;
+        const unifiedAddons = ['drone', 'ai', 'livestream', 'prewed', 'extraAlbum'];
+        unifiedAddons.forEach(k => {
+          const cb = document.getElementById(`unified-addon-${k === 'extraAlbum' ? 'extra-album' : k}`);
+          if (cb && cb.checked) {
+            isUnifiedCustomized = true;
+          }
+        });
+        serviceValToSend = isUnifiedCustomized ? "custom-unified" : "standard-unified";
+      }
+
       window.latestBookingDetails = {
         name,
         phone,
@@ -2023,7 +2067,8 @@ document.addEventListener("DOMContentLoaded", () => {
         crewDetails: crewDetailsList,
         deliverables: deliverablesList,
         addons: addonsList,
-        serviceVal: serviceVal
+        serviceVal: serviceValToSend,
+        crewCount: totalCrewCount
       };
 
       // Create Base64 payload for dynamic receipt url containing the full details compressed
@@ -2041,7 +2086,8 @@ document.addEventListener("DOMContentLoaded", () => {
           w: crewDetailsList,
           r: deliverablesList,
           a: addonsList,
-          s: serviceVal
+          s: serviceValToSend,
+          k: totalCrewCount
         };
         const bookingDataJson = JSON.stringify(compressedData);
         const base64Data = btoa(unescape(encodeURIComponent(bookingDataJson)));
@@ -3079,16 +3125,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 2000);
   }
 
-  let pullDownCount = 0;
-  let pullDownTimeout;
-  let touchStartY = 0;
-  let touchStartX = 0;
+  let reloadPullDownCount = 0;
+  let reloadPullDownTimeout;
+  let reloadTouchStartY = 0;
+  let reloadTouchStartX = 0;
 
   document.addEventListener("touchstart", (e) => {
     // Only detect pull-down on the home landing page (currentSectionIndex === 0)
     if (typeof currentSectionIndex !== "undefined" && currentSectionIndex === 0 && e.touches.length === 1) {
-      touchStartY = e.touches[0].clientY;
-      touchStartX = e.touches[0].clientX;
+      reloadTouchStartY = e.touches[0].clientY;
+      reloadTouchStartX = e.touches[0].clientX;
     }
   }, { passive: true });
 
@@ -3097,23 +3143,23 @@ document.addEventListener("DOMContentLoaded", () => {
       const touchEndY = e.changedTouches[0].clientY;
       const touchEndX = e.changedTouches[0].clientX;
 
-      const deltaY = touchEndY - touchStartY;
-      const deltaX = Math.abs(touchEndX - touchStartX);
+      const deltaY = touchEndY - reloadTouchStartY;
+      const deltaX = Math.abs(touchEndX - reloadTouchStartX);
 
       // If swiped down at least 120px vertically with little horizontal drift
       if (deltaY > 120 && deltaX < 60) {
-        pullDownCount++;
+        reloadPullDownCount++;
 
-        clearTimeout(pullDownTimeout);
-        pullDownTimeout = setTimeout(() => {
-          pullDownCount = 0;
+        clearTimeout(reloadPullDownTimeout);
+        reloadPullDownTimeout = setTimeout(() => {
+          reloadPullDownCount = 0;
         }, 3000); // Reset count after 3 seconds of inactivity
 
-        if (pullDownCount === 1) {
+        if (reloadPullDownCount === 1) {
           showReloadToast("Pull down 2 more times to reload...");
-        } else if (pullDownCount === 2) {
+        } else if (reloadPullDownCount === 2) {
           showReloadToast("Pull down 1 more time to reload...");
-        } else if (pullDownCount >= 3) {
+        } else if (reloadPullDownCount >= 3) {
           showReloadToast("Reloading website...");
           setTimeout(() => {
             window.location.href = window.location.origin + window.location.pathname;
