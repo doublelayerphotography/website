@@ -1829,6 +1829,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderCalendar();
 
+  // Helper to shorten URL using is.gd JSONP API (bypasses CORS)
+  function shortenUrlAsync(longUrl, callback) {
+    let resolved = false;
+    const timer = setTimeout(() => {
+      if (!resolved) {
+        resolved = true;
+        callback(longUrl);
+      }
+    }, 1200);
+
+    const callbackName = "isgd_callback_" + Math.floor(Math.random() * 1000000);
+    window[callbackName] = function(data) {
+      if (!resolved) {
+        resolved = true;
+        clearTimeout(timer);
+        if (data && data.shorturl) {
+          callback(data.shorturl);
+        } else {
+          callback(longUrl);
+        }
+        try {
+          delete window[callbackName];
+          const script = document.getElementById(callbackName);
+          if (script) script.remove();
+        } catch (e) {}
+      }
+    };
+
+    const script = document.createElement("script");
+    script.id = callbackName;
+    script.src = "https://is.gd/create.php?format=json&callback=" + callbackName + "&url=" + encodeURIComponent(longUrl);
+    document.body.appendChild(script);
+  }
+
   // --- 10. FORM SUBMISSION WITH WHATSAPP COMPILER ---
   const bookingForm = document.getElementById("booking-form");
   const bookingCardPanel = document.querySelector(".booking-card-panel");
@@ -2103,54 +2137,59 @@ document.addEventListener("DOMContentLoaded", () => {
         window.latestReceiptUrl = "";
       }
 
-      // Send details silently in the background to Google Sheets (including receiptUrl)
-      const sheetUrl = "https://script.google.com/macros/s/AKfycbz0MS7LPp86ntdPUycWq7nOS4HYCjiEqNkZwRQ5p-Jkg3UoV3nxn8vywj_RVHw5nP1MoQ/exec";
-      fetch(sheetUrl, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(window.latestBookingDetails)
-      }).catch(err => console.error("Google Sheets logging failed:", err));
+      // Shorten the receipt link asynchronously using is.gd JSONP API
+      shortenUrlAsync(receiptUrl, (shortUrl) => {
+        window.latestBookingDetails.receiptUrl = shortUrl;
 
-      // Build WhatsApp message (greeting, client name, and download invoice link)
-      let waText = `Hi DoubleLayer, here is a booking request from ${name}.\n\n`;
-      if (receiptUrl) {
-        waText += `📄 Download the full invoice:\n${receiptUrl}\n`;
-      }
+        // Send details silently in the background to Google Sheets (including short receiptUrl)
+        const sheetUrl = "https://script.google.com/macros/s/AKfycbz0MS7LPp86ntdPUycWq7nOS4HYCjiEqNkZwRQ5p-Jkg3UoV3nxn8vywj_RVHw5nP1MoQ/exec";
+        fetch(sheetUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(window.latestBookingDetails)
+        }).catch(err => console.error("Google Sheets logging failed:", err));
 
-      const waUrl = "https://wa.me/919446802570?text=" + encodeURIComponent(waText);
+        // Build WhatsApp message (greeting, client name, and download invoice link)
+        let waText = `Hi DoubleLayer, here is a booking request from ${name}.\n\n`;
+        if (shortUrl) {
+          waText += `📄 Download the full invoice:\n${shortUrl}\n`;
+        }
 
-      // Render success message inside the form panel (including PDF download option)
-      bookingCardPanel.innerHTML = `
-        <div class="success-screen" style="padding: 30px 15px;">
-          <div class="success-icon"><i data-lucide="check"></i></div>
-          <h3 class="text-gradient">Request Compiled</h3>
-          <p style="margin-bottom: 25px; line-height:1.6;">
-            Thank you, <span style="color:#fff; font-weight:600;">${name}</span>. We've compiled your customized visual request for the <strong style="color:var(--gold-accent);">${eventText}</strong> on <strong>${formattedDate}</strong>.
-          </p>
-          <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
-            <button type="button" class="btn btn-glass" onclick="downloadBookingReceipt()" style="display:inline-flex; align-items:center; gap:8px;">
-              <i data-lucide="download"></i>
-              Download PDF Receipt
-            </button>
-            <a href="${waUrl}" target="_blank" class="btn btn-primary" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none;">
-              <i data-lucide="message-square"></i>
-              Open WhatsApp
-            </a>
+        const waUrl = "https://wa.me/919446802570?text=" + encodeURIComponent(waText);
+
+        // Render success message inside the form panel (including PDF download option)
+        bookingCardPanel.innerHTML = `
+          <div class="success-screen" style="padding: 30px 15px;">
+            <div class="success-icon"><i data-lucide="check"></i></div>
+            <h3 class="text-gradient">Request Compiled</h3>
+            <p style="margin-bottom: 25px; line-height:1.6;">
+              Thank you, <span style="color:#fff; font-weight:600;">${name}</span>. We've compiled your customized visual request for the <strong style="color:var(--gold-accent);">${eventText}</strong> on <strong>${formattedDate}</strong>.
+            </p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
+              <button type="button" class="btn btn-glass" onclick="downloadBookingReceipt()" style="display:inline-flex; align-items:center; gap:8px;">
+                <i data-lucide="download"></i>
+                Download PDF Receipt
+              </button>
+              <a href="${waUrl}" target="_blank" class="btn btn-primary" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none;">
+                <i data-lucide="message-square"></i>
+                Open WhatsApp
+              </a>
+            </div>
+            <p style="font-size: 11px; color: var(--text-muted); line-height: 1.5;">
+              Click <strong>Download PDF Receipt</strong> to save your package receipt first,<br>then click <strong>Open WhatsApp</strong> to send details and complete booking.
+            </p>
           </div>
-          <p style="font-size: 11px; color: var(--text-muted); line-height: 1.5;">
-            Click <strong>Download PDF Receipt</strong> to save your package receipt first,<br>then click <strong>Open WhatsApp</strong> to send details and complete booking.
-          </p>
-        </div>
-      `;
-      if (window.lucide) window.lucide.createIcons();
+        `;
+        if (window.lucide) window.lucide.createIcons();
 
-      // Automatically redirect to WhatsApp after 2 seconds
-      setTimeout(() => {
-        window.location.href = waUrl;
-      }, 2000);
+        // Automatically redirect to WhatsApp after 2 seconds
+        setTimeout(() => {
+          window.location.href = waUrl;
+        }, 2000);
+      });
     });
   }
 
