@@ -564,20 +564,28 @@ section.flipped-prev {
   background-size: cover;
   background-position: center 15%;
   background-repeat: no-repeat;
-  transform: translate(100%, 100%) rotate(8deg);
-  transform-origin: bottom right;
-  transition: transform 1.8s cubic-bezier(0.65, 0, 0.35, 1);
+  opacity: 1;
   z-index: 1;
+  -webkit-mask-image: linear-gradient(135deg, black 45%, transparent 55%);
+  -webkit-mask-size: 300% 300%;
+  -webkit-mask-position: 0% 0%;
+  mask-image: linear-gradient(135deg, black 45%, transparent 55%);
+  mask-size: 300% 300%;
+  mask-position: 0% 0%;
+  transition: none;
 }
 
 .hero-slide.active {
-  transform: translate(0, 0) rotate(0deg);
-  z-index: 2;
+  z-index: 1;
+  -webkit-mask-position: 0% 0%;
+  mask-position: 0% 0%;
 }
 
 .hero-slide.prev {
-  transform: translate(-100%, -100%) rotate(-8deg);
-  z-index: 1;
+  z-index: 2;
+  -webkit-mask-position: 100% 100%;
+  mask-position: 100% 100%;
+  transition: -webkit-mask-position 2s ease-in-out, mask-position 2s ease-in-out;
 }
 
 /* Individual Slide Backgrounds */
