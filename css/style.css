@@ -564,22 +564,24 @@ section.flipped-prev {
   background-size: cover;
   background-position: center 15%;
   background-repeat: no-repeat;
-  opacity: 1;
+  opacity: 0;
+  z-index: 0;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  transition: clip-path 2s ease-in-out, opacity 2s ease-in-out;
-  z-index: 1;
+  transition: none;
 }
 
 .hero-slide.active {
   opacity: 1;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   z-index: 1;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: none;
 }
 
 .hero-slide.prev {
   opacity: 0;
-  clip-path: polygon(0 0, 0 0, 0 0, 0 100%);
   z-index: 2;
+  clip-path: polygon(0 0, 0 0, 0 0, 0 100%);
+  transition: clip-path 2s ease-in-out, opacity 2s ease-in-out;
 }
 
 /* Individual Slide Backgrounds */
