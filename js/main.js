@@ -2711,7 +2711,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Slide in the incoming slide
         slides[currentIdx].classList.add("active");
-      }, 5000); // changes background slide every 5 seconds
+      }, 7000); // changes background slide every 7 seconds
     }
 
     // Launch the video intro splash on initial website load
