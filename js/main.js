@@ -2692,6 +2692,30 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
+    // --- HERO BACKGROUND SLIDESHOW CYCLE ---
+    const slides = document.querySelectorAll(".hero-slide");
+    if (slides.length > 1) {
+      let currentIdx = 0;
+      setInterval(() => {
+        const prevIdx = currentIdx;
+        currentIdx = (currentIdx + 1) % slides.length;
+
+        // Reset any older prev slides to clean state (right side)
+        slides.forEach((slide, idx) => {
+          if (idx !== prevIdx && idx !== currentIdx) {
+            slide.classList.remove("prev", "active");
+          }
+        });
+
+        // Slide out the outgoing slide
+        slides[prevIdx].classList.remove("active");
+        slides[prevIdx].classList.add("prev");
+
+        // Slide in the incoming slide
+        slides[currentIdx].classList.add("active");
+      }, 6000); // changes background slide every 6 seconds
+    }
+
     // Launch the video intro splash on initial website load
     playIntro();
   }

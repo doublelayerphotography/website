@@ -553,21 +553,75 @@ section.flipped-prev {
   height: 100vh;
   z-index: 1; /* stacks in front of body background, but behind grain and content */
   overflow: hidden;
-  background-image: url('../images/hero_bg.jpeg?v=3.8');
-  background-size: cover;
-  background-position: center 15%;
-  background-repeat: no-repeat;
   background-color: #050609;
   pointer-events: none; /* prevents blocking click events on interactive content */
   transition: opacity 0.9s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 15%;
+  background-repeat: no-repeat;
+  transform: translateX(100%);
+  transition: transform 1.6s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 1;
+}
+
+.hero-slide.active {
+  transform: translateX(0);
+  z-index: 2;
+}
+
+.hero-slide.prev {
+  transform: translateX(-100%);
+  z-index: 1;
+}
+
+/* Individual Slide Backgrounds */
+#hero-slide-1 {
+  background-image: url('../images/hero-slides/slide1.jpg');
+}
 @media (max-width: 767px) {
-  .hero-bg-image-wrap {
-    /* If you place a portrait image named hero_bg_mobile.jpeg in the images/ folder, 
-       it will load here automatically on mobile screens. Otherwise, it falls back to the centered desktop image. */
-    background-image: url('../images/hero_bg_mobile.jpeg?v=3.8'), url('../images/hero_bg.jpeg?v=3.8');
-    background-position: right 15%;
+  #hero-slide-1 {
+    background-image: url('../images/hero-slides/slide1_mobile.jpg'), url('../images/hero-slides/slide1.jpg');
+  }
+}
+
+#hero-slide-2 {
+  background-image: url('../images/hero-slides/slide2.jpg');
+}
+@media (max-width: 767px) {
+  #hero-slide-2 {
+    background-image: url('../images/hero-slides/slide2_mobile.jpg'), url('../images/hero-slides/slide2.jpg');
+  }
+}
+
+#hero-slide-3 {
+  background-image: url('../images/hero-slides/slide3.jpg');
+}
+@media (max-width: 767px) {
+  #hero-slide-3 {
+    background-image: url('../images/hero-slides/slide3_mobile.jpg'), url('../images/hero-slides/slide3.jpg');
+  }
+}
+
+#hero-slide-4 {
+  background-image: url('../images/hero-slides/slide4.jpg');
+}
+@media (max-width: 767px) {
+  #hero-slide-4 {
+    background-image: url('../images/hero-slides/slide4_mobile.jpg'), url('../images/hero-slides/slide4.jpg');
+  }
+}
+
+#hero-slide-5 {
+  background-image: url('../images/hero-slides/slide5.jpg');
+}
+@media (max-width: 767px) {
+  #hero-slide-5 {
+    background-image: url('../images/hero-slides/slide5_mobile.jpg'), url('../images/hero-slides/slide5.jpg');
   }
 }
 
@@ -583,6 +637,7 @@ section.flipped-prev {
   inset: 0;
   background: rgba(6, 7, 10, 0.65); /* preserves copy readability over background */
   pointer-events: none;
+  z-index: 3;
 }
 
 .hero-center-wrapper {
