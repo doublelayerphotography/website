@@ -62,7 +62,23 @@
 
   <!-- --- INTRO SPLASH VIDEO OVERLAY --- -->
   <div id="intro-video-overlay">
-    <video id="intro-video" autoplay muted playsinline>
+    <!-- Pre-Launch Site Entrance Overlay (Surprise Splash Screen) -->
+    <div id="launch-splash-overlay">
+      <div class="launch-card">
+        <div class="launch-logo-container">
+          <img src="images/logo.png" alt="DoubleLayer Photography Logo" class="launch-logo-img">
+        </div>
+        <span class="launch-tagline">Cinematic Photography &amp; Film</span>
+        <h1 class="launch-title">DoubleLayer</h1>
+        <p class="launch-desc">Welcome to the new standard of wedding cinema. Click launch to experience our portfolio in full sound.</p>
+        <button id="launch-experience-btn" class="btn-launch-gold">
+          <i data-lucide="play" class="launch-play-icon"></i>
+          <span>Launch Experience</span>
+        </button>
+      </div>
+    </div>
+
+    <video id="intro-video" muted playsinline>
       <source src="images/intro.mp4" type="video/mp4">
       <source src="https://assets.mixkit.co/videos/preview/mixkit-photographer-taking-photos-of-a-bride-and-groom-34280-large.mp4" type="video/mp4">
       Your browser does not support the video tag.
