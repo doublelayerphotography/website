@@ -20,6 +20,7 @@
   --gold-glow: rgba(207, 168, 83, 0.15);
   --silver-accent: #C0C0C0;
   --diamond-accent: #b9f2ff;
+  --color-gold: #cfa853;
   
   /* Glassmorphic tokens */
   --glass-bg: rgba(9, 11, 17, 0.45);
@@ -3745,59 +3746,81 @@ footer {
 
 .launch-tagline {
   display: block;
-  font-family: var(--font-primary);
-  font-size: 0.75rem;
-  letter-spacing: 0.3em;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--color-gold);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  text-shadow: 0 0 10px rgba(207, 168, 83, 0.35);
 }
 
 .launch-title {
-  font-family: var(--font-secondary);
-  font-size: 2.8rem;
-  font-weight: 300;
-  letter-spacing: 0.1em;
-  color: #ffffff;
-  margin-bottom: 15px;
+  font-family: 'ADAM.CG PRO', sans-serif;
+  font-size: 3.2rem;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  margin-bottom: 18px;
   text-transform: uppercase;
+  background: linear-gradient(135deg, #fce5a1 0%, var(--color-gold) 50%, #b8860b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
 }
 
 .launch-desc {
-  font-family: var(--font-primary);
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.7;
   color: #a0aec0;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .btn-launch-gold {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  background: linear-gradient(135deg, var(--color-gold) 0%, #b8860b 100%);
-  color: #050609;
+  gap: 12px;
+  background: linear-gradient(135deg, #ffffff 0%, var(--color-gold) 50%, #b8860b 100%) !important;
+  color: #050609 !important;
   border: none;
-  padding: 14px 32px;
-  font-family: var(--font-primary);
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  padding: 16px 36px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  box-shadow: 0 0 25px rgba(207, 168, 83, 0.4);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-launch-gold:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6);
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 0 35px rgba(207, 168, 83, 0.6);
+  background: linear-gradient(135deg, #ffffff 0%, var(--color-gold) 100%) !important;
 }
 
 .btn-launch-gold:active {
   transform: scale(0.98);
+}
+
+.btn-launch-gold span {
+  color: #050609 !important;
+}
+
+.btn-launch-gold i {
+  color: #050609 !important;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
 }
 
 .launch-play-icon {
