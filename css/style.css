@@ -3944,15 +3944,15 @@ footer {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.02);
-  color: #718096 !important;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  gap: 5px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.01);
+  color: #4a5568 !important;
+  border: 1px solid rgba(255, 255, 255, 0.03);
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.58rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   border-radius: 30px;
   cursor: pointer;
@@ -3962,15 +3962,15 @@ footer {
 }
 
 .btn-developer-link:hover {
-  background: rgba(207, 168, 83, 0.06);
+  background: rgba(207, 168, 83, 0.05);
   border-color: var(--color-gold);
   color: var(--color-gold) !important;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .btn-developer-link i {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
 }
 
 /* Global brand signature responsive layout */
