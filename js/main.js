@@ -1,5 +1,9 @@
 /* DoubleLayer Photography - Interactions & Luxury Engine */
 
+// --- CONFIGURATION: MAINTENANCE MODE TOGGLE ---
+// Set to true to show the 'Launching Soon' screen. Set to false to open the website.
+const MAINTENANCE_MODE = true;
+
 // --- localStorage Reviews Persistence ---
 const REVIEWS_STORAGE_KEY = "dl_reviews_v1";
 
@@ -29,6 +33,25 @@ function deleteReviewFromStorage(name, role, text, rating) {
 
 document.addEventListener("DOMContentLoaded", () => {
   
+  // --- MAINTENANCE MODE HANDLER ---
+  const maintenanceOverlay = document.getElementById("maintenance-overlay");
+  if (maintenanceOverlay) {
+    if (MAINTENANCE_MODE) {
+      maintenanceOverlay.style.display = "flex";
+      document.body.style.overflow = "hidden";
+      const introVideo = document.getElementById("intro-video");
+      if (introVideo) {
+        try { introVideo.pause(); } catch (err) {}
+      }
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+      return; // Stop initialization of the main website scripts
+    } else {
+      maintenanceOverlay.style.display = "none";
+    }
+  }
+
   // Initialize Lucide Icons
   if (window.lucide) {
     window.lucide.createIcons();
