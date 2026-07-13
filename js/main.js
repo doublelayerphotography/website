@@ -2,7 +2,7 @@
 
 // --- CONFIGURATION: MAINTENANCE MODE TOGGLE ---
 // Set to true to show the 'Launching Soon' screen. Set to false to open the website.
-const MAINTENANCE_MODE = true;
+const MAINTENANCE_MODE = false;
 
 // --- localStorage Reviews Persistence ---
 const REVIEWS_STORAGE_KEY = "dl_reviews_v1";
