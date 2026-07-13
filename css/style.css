@@ -3973,4 +3973,19 @@ footer {
   height: 12px;
 }
 
+/* Global brand signature responsive layout */
+.global-dev-link {
+  position: fixed;
+  bottom: 24px;
+  left: 154px; /* indents to clear the 130px fixed navigation sidebar on desktop */
+  z-index: 999;
+}
+
+@media (max-width: 767px) {
+  .global-dev-link {
+    left: 20px;
+    bottom: 20px;
+  }
+}
+
 
