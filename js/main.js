@@ -2608,61 +2608,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let introTimer;
     let introDismissed = false;
 
-    const launchSplash = document.getElementById("launch-splash-overlay");
-    const launchBtn = document.getElementById("launch-experience-btn");
-
-    if (launchBtn) {
-      launchBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-
-        // Play unmuted since user interacted
-        introVideo.muted = false;
-        if (introMuteBtn) {
-          introMuteBtn.innerHTML = `<i data-lucide="volume-2"></i>`;
-        }
-        if (window.lucide) {
-          window.lucide.createIcons();
-        }
-
-        introVideo.play().catch(error => {
-          // Autoplay protection fallback
-          introVideo.muted = true;
-          if (introMuteBtn) {
-            introMuteBtn.innerHTML = `<i data-lucide="volume-x"></i>`;
-          }
-          if (window.lucide) {
-            window.lucide.createIcons();
-          }
-          introVideo.play().catch(() => {});
-        });
-
-        // Smoothly fade out splash screen
-        if (launchSplash) {
-          launchSplash.classList.add("fade-out");
-          setTimeout(() => {
-            launchSplash.style.display = "none";
-          }, 1000);
-        }
-
-        // Start auto-dismiss timer only after launching
-        clearTimeout(introTimer);
-        introTimer = setTimeout(dismissIntro, 10000);
-      });
-    }
-
     function playIntro() {
       introDismissed = false;
       introOverlay.style.display = "flex";
       introOverlay.classList.remove("fade-out");
 
-      if (launchSplash) {
-        launchSplash.style.display = "flex";
-        launchSplash.classList.remove("fade-out");
-      }
-
-      // Reset video to start and keep paused until launched
+      // Reset video to start and play muted immediately
       introVideo.currentTime = 0;
-      introVideo.pause();
       introVideo.muted = true;
       if (introMuteBtn) {
         introMuteBtn.innerHTML = `<i data-lucide="volume-x"></i>`;
@@ -2671,8 +2623,15 @@ document.addEventListener("DOMContentLoaded", () => {
         window.lucide.createIcons();
       }
 
+      introVideo.play().catch(error => {
+        console.log("Autoplay blocked or failed:", error);
+      });
+
       document.body.style.overflow = "hidden";
+      
+      // Start auto-dismiss timer immediately
       clearTimeout(introTimer);
+      introTimer = setTimeout(dismissIntro, 10000);
     }
 
     function dismissIntro() {
@@ -2730,7 +2689,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Dismiss immediately if the user clicks/taps anywhere on the screen overlay/video
     introOverlay.addEventListener("click", (e) => {
-      if (e.target.closest("#launch-splash-overlay") || e.target.closest("#intro-mute-btn") || e.target.closest("#intro-skip-btn")) return;
+      if (e.target.closest("#intro-mute-btn") || e.target.closest("#intro-skip-btn")) return;
       clearTimeout(introTimer);
       dismissIntro();
     });
