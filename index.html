@@ -298,29 +298,122 @@
       </div>
     </section>
 
-    <!-- SECTION 3: PHILOSOPHY (Single Wide Card) -->
+    <!-- SECTION 3: PHILOSOPHY (Split Layout) -->
     <section id="philosophy" class="flipped-prev">
-      <div class="section-intro">
-        <span class="tagline">Our Philosophy</span>
-        <h2 class="section-title text-gradient">Why Choose DoubleLayer</h2>
-        <p class="section-desc">We are recognized as a premier wedding photography studio based in Kochi, combining high-end fashion editorial sensibilities with cutting-edge optical technology to freeze your lifetime memories into cinematic legends.</p>
-      </div>
-
-      <div class="single-philosophy-container">
-        <div class="glass-card philosophy-wide-card">
-          <div class="card-glow-element"></div>
-          <div class="wide-philo-icon"><i data-lucide="sparkles"></i></div>
-          <div class="wide-philo-content">
-            <h3>Unparalleled Elegance & innovation</h3>
-            <span class="philo-subtitle">Crafting High-End Editorial Narratives Affordably</span>
-            <p>
-              A great photograph is one that fully expresses what one feels, in the deepest sense, about what is being photographed."At Doublelayer photography, photography is more than just taking pictures—it's our passion, our art, and our way of preserving life's most meaningful moments.
+      <div class="philosophy-container">
+        
+        <!-- Left Side: Text, Stats, and Quote -->
+        <div class="philosophy-left">
+          <span class="tagline">Our Philosophy</span>
+          <h2 class="section-title text-gradient">Why DoubleLayer</h2>
+          <p class="philosophy-main-desc">
+            We don't just take photographs, we craft <span class="highlight-gold">cinematic stories</span> that feel timeless.
+          </p>
+          
+          <!-- Stats Grid -->
+          <div class="philosophy-stats-grid">
+            <div class="stat-box">
+              <div class="stat-icon-wrapper">
+                <i data-lucide="camera"></i>
+              </div>
+              <div class="stat-number" id="stat-works" data-target="800">0+</div>
+              <div class="stat-label">Works Captured</div>
+            </div>
+            
+            <div class="stat-box">
+              <div class="stat-icon-wrapper">
+                <i data-lucide="gem"></i>
+              </div>
+              <div class="stat-number" id="stat-experience" data-target="2922">0+</div>
+              <div class="stat-label">Days of Experience</div>
+            </div>
+            
+            <div class="stat-box">
+              <div class="stat-icon-wrapper">
+                <i data-lucide="heart"></i>
+              </div>
+              <div class="stat-number" id="stat-satisfaction" data-target="100">0%</div>
+              <div class="stat-label">Client Satisfaction</div>
+            </div>
+          </div>
+          
+          <!-- Quote Card -->
+          <div class="philosophy-quote-card">
+            <div class="quote-icon"><i data-lucide="quote"></i></div>
+            <p class="quote-text">
+              Photography is the story I fail to put into words. Every frame is a feeling, every timestamp a memory.
             </p>
-            <p style="margin-top: 15px;">
-              A great photograph is one that fully expresses what one feels, in the deepest sense, about what is being photographed."At Doublelayer photography, photography is more than just taking pictures—it's our passion, our art, and our way of preserving life's most meaningful moments.Whether it's a wedding, family portrait, special event, or personal milestone, we are committed to creating images that reflect the beauty and authenticity of each moment.We are honored to be part of your journey and look forward to turning your special moments into timeless work of art.Because moments may pass, but memories deserve to last forever.
-            </p>
+            <span class="quote-author">— Team Doublelayer</span>
           </div>
         </div>
+        
+        <!-- Right Side: Glass Card Features -->
+        <div class="philosophy-right">
+          <div class="glass-card philosophy-card">
+            <div class="card-glow-element"></div>
+            
+            <div class="philo-card-header">
+              <div class="philo-badge-icon">
+                <svg viewBox="0 0 100 100" class="badge-star-svg">
+                  <!-- Orbit ring -->
+                  <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+                  <circle cx="23" cy="23" r="3" fill="#fff" />
+                  <!-- 4 Point Sparkle star -->
+                  <path d="M50,15 C50,40 40,50 15,50 C40,50 50,60 50,85 C50,60 60,50 85,50 C60,50 50,40 50,15 Z" fill="url(#goldGrad)" />
+                  <defs>
+                    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#fff" />
+                      <stop offset="30%" stop-color="var(--color-gold)" />
+                      <stop offset="100%" stop-color="#b8860b" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <h3>Unparalleled Elegance</h3>
+              <p class="philo-card-subtitle">Where editorial artistry meets advanced technology to deliver timeless memories.</p>
+            </div>
+            
+            <ul class="philo-features-list">
+              <li>
+                <div class="feature-icon"><i data-lucide="gem"></i></div>
+                <div class="feature-info">
+                  <h4>Editorial Quality</h4>
+                  <p>Magazine-worthy compositions crafted with perfection.</p>
+                </div>
+              </li>
+              <li>
+                <div class="feature-icon"><i data-lucide="clapperboard"></i></div>
+                <div class="feature-info">
+                  <h4>Cinematic Storytelling</h4>
+                  <p>Real moments. Real emotions. Real stories.</p>
+                </div>
+              </li>
+              <li>
+                <div class="feature-icon"><i data-lucide="cpu"></i></div>
+                <div class="feature-info">
+                  <h4>AI Assisted Workflow</h4>
+                  <p>Smart curation & precision editing with advanced technology.</p>
+                </div>
+              </li>
+              <li>
+                <div class="feature-icon"><i data-lucide="infinity"></i></div>
+                <div class="feature-info">
+                  <h4>Timeless Memories</h4>
+                  <p>Crafted to be cherished forever.</p>
+                </div>
+              </li>
+            </ul>
+            
+            <!-- Let's Create CTA footer link -->
+            <a href="#packages" class="philo-cta-footer" id="philo-cta-packages">
+              <span>Let's Create Something Timeless</span>
+              <div class="cta-arrow-bubble">
+                <i data-lucide="arrow-right"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+        
       </div>
     </section>
 

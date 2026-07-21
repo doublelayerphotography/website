@@ -782,57 +782,317 @@ section.flipped-prev {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* --- 10. SINGLE PHILOSOPHY CARD LAYOUT --- */
-.single-philosophy-container {
-  display: flex;
-  justify-content: center;
+/* --- 10. NEW PHILOSOPHY SPLIT LAYOUT --- */
+.philosophy-container {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 50px;
+  align-items: start;
   margin-top: 20px;
+  width: 100%;
 }
 
-.philosophy-wide-card {
-  max-width: 900px;
-  width: 100%;
-  padding: 45px;
-  display: flex;
-  gap: 35px;
-  align-items: flex-start;
+.philosophy-left {
   text-align: left;
 }
 
-.wide-philo-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--glass-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gold-accent);
-  flex-shrink: 0;
+.philosophy-left .tagline {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 12px;
+  text-shadow: 0 0 10px rgba(207, 168, 83, 0.2);
 }
 
-.wide-philo-content h3 {
-  font-size: 26px;
-  color: #fff;
-  margin-bottom: 6px;
+.philosophy-left .section-title {
+  font-family: 'ADAM.CG PRO', sans-serif;
+  font-size: 40px;
+  margin-bottom: 25px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
-.philo-subtitle {
-  font-size: 9px;
+.philosophy-main-desc {
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #d1d5db;
+  margin-bottom: 35px;
+}
+
+.philosophy-main-desc .highlight-gold {
+  color: var(--color-gold);
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(207, 168, 83, 0.15);
+}
+
+/* Stats Styling */
+.philosophy-stats-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 35px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 30px 0;
+}
+
+.stat-box {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-icon-wrapper {
+  margin-bottom: 12px;
+  color: var(--color-gold);
+  opacity: 0.85;
+}
+
+.stat-icon-wrapper i {
+  width: 20px;
+  height: 20px;
+}
+
+.stat-box:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+}
+
+.stat-number {
+  font-family: 'ADAM.CG PRO', sans-serif;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.stat-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--text-muted);
-  display: block;
-  margin-bottom: 20px;
 }
 
-.wide-philo-content p {
-  font-size: 14px;
+/* Quote styling */
+.philosophy-quote-card {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(207, 168, 83, 0.12);
+  border-radius: 16px;
+  padding: 24px 30px;
+  position: relative;
+  margin-top: 35px;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.02);
+}
+
+.philosophy-quote-card .quote-icon {
+  position: absolute;
+  left: 20px;
+  top: 15px;
+  color: var(--color-gold);
+  opacity: 0.12;
+}
+
+.philosophy-quote-card .quote-icon i {
+  width: 32px;
+  height: 32px;
+}
+
+.quote-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: #a0aec0;
+  margin-bottom: 12px;
+  text-indent: 10px;
+}
+
+.quote-author {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gold);
+  text-align: right;
+  text-shadow: 0 0 5px rgba(207,168,83,0.15);
+}
+
+/* Right Side: Elegant Glass Card */
+.philosophy-card {
+  width: 100%;
+  padding: 40px;
+  position: relative;
+  text-align: left;
+}
+
+.philo-card-header {
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding-bottom: 25px;
+}
+
+.philo-badge-icon {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.badge-star-svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes orbitRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.badge-star-svg circle:nth-child(2) {
+  transform-origin: 50px 50px;
+  animation: orbitRotate 15s infinite linear;
+}
+
+.philosophy-card h3 {
+  font-family: 'ADAM.CG PRO', sans-serif;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.philo-card-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.6;
   color: var(--text-muted);
-  line-height: 1.65;
+}
+
+.philo-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 35px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.philo-features-list li {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.philo-features-list .feature-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.philo-features-list .feature-icon i {
+  width: 15px;
+  height: 15px;
+}
+
+.philo-features-list .feature-info h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.philo-features-list .feature-info p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* CTA Footer Link */
+.philo-cta-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 25px;
+  transition: all 0.3s ease;
+}
+
+.philo-cta-footer span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-gold);
+  transition: color 0.3s ease;
+}
+
+.cta-arrow-bubble {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(207, 168, 83, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+  background: rgba(207, 168, 83, 0.03);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-arrow-bubble i {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.philo-cta-footer:hover span {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255,255,255,0.3);
+}
+
+.philo-cta-footer:hover .cta-arrow-bubble {
+  background: var(--color-gold);
+  color: #000;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 15px rgba(207, 168, 83, 0.5);
+}
+
+.philo-cta-footer:hover .cta-arrow-bubble i {
+  transform: translateX(3px);
 }
 
 /* Card Spotlight glow coordinates */
@@ -842,6 +1102,35 @@ section.flipped-prev {
   background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 255, 255, 0.035), transparent 60%);
   pointer-events: none;
 }
+
+/* Responsive Overrides */
+@media (max-width: 991px) {
+  .philosophy-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .philosophy-left .section-title {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 575px) {
+  .philosophy-stats-grid {
+    flex-direction: column;
+    gap: 25px;
+    padding: 20px 0;
+  }
+  .stat-box {
+    width: 100%;
+  }
+  .stat-box:not(:last-child)::after {
+    display: none;
+  }
+  .philosophy-card {
+    padding: 25px;
+  }
+}
+
 
 /* --- 11. CINEMATIC SHOWCASE (FILMS) --- */
 .films-grid {

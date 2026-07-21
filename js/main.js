@@ -171,6 +171,67 @@ document.addEventListener("DOMContentLoaded", () => {
         link.classList.add("active");
       }
     });
+
+    // Run philosophy statistics counter animation when entering #philosophy
+    if (targetHash === "#philosophy") {
+      runStatsCounter();
+    } else {
+      resetStatsCounter();
+    }
+  }
+
+  // --- PHILOSOPHY STATISTICS COUNTER ANIMATION ---
+  function runStatsCounter() {
+    const statNumbers = document.querySelectorAll(".stat-number");
+    statNumbers.forEach(stat => {
+      const target = parseInt(stat.getAttribute("data-target"), 10);
+      let suffix = "";
+      if (stat.id === "stat-works") suffix = "+";
+      else if (stat.id === "stat-experience") suffix = "+";
+      else if (stat.id === "stat-satisfaction") suffix = "%";
+
+      const duration = 1500; // 1.5 seconds
+      const startTime = performance.now();
+
+      function updateNumber(timestamp) {
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing out cubic
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(easeProgress * target);
+        
+        stat.textContent = current.toLocaleString() + suffix;
+
+        if (progress < 1) {
+          stat._animationFrame = requestAnimationFrame(updateNumber);
+        } else {
+          stat.textContent = target.toLocaleString() + suffix;
+        }
+      }
+
+      // Cancel any ongoing animation frame
+      if (stat._animationFrame) {
+        cancelAnimationFrame(stat._animationFrame);
+      }
+      
+      stat.textContent = "0" + suffix;
+      stat._animationFrame = requestAnimationFrame(updateNumber);
+    });
+  }
+
+  function resetStatsCounter() {
+    const statNumbers = document.querySelectorAll(".stat-number");
+    statNumbers.forEach(stat => {
+      if (stat._animationFrame) {
+        cancelAnimationFrame(stat._animationFrame);
+      }
+      let suffix = "";
+      if (stat.id === "stat-works") suffix = "+";
+      else if (stat.id === "stat-experience") suffix = "+";
+      else if (stat.id === "stat-satisfaction") suffix = "%";
+      stat.textContent = "0" + suffix;
+    });
   }
 
   function turnPageTo(index) {
@@ -217,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Menu navigation links click handler
-  document.querySelectorAll("header a[href^='#'], .logo, .hero-actions button, #placeholder-packages-link").forEach(elem => {
+  document.querySelectorAll("header a[href^='#'], .logo, .hero-actions button, #placeholder-packages-link, #philo-cta-packages").forEach(elem => {
     elem.addEventListener("click", e => {
       let targetHash = elem.getAttribute("href");
       // If triggered from button attributes or custom onclick
