@@ -5,7 +5,7 @@ const journalPosts = [
     date: "July 18, 2026",
     category: "Destination Weddings",
     summary: "Discover our expert visual tips for couples planning a luxury destination wedding at the iconic lakeside backwaters of Kumarakom, Kerala.",
-    thumbnail: "images/best-wedding-photography-kochi-kerala.png",
+    thumbnail: "images/hero-slides/slide2.JPG",
     content: `
       <p class="lead-text">Kumarakom, with its serene backwaters and luxury heritage resorts, is easily one of South India's premier wedding destinations. But capturing cinematic frames here requires an intimate understanding of the local climate and optics.</p>
       
