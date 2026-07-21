@@ -137,6 +137,7 @@
         <li><a href="#gallery" class="nav-link" title="Gallery"><i data-lucide="image"></i><span>Gallery</span></a></li>
         <li><a href="#philosophy" class="nav-link" title="Philosophy"><i data-lucide="compass"></i><span>Philosophy</span></a></li>
         <li><a href="#highlights" class="nav-link" title="Highlights"><i data-lucide="clapperboard"></i><span>Highlights</span></a></li>
+        <li><a href="#journal" class="nav-link" title="Journal"><i data-lucide="book-open"></i><span>Journal</span></a></li>
         <li><a href="#packages" class="nav-link" title="Packages"><i data-lucide="tags"></i><span>Packages</span></a></li>
         <li><a href="#testimonials" class="nav-link" title="Reactions"><i data-lucide="message-square"></i><span>Reactions</span></a></li>
         <li><a href="#contact" class="nav-link" title="Contact"><i data-lucide="mail"></i><span>Contact</span></a></li>
@@ -495,6 +496,19 @@
           </div>
         </a>
 
+      </div>
+    </section>
+
+    <!-- SECTION 4.5: JOURNAL (Blogging & Stories) -->
+    <section id="journal" class="flipped-prev">
+      <div class="section-intro">
+        <span class="tagline">Stories &amp; Expertise</span>
+        <h2 class="section-title text-gradient">Visual Journal</h2>
+        <p class="section-desc">Explore our articles, behind-the-scenes stories, and technical photography insights from real weddings in Kerala and destination locations.</p>
+      </div>
+
+      <div class="journal-grid" id="journal-grid">
+        <!-- Dynamically loaded cards go here -->
       </div>
     </section>
 
@@ -1520,6 +1534,25 @@
     </a>
   </div>
 
+  <!-- --- JOURNAL ARTICLE READER OVERLAY --- -->
+  <div id="journal-reader-overlay" class="journal-reader-overlay">
+    <div class="journal-reader-card">
+      <button class="journal-reader-close" id="journal-reader-close" aria-label="Close Article">
+        <i data-lucide="x"></i>
+      </button>
+      <div class="journal-reader-banner" id="journal-reader-banner"></div>
+      <div class="journal-reader-body">
+        <div class="journal-reader-meta">
+          <span class="journal-reader-category" id="journal-reader-category"></span>
+          <span class="journal-reader-date" id="journal-reader-date"></span>
+        </div>
+        <h2 class="journal-reader-title" id="journal-reader-title"></h2>
+        <div class="journal-reader-content" id="journal-reader-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/posts.js?v=1.0"></script>
   <script src="js/main.js?v=3.8"></script>
 </body>
 </html>

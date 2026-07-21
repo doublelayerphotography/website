@@ -3307,4 +3307,111 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, { passive: true });
 
+  // --- JOURNAL SECTION SYSTEM & OVERLAY READER ---
+  const journalGrid = document.getElementById("journal-grid");
+  const readerOverlay = document.getElementById("journal-reader-overlay");
+  const readerCloseBtn = document.getElementById("journal-reader-close");
+  const readerBanner = document.getElementById("journal-reader-banner");
+  const readerCategory = document.getElementById("journal-reader-category");
+  const readerDate = document.getElementById("journal-reader-date");
+  const readerTitle = document.getElementById("journal-reader-title");
+  const readerContent = document.getElementById("journal-reader-content");
+
+  function renderJournalCards() {
+    if (!journalGrid || typeof journalPosts === "undefined") return;
+    journalGrid.innerHTML = "";
+
+    journalPosts.forEach(post => {
+      const card = document.createElement("div");
+      card.className = "journal-card";
+      card.setAttribute("data-id", post.id);
+      
+      card.innerHTML = `
+        <div class="journal-img-wrapper">
+          <img src="${post.thumbnail}" alt="${post.title}" class="journal-img" loading="lazy">
+        </div>
+        <div class="journal-card-body">
+          <div class="journal-card-meta">
+            <span class="journal-card-category">${post.category}</span>
+            <span class="journal-card-date">${post.date}</span>
+          </div>
+          <h3 class="journal-card-title">${post.title}</h3>
+          <p class="journal-card-summary">${post.summary}</p>
+          <div class="journal-card-cta">
+            <span>Read Article</span>
+            <i data-lucide="arrow-right"></i>
+          </div>
+        </div>
+      `;
+
+      card.addEventListener("click", () => {
+        openJournalArticle(post.id);
+      });
+
+      journalGrid.appendChild(card);
+    });
+
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  }
+
+  function openJournalArticle(id) {
+    if (typeof journalPosts === "undefined") return;
+    const post = journalPosts.find(p => p.id === id);
+    if (!post || !readerOverlay) return;
+
+    // Populate Reader contents
+    if (readerBanner) readerBanner.style.backgroundImage = `url('${post.thumbnail}')`;
+    if (readerCategory) readerCategory.textContent = post.category;
+    if (readerDate) readerDate.textContent = post.date;
+    if (readerTitle) readerTitle.textContent = post.title;
+    if (readerContent) readerContent.innerHTML = post.content;
+
+    // Open Overlay
+    readerOverlay.classList.add("active");
+    document.body.style.overflow = "hidden"; // Lock page scroll
+
+    // Refresh icons inside reader if any
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  }
+
+  function closeJournalArticle() {
+    if (!readerOverlay) return;
+    readerOverlay.classList.remove("active");
+    
+    // Only restore body overflow if maintenance screen is not active
+    const maintenanceOverlay = document.getElementById("maintenance-overlay");
+    if (!maintenanceOverlay || maintenanceOverlay.style.display !== "flex") {
+      document.body.style.overflow = ""; 
+    }
+  }
+
+  // Bind close events
+  if (readerCloseBtn) {
+    readerCloseBtn.addEventListener("click", closeJournalArticle);
+  }
+
+  if (readerOverlay) {
+    readerOverlay.addEventListener("click", (e) => {
+      // If clicked outside the main content card
+      if (e.target === readerOverlay) {
+        closeJournalArticle();
+      }
+    });
+  }
+
+  // Escape key handler
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && readerOverlay && readerOverlay.classList.contains("active")) {
+      closeJournalArticle();
+    }
+  });
+
+  // Render cards on page load
+  renderJournalCards();
+
 });
+
