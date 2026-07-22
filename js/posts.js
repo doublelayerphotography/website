@@ -5,7 +5,7 @@ const journalPosts = [
     date: "July 18, 2026",
     category: "Destination Weddings",
     summary: "Discover our expert visual tips for couples planning a luxury destination wedding at the iconic lakeside backwaters of Kumarakom, Kerala.",
-    thumbnail: "images/hero-slides/slide2.JPG",
+    thumbnail: "images/candid-wedding-photography-kumarakom-kerala.jpg",
     content: `
       <p class="lead-text">Kumarakom, with its serene backwaters and luxury heritage resorts, is easily one of South India's premier wedding destinations. But capturing cinematic frames here requires an intimate understanding of the local climate and optics.</p>
       
@@ -29,7 +29,7 @@ const journalPosts = [
     date: "July 12, 2026",
     category: "Ceremonies",
     summary: "An expert guide to indoor church lighting, capturing the solemnity of rings and crowns, and handling the architectural grandeur of Kerala's historical churches.",
-    thumbnail: "images/BAPTISM/DLP_7737.jpg",
+    thumbnail: "images/christian-wedding-photography-kochi-kerala.jpg",
     content: `
       <p class="lead-text">Kerala is home to some of the oldest and most beautiful historical cathedrals, featuring high ceilings, intricate wooden altars (Madbaha), and stained glass. Documenting a Christian wedding in these grand spaces requires a respectful and technically precise approach.</p>
 
