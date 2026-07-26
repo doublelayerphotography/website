@@ -2661,38 +2661,48 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- 13. INTRO SPLASH VIDEO OVERLAY SYSTEM ---
   const introOverlay = document.getElementById("intro-video-overlay");
   const introVideo = document.getElementById("intro-video");
-  const introSkipBtn = document.getElementById("intro-skip-btn");
-  const introMuteBtn = document.getElementById("intro-mute-btn");
   const logoTrigger = document.getElementById("logo-trigger");
 
   if (introOverlay && introVideo) {
     let introTimer;
     let introDismissed = false;
+    let isPlayingStarted = false;
+
+    function startVideoPlayback() {
+      if (introDismissed || isPlayingStarted) return;
+      isPlayingStarted = true;
+
+      introVideo.currentTime = 0;
+      introVideo.muted = false; // Play unmuted with audio
+
+      introVideo.play().then(() => {
+        // Start 10-second auto-dismiss timer AFTER video starts playing
+        clearTimeout(introTimer);
+        introTimer = setTimeout(dismissIntro, 10000);
+      }).catch(error => {
+        console.log("Video playback error (trying unmuted):", error);
+        // Fallback to muted if browser blocks unmuted playback
+        introVideo.muted = true;
+        introVideo.play().then(() => {
+          clearTimeout(introTimer);
+          introTimer = setTimeout(dismissIntro, 10000);
+        });
+      });
+    }
 
     function playIntro() {
       introDismissed = false;
+      isPlayingStarted = false;
       introOverlay.style.display = "flex";
       introOverlay.classList.remove("fade-out");
 
-      // Reset video to start and play muted immediately
-      introVideo.currentTime = 0;
-      introVideo.muted = true;
-      if (introMuteBtn) {
-        introMuteBtn.innerHTML = `<i data-lucide="volume-x"></i>`;
-      }
-      if (window.lucide) {
-        window.lucide.createIcons();
-      }
-
-      introVideo.play().catch(error => {
-        console.log("Autoplay blocked or failed:", error);
-      });
+      // Reset video to start and keep paused
+      try {
+        introVideo.pause();
+        introVideo.currentTime = 0;
+      } catch (err) {}
 
       document.body.style.overflow = "hidden";
-      
-      // Start auto-dismiss timer immediately
-      clearTimeout(introTimer);
-      introTimer = setTimeout(dismissIntro, 10000);
     }
 
     function dismissIntro() {
@@ -2723,34 +2733,13 @@ document.addEventListener("DOMContentLoaded", () => {
       dismissIntro();
     });
 
-    // Dismiss immediately if the user clicks the skip button
-    if (introSkipBtn) {
-      introSkipBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        clearTimeout(introTimer);
-        dismissIntro();
-      });
-    }
-
-    // Toggle mute/unmute audio state
-    if (introMuteBtn) {
-      introMuteBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        introVideo.muted = !introVideo.muted;
-        if (introVideo.muted) {
-          introMuteBtn.innerHTML = `<i data-lucide="volume-x"></i>`;
-        } else {
-          introMuteBtn.innerHTML = `<i data-lucide="volume-2"></i>`;
-        }
-        if (window.lucide) {
-          window.lucide.createIcons();
-        }
-      });
-    }
-
-    // Dismiss immediately if the user clicks/taps anywhere on the screen overlay/video
+    // Dismiss immediately or start playback if clicked/tapped
     introOverlay.addEventListener("click", (e) => {
-      if (e.target.closest("#intro-mute-btn") || e.target.closest("#intro-skip-btn")) return;
+      if (!isPlayingStarted) {
+        // If clicked on overlay, start video playback
+        startVideoPlayback();
+        return;
+      }
       clearTimeout(introTimer);
       dismissIntro();
     });
