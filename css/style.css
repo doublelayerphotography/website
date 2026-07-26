@@ -634,16 +634,16 @@ section.flipped-prev {
 }
 @media (max-width: 767px) {
   #hero-slide-1 {
-    background-image: url('../images/hero-slides/slide1_mobile.jpg'), url('../images/hero-slides/slide1.jpg');
+    background-image: url('../images/hero-slides/slide1_mobile.jpg');
   }
 }
 
 #hero-slide-2 {
-  background-image: url('../images/hero-slides/slide2.jpg');
+  background-image: url('../images/hero-slides/slide2.JPG');
 }
 @media (max-width: 767px) {
   #hero-slide-2 {
-    background-image: url('../images/hero-slides/slide2_mobile.jpg'), url('../images/hero-slides/slide2.jpg');
+    background-image: url('../images/hero-slides/slide2_mobile.jpeg');
   }
 }
 
@@ -652,16 +652,16 @@ section.flipped-prev {
 }
 @media (max-width: 767px) {
   #hero-slide-3 {
-    background-image: url('../images/hero-slides/slide3_mobile.jpg'), url('../images/hero-slides/slide3.jpg');
+    background-image: url('../images/hero-slides/slide3_mobile.JPG');
   }
 }
 
 #hero-slide-4 {
-  background-image: url('../images/hero-slides/slide4.jpg');
+  background-image: url('../images/hero-slides/slide4.jpeg');
 }
 @media (max-width: 767px) {
   #hero-slide-4 {
-    background-image: url('../images/hero-slides/slide4_mobile.jpg'), url('../images/hero-slides/slide4.jpg');
+    background-image: url('../images/hero-slides/slide4_mobile.JPG');
   }
 }
 
@@ -1157,16 +1157,19 @@ section.flipped-prev {
 
 #philosophy {
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 #philosophy::before {
   content: '';
-  position: absolute;
+  position: fixed;
   inset: 0;
   background-image: url('../images/ABOUT_MOBILE.jpeg');
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   opacity: 0.18; /* Light opacity overlay */
   pointer-events: none;
   z-index: 0;
@@ -3291,6 +3294,7 @@ footer {
     left: 50% !important;
     width: 100% !important;
     transform: translateX(-50%) rotateY(90deg) translateZ(-100px) !important;
+    -webkit-overflow-scrolling: touch;
   }
 
   section.active {

@@ -2673,19 +2673,21 @@ document.addEventListener("DOMContentLoaded", () => {
       isPlayingStarted = true;
 
       introVideo.currentTime = 0;
-      introVideo.muted = false; // Play unmuted with audio
+      introVideo.muted = false; // Try playing unmuted first
 
       introVideo.play().then(() => {
         // Start 10-second auto-dismiss timer AFTER video starts playing
         clearTimeout(introTimer);
         introTimer = setTimeout(dismissIntro, 10000);
       }).catch(error => {
-        console.log("Video playback error (trying unmuted):", error);
-        // Fallback to muted if browser blocks unmuted playback
+        console.log("Video playback unmuted blocked by browser, playing muted:", error);
+        // Fallback to muted if browser blocks unmuted autoplay
         introVideo.muted = true;
         introVideo.play().then(() => {
           clearTimeout(introTimer);
           introTimer = setTimeout(dismissIntro, 10000);
+        }).catch(err => {
+          console.log("Muted autoplay error:", err);
         });
       });
     }
@@ -2695,14 +2697,10 @@ document.addEventListener("DOMContentLoaded", () => {
       isPlayingStarted = false;
       introOverlay.style.display = "flex";
       introOverlay.classList.remove("fade-out");
-
-      // Reset video to start and keep paused
-      try {
-        introVideo.pause();
-        introVideo.currentTime = 0;
-      } catch (err) {}
-
       document.body.style.overflow = "hidden";
+
+      // Automatically play video when entering the website
+      startVideoPlayback();
     }
 
     function dismissIntro() {
@@ -2733,13 +2731,8 @@ document.addEventListener("DOMContentLoaded", () => {
       dismissIntro();
     });
 
-    // Dismiss immediately or start playback if clicked/tapped
+    // Dismiss overlay immediately if user clicks/taps anywhere
     introOverlay.addEventListener("click", (e) => {
-      if (!isPlayingStarted) {
-        // If clicked on overlay, start video playback
-        startVideoPlayback();
-        return;
-      }
       clearTimeout(introTimer);
       dismissIntro();
     });
