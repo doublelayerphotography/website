@@ -2672,24 +2672,20 @@ document.addEventListener("DOMContentLoaded", () => {
       if (introDismissed || isPlayingStarted) return;
       isPlayingStarted = true;
 
+      // Always set muted to true FIRST so mobile browsers (iOS Safari / Android Chrome) permit immediate autoplay
+      introVideo.muted = true;
       introVideo.currentTime = 0;
-      introVideo.muted = false; // Try playing unmuted first
 
-      introVideo.play().then(() => {
-        // Start 10-second auto-dismiss timer AFTER video starts playing
-        clearTimeout(introTimer);
-        introTimer = setTimeout(dismissIntro, 10000);
-      }).catch(error => {
-        console.log("Video playback unmuted blocked by browser, playing muted:", error);
-        // Fallback to muted if browser blocks unmuted autoplay
-        introVideo.muted = true;
-        introVideo.play().then(() => {
+      const playPromise = introVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
           clearTimeout(introTimer);
           introTimer = setTimeout(dismissIntro, 10000);
         }).catch(err => {
-          console.log("Muted autoplay error:", err);
+          console.log("Autoplay error or blocked by mobile policy:", err);
+          dismissIntro();
         });
-      });
+      }
     }
 
     function playIntro() {
