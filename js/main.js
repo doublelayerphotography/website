@@ -2456,7 +2456,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <div class="footer">
           <p>Thank you for choosing DoubleLayer Photography. We will get back to you shortly to confirm your booking.</p>
-          <p>Kolenchery, Kochi, Kerala | Email: doublelayerphotography@gmail.com | Phone: +91 94468 02570</p>
+          <p>Kolenchery, Kochi, Kerala | Email: doublelayerphotography@gmail.com | Phone: +91 94468 XXXXX</p>
         </div>
 
         <script>
