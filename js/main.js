@@ -555,7 +555,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "images/Dr.%20Eldhode%20And%20Dr.%20Anju/73CA277B-4B93-4E26-9450-AE9B202145A6.JPG.jpeg",
         "images/Dr.%20Eldhode%20And%20Dr.%20Anju/78D9E097-6F8B-4DA2-B7E8-EBA47ED0D92B.JPG.jpeg",
         "images/Dr.%20Eldhode%20And%20Dr.%20Anju/215C4CCA-92A7-4A98-94BA-685CA6257793.JPG.jpeg",
-        "images/Dr.%20Eldhode%20And%20Dr.%20Anju/217BDBD1-1009-433A-9BEA-5199570B8AEB.JPG.jpeg",
         "images/Dr.%20Eldhode%20And%20Dr.%20Anju/304F56A2-D051-407F-90D6-0F60B4ECCEC1.JPG.jpeg",
         "images/Dr.%20Eldhode%20And%20Dr.%20Anju/754BF865-43B1-4DC6-B9CE-87A15F30F55D.JPG.jpeg",
         "images/Dr.%20Eldhode%20And%20Dr.%20Anju/70992A77-D24B-4C8B-A997-1097649A0984.JPG.jpeg",
