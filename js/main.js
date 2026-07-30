@@ -412,73 +412,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Official Portfolio Data indexed from local directories
   const sessionImages = {
-    "susmi-petter": {
-      title: "Susmi & Petter",
-      category: "Wedding / Ceremony",
-      cover: "images/Susmi%20%26%20Petter/ASK00126.jpg",
-      images: [
-        "images/Susmi%20%26%20Petter/ASK00126.jpg",
-        "images/Susmi%20%26%20Petter/ASK00387.jpg",
-        "images/Susmi%20%26%20Petter/ASK07116.jpg",
-        "images/Susmi%20%26%20Petter/ASK07194.jpg",
-        "images/Susmi%20%26%20Petter/ASK07530.jpg",
-        "images/Susmi%20%26%20Petter/ASK07542.jpg",
-        "images/Susmi%20%26%20Petter/ASK07574.jpg",
-        "images/Susmi%20%26%20Petter/ASK07596.jpg",
-        "images/Susmi%20%26%20Petter/ASK07601.jpg",
-        "images/Susmi%20%26%20Petter/ASK07604.jpg",
-        "images/Susmi%20%26%20Petter/ASK07625.jpg",
-        "images/Susmi%20%26%20Petter/ASK07628.jpg",
-        "images/Susmi%20%26%20Petter/ASK07657.jpg",
-        "images/Susmi%20%26%20Petter/ASK07671.jpg",
-        "images/Susmi%20%26%20Petter/ASK07691.jpg",
-        "images/Susmi%20%26%20Petter/ASK07719.jpg",
-        "images/Susmi%20%26%20Petter/ASK07778.jpg",
-        "images/Susmi%20%26%20Petter/ASK07810.jpg",
-        "images/Susmi%20%26%20Petter/ASK07812.jpg",
-        "images/Susmi%20%26%20Petter/ASK07824.jpg",
-        "images/Susmi%20%26%20Petter/ASK07851.jpg",
-        "images/Susmi%20%26%20Petter/ASK07859.jpg",
-        "images/Susmi%20%26%20Petter/ASK07890.jpg",
-        "images/Susmi%20%26%20Petter/ASK07902.jpg",
-        "images/Susmi%20%26%20Petter/ASK07915.jpg",
-        "images/Susmi%20%26%20Petter/ASK07978.jpg",
-        "images/Susmi%20%26%20Petter/ASK07981.jpg",
-        "images/Susmi%20%26%20Petter/ASK08017.jpg",
-        "images/Susmi%20%26%20Petter/ASK08030.jpg",
-        "images/Susmi%20%26%20Petter/ASK08062.jpg",
-        "images/Susmi%20%26%20Petter/ASK08137.jpg",
-        "images/Susmi%20%26%20Petter/ASK08216.jpg",
-        "images/Susmi%20%26%20Petter/ASK08232.jpg",
-        "images/Susmi%20%26%20Petter/ASK08388.jpg",
-        "images/Susmi%20%26%20Petter/ASK08571.jpg",
-        "images/Susmi%20%26%20Petter/ASK08662.jpg",
-        "images/Susmi%20%26%20Petter/ASK09861.jpg",
-        "images/Susmi%20%26%20Petter/ASK09865.jpg",
-        "images/Susmi%20%26%20Petter/DLP_5980.jpg",
-        "images/Susmi%20%26%20Petter/DLP_6056.jpg",
-        "images/Susmi%20%26%20Petter/DLP_7735.jpg",
-        "images/Susmi%20%26%20Petter/DLP_7737.jpg",
-        "images/Susmi%20%26%20Petter/SAR0318a0.jpg",
-        "images/Susmi%20%26%20Petter/SAR02805.jpg",
-        "images/Susmi%20%26%20Petter/SAR02856.jpg",
-        "images/Susmi%20%26%20Petter/SAR02891.jpg",
-        "images/Susmi%20%26%20Petter/SAR03011.jpg",
-        "images/Susmi%20%26%20Petter/SAR03089.jpg",
-        "images/Susmi%20%26%20Petter/SAR03167a.jpg",
-        "images/Susmi%20%26%20Petter/SAR03180.jpg",
-        "images/Susmi%20%26%20Petter/SAR03254.jpg",
-        "images/Susmi%20%26%20Petter/SAR03294.jpg",
-        "images/Susmi%20%26%20Petter/SAR03743.jpg",
-        "images/Susmi%20%26%20Petter/SAR04675.jpg",
-        "images/Susmi%20%26%20Petter/SAR04691.jpg",
-        "images/Susmi%20%26%20Petter/SAR04906.jpg",
-        "images/Susmi%20%26%20Petter/SAR04921.jpg",
-        "images/Susmi%20%26%20Petter/SAR04927.jpg",
-        "images/Susmi%20%26%20Petter/SAR05618.jpg"
-      ]
-    },
-
     "tony": {
       title: "Tony",
       category: "Portrait / Studio",
@@ -519,8 +452,22 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "Portrait / Studio",
       cover: "images/Feba/IMG_2686.JPG",
       images: [
+        "images/Feba/IMG_2681.JPG",
+        "images/Feba/IMG_2682.JPG",
+        "images/Feba/IMG_2683.JPG",
+        "images/Feba/IMG_2684.JPG",
+        "images/Feba/IMG_2685.JPG",
         "images/Feba/IMG_2686.JPG",
-        "images/Feba/IMG_2691.JPG"
+        "images/Feba/IMG_2687.JPG",
+        "images/Feba/IMG_2688.JPG",
+        "images/Feba/IMG_2690.JPG",
+        "images/Feba/IMG_2691.JPG",
+        "images/Feba/IMG_2692.JPG",
+        "images/Feba/IMG_2693.JPG",
+        "images/Feba/IMG_2694.JPG",
+        "images/Feba/IMG_2695.JPG",
+        "images/Feba/IMG_2696.JPG",
+        "images/Feba/IMG_2697.JPG"
       ]
     },
     "dr-eldhose-anju": {
@@ -578,59 +525,58 @@ document.addEventListener("DOMContentLoaded", () => {
     "christening": {
       title: "Christening Ceremony",
       category: "Christening / Ceremony",
-      cover: "images/BAPTISM/IMG_0518.JPG",
+      cover: "images/BAPTISM/10%20(1).JPG",
       images: [
-        "images/BAPTISM/IMG_0518.JPG",
-        "images/BAPTISM/IMG_0519.JPG",
-        "images/BAPTISM/IMG_0520.JPG",
-        "images/BAPTISM/IMG_0521.JPG",
-        "images/BAPTISM/IMG_0522.JPG",
-        "images/BAPTISM/IMG_0523.JPG",
-        "images/BAPTISM/IMG_0524.JPG",
-        "images/BAPTISM/IMG_0525.JPG",
-        "images/BAPTISM/IMG_0526.JPG",
-        "images/BAPTISM/IMG_0527.JPG",
-        "images/BAPTISM/IMG_0528.JPG",
-        "images/BAPTISM/IMG_0529.JPG",
-        "images/BAPTISM/IMG_0530.JPG",
-        "images/BAPTISM/IMG_0531.JPG",
-        "images/BAPTISM/IMG_0592.JPG",
-        "images/BAPTISM/IMG_0594.JPG",
-        "images/BAPTISM/IMG_0595.JPG",
-        "images/BAPTISM/IMG_0596.JPG",
-        "images/BAPTISM/IMG_0597.JPG",
-        "images/BAPTISM/IMG_0598.JPG",
-        "images/BAPTISM/IMG_0599.JPG",
-        "images/BAPTISM/IMG_0600.JPG",
-        "images/BAPTISM/IMG_0601.JPG",
-        "images/BAPTISM/IMG_0602.JPG",
-        "images/BAPTISM/IMG_0603.JPG",
-        "images/BAPTISM/IMG_0606.JPG",
-        "images/BAPTISM/IMG_0608.JPG",
-        "images/BAPTISM/IMG_0619.JPG",
-        "images/BAPTISM/IMG_0620.JPG",
-        "images/BAPTISM/IMG_0621.JPG",
-        "images/BAPTISM/IMG_0622.JPG",
-        "images/BAPTISM/IMG_0623.JPG",
-        "images/BAPTISM/IMG_0624.JPG",
-        "images/BAPTISM/IMG_0625.JPG",
-        "images/BAPTISM/IMG_0626.JPG",
-        "images/BAPTISM/IMG_0627.JPG",
-        "images/BAPTISM/IMG_0628.JPG",
-        "images/BAPTISM/IMG_0629.JPG",
-        "images/BAPTISM/IMG_0630.JPG",
-        "images/BAPTISM/IMG_0631.JPG",
-        "images/BAPTISM/IMG_0632.JPG",
-        "images/BAPTISM/IMG_0633.JPG",
-        "images/BAPTISM/IMG_0634.JPG",
-        "images/BAPTISM/IMG_0638.JPG",
-        "images/BAPTISM/IMG_0639.JPG",
-        "images/BAPTISM/IMG_0640.JPG",
-        "images/BAPTISM/IMG_0642.JPG",
-        "images/BAPTISM/IMG_0647.JPG",
-        "images/BAPTISM/IMG_0648.JPG",
-        "images/BAPTISM/IMG_0649.JPG",
-        "images/BAPTISM/IMG_0650.JPG",
+        "images/BAPTISM/10%20(1).JPG",
+        "images/BAPTISM/10%20(2).JPG",
+        "images/BAPTISM/10%20(3).JPG",
+        "images/BAPTISM/10%20(4).JPG",
+        "images/BAPTISM/10%20(5).JPG",
+        "images/BAPTISM/10%20(6).JPG",
+        "images/BAPTISM/10%20(7).JPG",
+        "images/BAPTISM/10%20(8).JPG",
+        "images/BAPTISM/10%20(9).JPG",
+        "images/BAPTISM/10%20(10).JPG",
+        "images/BAPTISM/10%20(11).JPG",
+        "images/BAPTISM/10%20(12).JPG",
+        "images/BAPTISM/10%20(13).JPG",
+        "images/BAPTISM/10%20(14).JPG",
+        "images/BAPTISM/10%20(15).JPG",
+        "images/BAPTISM/10%20(16).JPG",
+        "images/BAPTISM/10%20(17).JPG",
+        "images/BAPTISM/10%20(18).JPG",
+        "images/BAPTISM/10%20(19).JPG",
+        "images/BAPTISM/10%20(20).JPG",
+        "images/BAPTISM/10%20(21).JPG",
+        "images/BAPTISM/10%20(22).JPG",
+        "images/BAPTISM/10%20(23).JPG",
+        "images/BAPTISM/10%20(24).JPG",
+        "images/BAPTISM/10%20(25).JPG",
+        "images/BAPTISM/10%20(26).JPG",
+        "images/BAPTISM/10%20(27).JPG",
+        "images/BAPTISM/10%20(28).JPG",
+        "images/BAPTISM/10%20(29).JPG",
+        "images/BAPTISM/10%20(30).JPG",
+        "images/BAPTISM/10%20(31).JPG",
+        "images/BAPTISM/10%20(32).JPG",
+        "images/BAPTISM/10%20(33).JPG",
+        "images/BAPTISM/10%20(34).JPG",
+        "images/BAPTISM/10%20(35).JPG",
+        "images/BAPTISM/10%20(36).JPG",
+        "images/BAPTISM/10%20(37).JPG",
+        "images/BAPTISM/10%20(38).JPG",
+        "images/BAPTISM/10%20(39).JPG",
+        "images/BAPTISM/10%20(40).JPG",
+        "images/BAPTISM/10%20(41).JPG",
+        "images/BAPTISM/10%20(42).JPG",
+        "images/BAPTISM/10%20(43).JPG",
+        "images/BAPTISM/10%20(44).JPG",
+        "images/BAPTISM/10%20(45).JPG",
+        "images/BAPTISM/10%20(46).JPG",
+        "images/BAPTISM/10%20(47).JPG",
+        "images/BAPTISM/10%20(48).JPG",
+        "images/BAPTISM/10%20(49).JPG",
+        "images/BAPTISM/10%20(50).JPG",
         "images/BAPTISM/IMG_0942.JPG",
         "images/BAPTISM/IMG_0943.JPG",
         "images/BAPTISM/IMG_0944.JPG",
@@ -663,8 +609,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "images/BAPTISM/IMG_1050.JPG",
         "images/BAPTISM/IMG_1051.JPG",
         "images/BAPTISM/IMG_1052.JPG",
-        "images/BAPTISM/IMG_1053.JPG",
-        "images/BAPTISM/IMG_1054.JPG",
         "images/BAPTISM/IMG_1055.JPG",
         "images/BAPTISM/IMG_1056.JPG",
         "images/BAPTISM/IMG_1057.JPG",
@@ -2727,11 +2671,36 @@ document.addEventListener("DOMContentLoaded", () => {
       dismissIntro();
     });
 
-    // Dismiss overlay immediately if user clicks/taps anywhere
+    // Dismiss overlay immediately if user clicks/taps anywhere on background
     introOverlay.addEventListener("click", (e) => {
       clearTimeout(introTimer);
       dismissIntro();
     });
+
+    const introSkipBtn = document.getElementById("intro-skip-btn");
+    const introUnmuteBtn = document.getElementById("intro-unmute-btn");
+
+    if (introSkipBtn) {
+      introSkipBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        clearTimeout(introTimer);
+        dismissIntro();
+      });
+    }
+
+    if (introUnmuteBtn) {
+      introUnmuteBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (!introVideo) return;
+        introVideo.muted = !introVideo.muted;
+        if (introVideo.muted) {
+          introUnmuteBtn.innerHTML = `<i data-lucide="volume-x"></i><span>Unmute</span>`;
+        } else {
+          introUnmuteBtn.innerHTML = `<i data-lucide="volume-2"></i><span>Mute</span>`;
+        }
+        if (window.lucide) window.lucide.createIcons();
+      });
+    }
 
     // Bind logo clicks to reload the website
     if (logoTrigger) {
