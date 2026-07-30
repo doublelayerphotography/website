@@ -644,7 +644,7 @@ section.flipped-prev {
 }
 @media (max-width: 767px) {
   #hero-slide-2 {
-    background-image: url('../images/hero-slides/slide2_mobile.jpg');
+    background-image: url('../images/hero-slides/slide2_mobile.jpeg');
     background-position: center top;
   }
 }
@@ -674,7 +674,7 @@ section.flipped-prev {
 }
 @media (max-width: 767px) {
   #hero-slide-5 {
-    background-image: url('../images/hero-slides/slide5.jpeg');
+    background-image: url('../images/hero-slides/slide5_mobile.jpeg');
     background-position: center top;
   }
 }
