@@ -77,15 +77,23 @@
   <!-- Visual Journal: Pre-Wedding, Christian, Hindu & Muslim Wedding Photography Articles -->
   <url>
     <loc>https://doublelayerphotography.com/#journal</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <!-- FAQ Section: Prewedding, Wedding Photography & Studio Queries -->
+  <url>
+    <loc>https://doublelayerphotography.com/#faq</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
 
   <!-- Legal & Terms: Service Agreements -->
   <url>
     <loc>https://doublelayerphotography.com/#legal</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
