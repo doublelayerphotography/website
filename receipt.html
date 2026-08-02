@@ -478,10 +478,46 @@
           }
         } catch (err) {
           console.error("Error parsing receipt data:", err);
-          document.body.innerHTML = "<div style='color:#ff4a4a; padding: 40px; text-align:center;'><h3>Error loading receipt</h3><p>The receipt data link is invalid or corrupted.</p></div>";
+          document.getElementById("receipt-container").style.display = "block";
+          document.getElementById("c-name").textContent = "Valued Client";
+          document.getElementById("c-phone").textContent = "N/A";
+          document.getElementById("c-email").textContent = "N/A";
+          document.getElementById("c-event").textContent = "Wedding / Custom Shoot";
+          document.getElementById("c-date").textContent = "Pending Booking";
+          document.getElementById("c-venue").textContent = "Kochi, Kerala";
+          document.getElementById("c-package").textContent = "Bespoke Customizer Package";
+          document.getElementById("c-crew-count").textContent = "Visual Photography Crew";
+          document.getElementById("c-budget").textContent = "Custom Quotation";
+          document.getElementById("receipt-date").textContent = "Date: " + new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+          document.getElementById("brief-section").style.display = "block";
+          document.getElementById("c-brief").innerHTML = "To view your personalized invoice receipt, please submit your booking on our website customizer or contact our curation desk on WhatsApp.<br><br><a href='https://doublelayerphotography.com/#packages' style='display:inline-block; padding:10px 20px; background:var(--gold-accent); color:#000; text-decoration:none; font-weight:bold; border-radius:30px; margin-top:10px;'>Go to Package Customizer</a> <a href='https://wa.me/919446802570' target='_blank' style='display:inline-block; padding:10px 20px; background:#25D366; color:#fff; text-decoration:none; font-weight:bold; border-radius:30px; margin-top:10px; margin-left:10px;'>Chat on WhatsApp</a>";
         }
       } else {
-        document.body.innerHTML = "<div style='color:#ff4a4a; padding: 40px; text-align:center;'><h3>No receipt data found</h3><p>Please load this page from the booking submission link.</p></div>";
+        // Branded default preview when opened without URL query parameters
+        document.getElementById("receipt-container").style.display = "block";
+        document.getElementById("c-name").textContent = "Valued Client";
+        document.getElementById("c-phone").textContent = "N/A";
+        document.getElementById("c-email").textContent = "N/A";
+        document.getElementById("c-event").textContent = "Wedding / Custom Shoot";
+        document.getElementById("c-date").textContent = "Pending Booking";
+        document.getElementById("c-venue").textContent = "Kochi, Kerala";
+        document.getElementById("c-package").textContent = "Bespoke Customizer Package";
+        document.getElementById("c-crew-count").textContent = "Visual Photography Crew";
+        document.getElementById("c-budget").textContent = "Custom Quotation";
+        document.getElementById("receipt-date").textContent = "Date: " + new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        
+        const crewUl = document.getElementById("crew-list");
+        const li1 = document.createElement("li");
+        li1.textContent = "Professional Candid Photographers & 4K Cinematographers";
+        crewUl.appendChild(li1);
+
+        const delivUl = document.getElementById("deliverables-list");
+        const li2 = document.createElement("li");
+        li2.textContent = "High-Resolution Color-Graded Digital Gallery & Fine-Art Album";
+        delivUl.appendChild(li2);
+
+        document.getElementById("brief-section").style.display = "block";
+        document.getElementById("c-brief").innerHTML = "To view your personalized invoice receipt, please submit your booking on our website customizer or contact our curation desk on WhatsApp.<br><br><a href='https://doublelayerphotography.com/#packages' style='display:inline-block; padding:10px 20px; background:var(--gold-accent); color:#000; text-decoration:none; font-weight:bold; border-radius:30px; margin-top:10px;'>Go to Package Customizer</a> <a href='https://wa.me/919446802570' target='_blank' style='display:inline-block; padding:10px 20px; background:#25D366; color:#fff; text-decoration:none; font-weight:bold; border-radius:30px; margin-top:10px; margin-left:10px;'>Chat on WhatsApp</a>";
       }
     });
   </script>
