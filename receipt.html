@@ -310,13 +310,41 @@
   </button>
 
   <script>
+    function decodeBase64Safe(input) {
+      if (!input) return "";
+      let base64 = input.replace(/-/g, '+').replace(/_/g, '/');
+      while (base64.length % 4 !== 0) {
+        base64 += '=';
+      }
+      try {
+        const binaryStr = atob(base64);
+        const bytes = new Uint8Array(binaryStr.length);
+        for (let i = 0; i < binaryStr.length; i++) {
+          bytes[i] = binaryStr.charCodeAt(i);
+        }
+        return new TextDecoder('utf-8').decode(bytes);
+      } catch (e1) {
+        try {
+          return decodeURIComponent(Array.prototype.map.call(atob(base64), function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+          }).join(''));
+        } catch (e2) {
+          try {
+            return decodeURIComponent(escape(atob(base64)));
+          } catch (e3) {
+            return atob(base64);
+          }
+        }
+      }
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
       const base64Data = params.get("data");
       if (base64Data) {
         try {
-          // Decode Base64 safely
-          const decodedJson = decodeURIComponent(escape(atob(base64Data)));
+          // Decode Base64 safely across all browsers (including iOS Safari & macOS)
+          const decodedJson = decodeBase64Safe(base64Data);
           const rawData = JSON.parse(decodedJson);
 
           // Map compressed 1-letter keys back to full descriptive variables

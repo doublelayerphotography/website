@@ -2220,7 +2220,11 @@ document.addEventListener("DOMContentLoaded", () => {
           k: totalCrewCount
         };
         const bookingDataJson = JSON.stringify(compressedData);
-        const base64Data = btoa(unescape(encodeURIComponent(bookingDataJson)));
+        // Base64URL safe encoding (compatible with iOS Safari, macOS, WhatsApp & Android)
+        const base64Data = btoa(encodeURIComponent(bookingDataJson).replace(/%([0-9A-F]{2})/g, (match, p1) => {
+          return String.fromCharCode('0x' + p1);
+        })).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+        
         receiptUrl = `https://doublelayerphotography.com/receipt.html?data=${base64Data}`;
         window.latestReceiptUrl = receiptUrl;
         window.latestBookingDetails.receiptUrl = receiptUrl;
